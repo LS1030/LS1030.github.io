@@ -3,7 +3,7 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
         $('[rel="shortcut icon"]').attr('href', "/TEP.png");
-        document.title = 'w(ﾟДﾟ)w 不要走嘛！！！！';
+        document.title = '不要走嘛！！！！';
         clearTimeout(titleTime);
     }
     else {
