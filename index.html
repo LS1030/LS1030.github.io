@@ -293,6 +293,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://LS1030.github.io/uncategorized/stm32_note_GPIO.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LS1030">
+      <meta itemprop="description" content="一只苦逼的嵌入式小菜鸡，喜欢看书写字听歌，偶尔瞎写点东西">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LS1030的自留地">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/uncategorized/stm32_note_GPIO.html" class="post-title-link" itemprop="url">stm32学习笔记之GPIO</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-19 20:07:18 / 修改时间：21:39:19" itemprop="dateCreated datePublished" datetime="2019-10-19T20:07:18+08:00">2019-10-19</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/uncategorized/stm32_note_GPIO.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/stm32_note_GPIO.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">10k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">9 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>GPIO，General-purpose input/output，译为通用型之输入输出（端口），这是单片机最基础的功能，也是与外界交互的必备方式。GPIO的作用就是通过针脚对外输出高低电平，或者是检测输入电平。Stm32通过控制端口（Port）从而控制针脚（Pin），可以通过针脚对外输出0V或者3.3V的电压，或者是检测针脚处的电压（电平）。</p>
+<p>Stm32的GPIO有多种模式：输入浮空，输入上拉，输入下拉，模拟，具有上拉/下拉功能的开漏输出，具有上拉/下拉功能的推挽输出，具有上拉/下拉功能的复用功能推挽，具有上拉/下拉功能的复用功能开漏。简而言之，就是：</p>
+<ul>
+<li>浮空/上拉/下拉输入</li>
+<li>具有上拉/下拉功能的推挽/开漏输出</li>
+<li>模拟</li>
+<li>复用推挽/开漏输出</li>
+</ul>
+
+          <!--/文章摘要图片-->
+          
+
+          <!--noindex-->
+          <!--去除#more-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/uncategorized/stm32_note_GPIO.html" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://LS1030.github.io/talk/ebook.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1122,7 +1264,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1172,7 +1314,9 @@
         
           
         
-        <span class="site-state-item-count">10</span>
+          
+        
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1239,12 +1383,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">24k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">22 分钟</span>
 </div>
   
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
@@ -1346,6 +1490,8 @@ show_date_time();
 
 
   
+    
+      
     
       
     
