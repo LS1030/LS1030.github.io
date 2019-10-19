@@ -92,24 +92,24 @@
 <meta name="keywords" content="stm32">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stm32学习笔记之GPIO">
-<meta property="og:url" content="http://LS1030.github.io/uncategorized/stm32_note_GPIO.html">
+<meta property="og:url" content="http://LS1030.github.io/technolgy/stm32_note_GPIO.html">
 <meta property="og:site_name" content="LS1030的自留地">
 <meta property="og:description" content="简介GPIO，General-purpose input/output，译为通用型之输入输出（端口），这是单片机最基础的功能，也是与外界交互的必备方式。GPIO的作用就是通过针脚对外输出高低电平，或者是检测输入电平。Stm32通过控制端口（Port）从而控制针脚（Pin），可以通过针脚对外输出0V或者3.3V的电压，或者是检测针脚处的电压（电平）。 Stm32的GPIO有多种模式：输入浮空，输入上">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5CGPIO%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%B5%AE%E7%A9%BA%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E4%B8%8A%E4%B8%8B%E6%8B%89%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:image" content="http://ls1030.github.io/uncategorized/%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E5%A4%8D%E7%94%A8%E5%8A%9F%E8%83%BD%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg">
-<meta property="og:updated_time" content="2019-10-19T13:39:19.635Z">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/GPIO.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Analog_Signal_flow.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Input_floating_Signal_flow.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Input_pull-up-down_Signal_flow.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Output_push-pull_Signal_flow.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Output_open-drain_Signal_flow.jpg">
+<meta property="og:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/Alternate_function_Signal_flow.jpg">
+<meta property="og:updated_time" content="2019-10-19T14:42:08.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stm32学习笔记之GPIO">
 <meta name="twitter:description" content="简介GPIO，General-purpose input/output，译为通用型之输入输出（端口），这是单片机最基础的功能，也是与外界交互的必备方式。GPIO的作用就是通过针脚对外输出高低电平，或者是检测输入电平。Stm32通过控制端口（Port）从而控制针脚（Pin），可以通过针脚对外输出0V或者3.3V的电压，或者是检测针脚处的电压（电平）。 Stm32的GPIO有多种模式：输入浮空，输入上">
-<meta name="twitter:image" content="http://ls1030.github.io/uncategorized/%5CGPIO%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
+<meta name="twitter:image" content="http://ls1030.github.io/technolgy/stm32_note_GPIO/GPIO.jpg">
   <link rel="alternate" href="/atom.xml" title="LS1030的自留地" type="application/atom+xml">
-  <link rel="canonical" href="http://LS1030.github.io/uncategorized/stm32_note_GPIO">
+  <link rel="canonical" href="http://LS1030.github.io/technolgy/stm32_note_GPIO">
 
 
 <script id="page.configurations">
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://LS1030.github.io/uncategorized/stm32_note_GPIO.html">
+    <link itemprop="mainEntityOfPage" href="http://LS1030.github.io/technolgy/stm32_note_GPIO.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LS1030">
@@ -338,12 +338,27 @@
                 
               
 
-              <time title="创建时间：2019-10-19 20:07:18 / 修改时间：21:39:19" itemprop="dateCreated datePublished" datetime="2019-10-19T20:07:18+08:00">2019-10-19</time>
+              <time title="创建时间：2019-10-19 20:07:18 / 修改时间：22:42:08" itemprop="dateCreated datePublished" datetime="2019-10-19T20:07:18+08:00">2019-10-19</time>
             </span>
           
             
 
             
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/technolgy/" itemprop="url" rel="index"><span itemprop="name">technolgy</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -367,8 +382,8 @@
       <span class="post-meta-item-text">评论数：</span>
     
   
-    <a href="/uncategorized/stm32_note_GPIO.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/stm32_note_GPIO.html" itemprop="commentCount"></span>
+    <a href="/technolgy/stm32_note_GPIO.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/technolgy/stm32_note_GPIO.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -414,7 +429,7 @@
 </ul>
 <a id="more"></a>
 
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="结构框图"><a href="#结构框图" class="headerlink" title="结构框图"></a>结构框图</h3><h4 id="整体分析"><a href="#整体分析" class="headerlink" title="整体分析"></a>整体分析</h4><p><img src="%5CGPIO%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg" alt="GPIO结构框图"></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="结构框图"><a href="#结构框图" class="headerlink" title="结构框图"></a>结构框图</h3><h4 id="整体分析"><a href="#整体分析" class="headerlink" title="整体分析"></a>整体分析</h4><p><img src="stm32_note_GPIO/GPIO.jpg" alt="GPIO结构框图"></p>
 <p>这个框图分为几个部分，上拉下拉电阻部分，P-MOS/N-MOS管部分，输入/输出部分。</p>
 <h5 id="上拉下拉电阻"><a href="#上拉下拉电阻" class="headerlink" title="上拉下拉电阻"></a>上拉下拉电阻</h5><p>这个部分包含上拉电阻，下拉电阻，两个保护二极管。</p>
 <p>两个保护二极管用于防止引脚外部过高或过低的电压输入，当引脚电压高于VDD_FT时，上方的二极管导通，当引脚电压低于VSS时，下方的二极管导通，防止不正常电压引入芯片导致芯片烧毁。</p>
@@ -429,18 +444,18 @@
 <h5 id="输入输出控制部分"><a href="#输入输出控制部分" class="headerlink" title="输入输出控制部分"></a>输入输出控制部分</h5><p>输入数据寄存器通过触发器把外部输入的电压信号转换成数字信号，并储存起来以供读取。</p>
 <p>输出数据寄存器根据内部写入到置位/复位寄存器输出的数据，控制输出驱动器输出相应的高低电平。</p>
 <p>片上外设也可不经过输入输出数据寄存器，通过模拟输入、复用功能输入、复用功能输出直接读取输入驱动器的电平或通过输出驱动器进行输出。</p>
-<h4 id="各模式信号流分析"><a href="#各模式信号流分析" class="headerlink" title="各模式信号流分析"></a>各模式信号流分析</h4><h5 id="模拟输入"><a href="#模拟输入" class="headerlink" title="模拟输入"></a>模拟输入</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="模拟输入信号流图"></p>
+<h4 id="各模式信号流分析"><a href="#各模式信号流分析" class="headerlink" title="各模式信号流分析"></a>各模式信号流分析</h4><h5 id="模拟输入"><a href="#模拟输入" class="headerlink" title="模拟输入"></a>模拟输入</h5><p><img src="stm32_note_GPIO/Analog_Signal_flow.jpg" alt="模拟输入信号流图"></p>
 <p>模拟输入模式下，触发器关闭，上拉电阻、下拉电阻断开。<br>引脚电压信号直接输入到片上外设ADC内部。<br>输入数据寄存器不能正常读取引脚电平状态，CPU不能在输入数据寄存器上读到有效的数据。</p>
-<h5 id="浮空输入"><a href="#浮空输入" class="headerlink" title="浮空输入"></a>浮空输入</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%B5%AE%E7%A9%BA%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="浮空输入信号流图"></p>
+<h5 id="浮空输入"><a href="#浮空输入" class="headerlink" title="浮空输入"></a>浮空输入</h5><p><img src="stm32_note_GPIO/Input_floating_Signal_flow.jpg" alt="浮空输入信号流图"></p>
 <p>浮空输入模式下，上拉、下拉电阻断开，触发器开启。<br>引脚电压信号直接输入到触发器，然后到输入数据寄存器。<br>CPU可直接从输入数据寄存器读取引脚电平状态，因为缺少上下拉电阻，数据可能不准确。</p>
-<h5 id="上拉、下拉输入"><a href="#上拉、下拉输入" class="headerlink" title="上拉、下拉输入"></a>上拉、下拉输入</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E4%B8%8A%E4%B8%8B%E6%8B%89%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="上下拉输入信号流图"></p>
+<h5 id="上拉、下拉输入"><a href="#上拉、下拉输入" class="headerlink" title="上拉、下拉输入"></a>上拉、下拉输入</h5><p><img src="stm32_note_GPIO/Input_pull-up-down_Signal_flow.jpg" alt="上下拉输入信号流图"></p>
 <p>上拉下拉输入模式下，上拉、下拉电阻接通，触发器开启。<br>引脚电压信号经过上拉、下拉电阻，通过触发器，输入到输入数据寄存器中。<br>CPU可直接从输入数据寄存器读取引脚电平状态。</p>
 <h5 id="模拟输出"><a href="#模拟输出" class="headerlink" title="模拟输出"></a>模拟输出</h5><p>模拟输入模式下，上拉、下拉电阻断开，触发器开启。<br>CPU通过片上外设DAC直接输出对应的电压到引脚，不经过输出驱动器和上下拉电阻。</p>
-<h5 id="推挽输出"><a href="#推挽输出" class="headerlink" title="推挽输出"></a>推挽输出</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="推挽输出信号流图"></p>
+<h5 id="推挽输出"><a href="#推挽输出" class="headerlink" title="推挽输出"></a>推挽输出</h5><p><img src="stm32_note_GPIO/Output_push-pull_Signal_flow.jpg" alt="推挽输出信号流图"></p>
 <p>推挽输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS/N-MOS管导通。<br>CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，输出控制电路通过P-MOS管对外输出高电平，N-MOS管不工作；当写入数据为0时，输出控制电路通过N-MOS管对外输出低电平，P-MOS管不工作。<br>此时，触发器处于开启状态，CPU也可直接从输入数据寄存器读取引脚电平状态。</p>
-<h5 id="开漏输出"><a href="#开漏输出" class="headerlink" title="开漏输出"></a>开漏输出</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="开漏输出信号流图"></p>
+<h5 id="开漏输出"><a href="#开漏输出" class="headerlink" title="开漏输出"></a>开漏输出</h5><p><img src="stm32_note_GPIO/Output_open-drain_Signal_flow.jpg" alt="开漏输出信号流图"></p>
 <p>开漏输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS管关闭。<br>CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，N-MOS管关闭，引脚电平由外部上拉电阻决定，当写入数据为0时，N-MOS管导通，输出控制电路通过N-MOS管对外输出低电平，P-MOS管一直不工作。<br>此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。</p>
-<h5 id="复用推挽-开漏输出"><a href="#复用推挽-开漏输出" class="headerlink" title="复用推挽/开漏输出"></a>复用推挽/开漏输出</h5><p><img src="%5Cstm32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BGPIO%5C%E5%A4%8D%E7%94%A8%E5%8A%9F%E8%83%BD%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE.jpg" alt="复用功能输出信号流图"></p>
+<h5 id="复用推挽-开漏输出"><a href="#复用推挽-开漏输出" class="headerlink" title="复用推挽/开漏输出"></a>复用推挽/开漏输出</h5><p><img src="stm32_note_GPIO/Alternate_function_Signal_flow.jpg" alt="复用功能输出信号流图"></p>
 <p>复用推挽/开漏输出模式下，上拉、下拉电阻接通，触发器开启，MOS管按模式进行导通或关闭。<br>此时，输出控制来自片上外设模块，CPU不能通过输出数据寄存器控制输出控制电路对外输出高低电平。片上外设直接控制输出控制电路对外输出高低电平。<br>此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。</p>
 <h3 id="GPIO模式详解"><a href="#GPIO模式详解" class="headerlink" title="GPIO模式详解"></a>GPIO模式详解</h3><h4 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h4><p>输入模式有浮空输入、上拉输入、下拉输入、模拟输入四种。</p>
 <p>在前三种输入模式下，CPU可通过输入数据寄存器GPIOx_IDR读取I/O状态，数据寄存器每个1个AHB时钟中期更新一次，同时，也可产生相应的中断。<br>模拟输入模式CPU不可直接读取I/O状态，引脚电压信号直接导入片上外设ADC中。</p>
@@ -654,7 +669,7 @@
     <strong>本文作者： </strong>LS1030</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://LS1030.github.io/uncategorized/stm32_note_GPIO.html" title="stm32学习笔记之GPIO">http://LS1030.github.io/uncategorized/stm32_note_GPIO.html</a>
+    <a href="http://LS1030.github.io/technolgy/stm32_note_GPIO.html" title="stm32学习笔记之GPIO">http://LS1030.github.io/technolgy/stm32_note_GPIO.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -749,7 +764,9 @@
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
         
       </div>
