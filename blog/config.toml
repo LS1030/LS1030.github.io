@@ -12,7 +12,8 @@ copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0
 theme = "meme"
 
 # `hugo new` 新建文章自动打开的文本编辑器
-newContentEditor = ""
+## 编辑器需要添加到系统环境变量PATH，此处设定为VSCode(code.exe) 
+newContentEditor = "code"
 
 # i18n
 defaultContentLanguage = "zh"
@@ -31,10 +32,10 @@ enableEmoji = false
 footnoteReturnLinkContents = "↩"
 
 # 是否启用 Git 版本信息
-enableGitInfo = false
+enableGitInfo = true
 
 # 是否生成 robots.txt 文件
-enableRobotsTXT = true
+enableRobotsTXT = false
 
 # 每一分页的文章数（仅对「文章摘要」首页布局有效）
 paginate = 5
@@ -46,12 +47,12 @@ uglyURLs = false
 
 # URL 结构
 [permalinks]
-    categories = "/categories/:slug/"
+    # categories = "/categories/:slug/"
     tags = "/tags/:slug/"
 
 # 类别
 [taxonomies]
-    category = "categories"
+    # category = "categories"
     tag = "tags"
 
 # 修改时间
@@ -182,23 +183,23 @@ uglyURLs = false
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
-        name = "文章"
+        url = "/essay/"
+        name = "随笔"
         weight = 2
         pre = "internal"
         post = "archive"
     [[menu.main]]
-        url = "/categories/"
-        name = "分类"
+        url = "/technology/"
+        name = "技术"
         weight = 3
         pre = "internal"
         post = "th"
     [[menu.main]]
-        url = "/tags/"
-        name = "标签"
+        url = "/history/"
+        name = "历史"
         weight = 4
         pre = "internal"
-        post = "tags"
+        post = "eye"
     [[menu.main]]
         url = "/about/"
         name = "关于"
@@ -212,7 +213,29 @@ uglyURLs = false
         weight = 7
         identifier = "lang-switcher"
 
+    ## 社交栏
+    [[menu.socials]]
+        url = "https://github.com/LS1030/"
+        name = "GitHub"
+        weight = 1
+        pre = "external"
+    [[menu.socials]]
+        url = "https://t.me/LS1030"
+        name = "Telegram"
+        weight = 2
+        pre = "external"
 
+    ## 链接栏
+    [[menu.links]]
+        url = "/"
+        name = "Home"
+        weight = 1
+        pre = "internal"
+    [[menu.links]]
+        url = "/tags/"
+        name = "Tags"
+        weight = 2
+        pre = "internal"
 
 ##########################################
 # 主题配置
@@ -276,11 +299,11 @@ uglyURLs = false
     # 说明：对弹性布局的顶栏无效
 
     # 是否在首页显示
-    displayMenuInHome = true
+    displayMenuInHome = false
     # 说明：对弹性布局的顶栏无效
 
     # 是否按文章分区高亮当前菜单项
-    activeInSection = false
+    activeInSection = true
     # 说明：如果开启，那么当某一文章的分区名是某
     #      一菜单项中的 `url` 时，该文章页面中
     #      的该菜单项也会被高亮
@@ -723,7 +746,7 @@ uglyURLs = false
     readingTimeIcon = "clock"
 
     # 是否显示不蒜子页面浏览量
-    displayBusuanziPagePV = false
+    displayBusuanziPagePV = true
     # 不蒜子页面浏览量的图标
     busuanziPagePVIcon = "eye"
     # 说明：仅在生产环境（production）下渲染
@@ -1009,7 +1032,7 @@ uglyURLs = false
     # 文章的 Git 版本信息
 
     # 是否开启
-    enablePostGitInfo = false
+    enablePostGitInfo = true
 
     # 是否显示（全局设置）
     displayPostGitInfo = false
@@ -1017,9 +1040,9 @@ uglyURLs = false
     #      的优先级高于此处
 
     # 仓库地址
-    repoURL = ""
+    repoURL = "https://github.com/LS1030/LS1030.github.io"
     # 编辑地址
-    repoEditURL = ""
+    repoEditURL = "https://github.com/LS1030/LS1030.github.io/master"
 
     # Git 的图标
     gitIcon = "code-branch"
@@ -1075,7 +1098,7 @@ uglyURLs = false
     # 相关文章
 
     # 是否开启
-    enableRelatedPosts = true
+    enableRelatedPosts = false
 
     # 是否显示（全局设置）
     displayRelatedPosts = true
