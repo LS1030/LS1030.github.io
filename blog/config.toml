@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://LS1030.github.com/"
+baseURL = "https://LS1030.github.io/"
 title = "LS1030的自留地"
 languageCode = "zh-CN"
 hasCJKLanguage = true
@@ -49,6 +49,8 @@ uglyURLs = false
 [permalinks]
     # categories = "/categories/:slug/"
     tags = "/tags/:slug/"
+    technology = "/technology/:slug"
+    essay = "/essay/:slug"
 
 # 类别
 [taxonomies]
@@ -99,7 +101,7 @@ uglyURLs = false
     # 座右铭或简介
     motto = "Viva La Vida"
     # 头像
-    avatar = "/icons/profile.jpg"
+    avatar = "/profile.jpg"
     # 网站（默认值：baseURL）
     website = "https://LS1030.github.io/"
     # 推特
