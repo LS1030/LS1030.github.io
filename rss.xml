@@ -23,10 +23,1061 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 19 May 2022 23:57:32 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 20 May 2022 00:42:30 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://ls1030.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Git基础使用不完全指北</title>
+                <link>https://ls1030.github.io/tech/git_basic_userguide/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/git_basic_userguide/</guid>
+                <pubDate>Wed, 23 Feb 2022 09:54:21 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;git基础使用不完全指北&#34;&gt;Git基础使用不完全指北&lt;/h1&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;Git是一个&lt;strong&gt;分布式版本控制系统&lt;/strong&gt;，可以在本地与远程端均部署一个仓库，本地与远程之间可以同步更改。&lt;/p&gt;
+&lt;p&gt;Git的特点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Git直接记录快照，而非差异比较： 在Git中，每当你提交更新或保存项目状态时，它基本上就会对当时的全部文件创建一个快照并保存这个快照的索引。 为了效率，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。Git对待数据更像是一个&lt;strong&gt;快照流&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;近乎所有操作都是本地执行：在Git中的绝大多数操作都只需要访问本地文件和资源，一般不需要来自网络上其它计算机的信息。仅仅在与远程端同步的时候需要网络操作。&lt;/li&gt;
+&lt;li&gt;Git保证完整性：Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。&lt;/li&gt;
+&lt;li&gt;Git一般只添加数据：你执行的Git操作，几乎只往Git数据库中&lt;strong&gt;添加&lt;/strong&gt;数据。你&lt;strong&gt;很难&lt;/strong&gt;使用Git从数据库中&lt;strong&gt;删除&lt;/strong&gt;数据，也就是说Git几乎不会执行任何可能导致文件不可恢复的操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基础使用流程&#34;&gt;基础使用流程&lt;/h2&gt;
+&lt;h3 id=&#34;git的概念&#34;&gt;Git的概念&lt;/h3&gt;
+&lt;p&gt;Git有三种状态，你的文件可能处于其中之一： 已提交（committed）、已修改（modified） 和 已暂存（staged）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;已修改表示修改了文件，但还没保存到数据库中。&lt;/li&gt;
+&lt;li&gt;已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。&lt;/li&gt;
+&lt;li&gt;已提交表示数据已经安全地保存在本地数据库中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对应的，Git 项目拥有三个阶段：工作区、暂存区以及Git目录。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工作区是对项目的某个版本独立提取出来的内容。 这些从Git仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。&lt;/li&gt;
+&lt;li&gt;暂存区是一个文件，保存了下次将要提交的文件列表信息，一般在Git仓库目录中。 按照Git的术语叫做“索引”，不过一般说法还是叫“暂存区”。&lt;/li&gt;
+&lt;li&gt;Git仓库目录是Git用来保存项目的元数据和对象数据库的地方。 这是Git中最重要的部分，从其它计算机克隆仓库时，复制的就是这里的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;git的使用流程&#34;&gt;Git的使用流程&lt;/h3&gt;
+&lt;p&gt;基本的Git工作流程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在工作区中修改文件。&lt;/li&gt;
+&lt;li&gt;将你想要下次提交的更改选择性地暂存，这样只会将更改的部分添加到暂存区。&lt;/li&gt;
+&lt;li&gt;提交更新，找到暂存区的文件，将快照永久性存储到Git目录。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果Git目录中保存着特定版本的文件，就属于&lt;strong&gt;已提交&lt;/strong&gt;状态。 如果文件已修改并放入暂存区，就属于&lt;strong&gt;已暂存&lt;/strong&gt;状态。 如果自上次检出后，作了修改但还没有放到暂存区域，就是&lt;strong&gt;已修改&lt;/strong&gt;状态。&lt;/p&gt;
+&lt;p&gt;简而言之，就是修改文件-提交暂存-提交更新。&lt;/p&gt;
+&lt;p&gt;在日常使用中，还会使用到在本地新建仓库(init)、在本地克隆远程仓库(clone)、拉取远程仓库(pull)、把本地仓库推送到远程(push)、合并(merge)、变基(rebase)、新建分支(branch)、标记(tag)、软回退(soft)、硬回退(hard)。&lt;/p&gt;
+&lt;h2 id=&#34;使用示例&#34;&gt;使用示例&lt;/h2&gt;
+&lt;p&gt;下面演示如何在本地新建一个Git仓库(Hello_Git)，新建一个文件，把该文件添加到暂存区，提交，新建一个分支，做一个标记，然后推送到 Github 上。&lt;/p&gt;
+&lt;h3 id=&#34;命令行&#34;&gt;命令行&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;新建文件夹(Hello_Git), 并在文件夹打开终端。&lt;/li&gt;
+&lt;li&gt;终端输入&lt;code&gt;git init&lt;/code&gt;，可以通过&lt;code&gt;git config user.name&lt;/code&gt;和&lt;code&gt;git config user.email&lt;/code&gt;查询并修改当前用户的名字和邮箱。可以输入&lt;code&gt;git config --list&lt;/code&gt;查看所有Git配置信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;或者&lt;/strong&gt;在目标仓库储存位置打开终端，输入&lt;code&gt;git clone [URL]&lt;/code&gt;，把远程仓库克隆到本地。&lt;/li&gt;
+&lt;li&gt;在仓库中添加一个文件(Git_Basic_UserGuide.md)。&lt;/li&gt;
+&lt;li&gt;终端输入&lt;code&gt;git add .&lt;/code&gt;添加所有文件到暂存区，或者&lt;code&gt;git add Git_Basic_UserGuide.md&lt;/code&gt;添加仅指定目录或文件。&lt;/li&gt;
+&lt;li&gt;在完成一次添加后，可以通过&lt;code&gt;git status -s&lt;/code&gt;查看git仓库状态。如果此时修改了已经添加到暂存区的文件，需要再次添加。&lt;/li&gt;
+&lt;li&gt;在所有文件都修改完毕后，添加到暂存区，然后输入&lt;code&gt;git commit -m [message]&lt;/code&gt;把当前暂存区文件提交到本地仓库中。可以通过&lt;code&gt;git log&lt;/code&gt;查询历史提交信息。&lt;/li&gt;
+&lt;li&gt;新建一个分支&lt;code&gt;git branch [branch name]&lt;/code&gt;, 用&lt;code&gt;git checkout [branch name]&lt;/code&gt;切换到对应分支, 并做出一些修改，然后进行一次提交。&lt;/li&gt;
+&lt;li&gt;切换到&lt;code&gt;master&lt;/code&gt;, 使用&lt;code&gt;git merge [branch name]&lt;/code&gt;, 将&lt;code&gt;[branch name]&lt;/code&gt;分支的内容合并到&lt;code&gt;master&lt;/code&gt;分支，此时&lt;code&gt;master分支&lt;/code&gt;会多一次提交记录。也可以使用&lt;code&gt;git rebase master [branch name]&lt;/code&gt;实现&lt;strong&gt;结果相同&lt;/strong&gt;的操作。但通常使用&lt;code&gt;merge&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果发现合并的提交有错误，或者在合并冲突的时候未保留有必要的文件，则可以进行回退操作(reset)。回退有&lt;code&gt;软回退(soft)&lt;/code&gt;和&lt;code&gt;硬回退(hard)&lt;/code&gt;和&lt;code&gt;混合(mixed)回退&lt;/code&gt;。默认使用混合即&lt;code&gt;git reset --mixed [HEAD^]&lt;/code&gt;，混会回退将放弃&lt;code&gt;暂存区&lt;/code&gt;的文件及&lt;code&gt;之前提交&lt;/code&gt;的文件，&lt;code&gt;工作区&lt;/code&gt;的文件保持&lt;strong&gt;不变&lt;/strong&gt;，[HEAD^]指上一个版本。软回退使用&lt;code&gt;git reset --soft HEAD^&lt;/code&gt;，放弃&lt;code&gt;提交记录&lt;/code&gt;，但会&lt;strong&gt;尽可能地保留&lt;/strong&gt;&lt;code&gt;之前提交的文件&lt;/code&gt;，若&lt;code&gt;暂存区&lt;/code&gt;没有与之前相同的文件即文件在上次提交后&lt;strong&gt;未添加到暂存区&lt;/strong&gt;，则将之前提交的文件放入&lt;code&gt;暂存区&lt;/code&gt;,&lt;code&gt;工作区&lt;/code&gt;文件保持不变。硬回退则放弃&lt;code&gt;工作区&lt;/code&gt;、&lt;code&gt;暂存区&lt;/code&gt;和&lt;code&gt;Git目录中上次提交&lt;/code&gt;的所有文件，将文件回退到对应的版本。&lt;/li&gt;
+&lt;li&gt;在对应的提交上进行标记&lt;code&gt;git tag [tags]&lt;/code&gt;，一般&lt;code&gt;[tags]&lt;/code&gt;的内容是版本号如v1.0.0之类的。&lt;/li&gt;
+&lt;li&gt;添加远程仓库&lt;code&gt;git remote add origin [remote address]&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;把本地仓库推送到远程。&lt;code&gt;git push origin master&lt;/code&gt;：将本地的master分支推送到远程。注意，默认情况下，不会传送标签到远程仓库，必须显式地推送标签&lt;code&gt;git push origin [tags]&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;vscode&#34;&gt;VSCode&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;VSCode&lt;/code&gt;有非常方便的图形化操作，在安装了各种非常好的插件后，除非比较复杂的操作，一般就不需要使用命令行了。&lt;/p&gt;
+&lt;h4 id=&#34;插件安装&#34;&gt;插件安装&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Git History&lt;/li&gt;
+&lt;li&gt;git ignore&lt;/li&gt;
+&lt;li&gt;Git Lens&lt;/li&gt;
+&lt;li&gt;Git Graph&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;新建文件夹, 并用&lt;code&gt;VSCode&lt;/code&gt;打开文件夹。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;VSCode&lt;/code&gt;打开终端，输入&lt;code&gt;git init&lt;/code&gt;初始化GIT仓库。可同时使用&lt;code&gt;git config&lt;/code&gt;来设置相关参数。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;或者&lt;/strong&gt;打开&lt;code&gt;VSCode&lt;/code&gt;新窗口，进入左边栏的源代码管理，点击&lt;code&gt;克隆储存库&lt;/code&gt;，在弹出的输入框输入&lt;code&gt;URL&lt;/code&gt;，并选择储存路径，克隆远程库。&lt;/li&gt;
+&lt;li&gt;在项目中新建一个&lt;code&gt;.gitignore&lt;/code&gt;文件，输入需要忽略的文件。&lt;/li&gt;
+&lt;li&gt;新建一个文件，此时左边栏的&lt;strong&gt;源代码管理图标&lt;/strong&gt;会出现更改提示，单击打开。&lt;/li&gt;
+&lt;li&gt;将会会看到更改的文件，单击文件，会出现&lt;strong&gt;文件更改记录&lt;/strong&gt;，本地文件与上次提交后的文件比较。确认无误后，可点击&lt;strong&gt;加号&lt;/strong&gt;把文件添加到&lt;code&gt;暂存区&lt;/code&gt;，也可点击&lt;strong&gt;返回图标&lt;/strong&gt;放弃更改。&lt;/li&gt;
+&lt;li&gt;将所有文件添加到&lt;code&gt;暂存区&lt;/code&gt;后，可在上面的输入框输入&lt;strong&gt;提交信息&lt;/strong&gt;，并点击输入框上方的&lt;strong&gt;对号&lt;/strong&gt;进行提交。&lt;/li&gt;
+&lt;li&gt;提交后，在&lt;strong&gt;对号图标&lt;/strong&gt;旁边有&lt;strong&gt;Git History&lt;/strong&gt;和&lt;strong&gt;Git Graph&lt;/strong&gt;的图标，可图形化查看提交记录。在&lt;code&gt;Git History&lt;/code&gt;页面中，可对每一个提交很方便地进行&lt;code&gt;hard&lt;/code&gt;、&lt;code&gt;soft&lt;/code&gt;、&lt;code&gt;+tag&lt;/code&gt;、&lt;code&gt;+branch&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;在页面的&lt;strong&gt;左下角&lt;/strong&gt;，即底栏的左边，有一个写着&lt;strong&gt;分支名&lt;/strong&gt;的图标，可用它进行&lt;code&gt;切换分支&lt;/code&gt;、&lt;code&gt;新建分支&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;在左边栏的源代码管理中，还可以看到&lt;code&gt;VSCode&lt;/code&gt;自带的以&lt;strong&gt;列表&lt;/strong&gt;形式展现的&lt;code&gt;commit&lt;/code&gt;、&lt;code&gt;File History&lt;/code&gt;、&lt;code&gt;branches&lt;/code&gt;、&lt;code&gt;remotes&lt;/code&gt;、&lt;code&gt;status&lt;/code&gt;、&lt;code&gt;tags&lt;/code&gt;、&lt;code&gt;serch&amp;amp;compare&lt;/code&gt;，不过不太好看就是了。&lt;/li&gt;
+&lt;li&gt;在左边栏的源代码管理的&lt;code&gt;···&lt;/code&gt;中，可使用它进行&lt;code&gt;推送&lt;/code&gt;、&lt;code&gt;拉取&lt;/code&gt;、&lt;code&gt;克隆&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;在底栏的分支名图标旁边，有一个&lt;code&gt;同步按钮&lt;/code&gt;，可将本地仓库与远程仓库同步。将本地提交推送到远程同时拉取远程仓库的提交，有可能会产生冲突，需要合并冲突。&lt;/li&gt;
+&lt;li&gt;合并冲突时，&lt;code&gt;VSCode&lt;/code&gt;会按照文件列出&lt;strong&gt;每一处冲突&lt;/strong&gt;的部分，可选择&lt;strong&gt;保留一方&lt;/strong&gt;的更改或者&lt;strong&gt;全部保留&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;clionpycharm&#34;&gt;CLion/PyCharm&lt;/h3&gt;
+&lt;p&gt;跟&lt;code&gt;VSCode&lt;/code&gt;一样，&lt;code&gt;Clion&lt;/code&gt;或者&lt;code&gt;PyCharm&lt;/code&gt;这些&lt;code&gt;IDE&lt;/code&gt;也有比较好的插件和图形化管理工具。&lt;/p&gt;
+&lt;h4 id=&#34;插件安装-1&#34;&gt;插件安装&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;GitToolBox&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;操作步骤-1&#34;&gt;操作步骤&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;code&gt;IDE(CLion/PyCharm)&lt;/code&gt;，然后新建一个项目。&lt;/li&gt;
+&lt;li&gt;或者直接点击&lt;code&gt;从VSC获取&lt;/code&gt;，版本控制选择&lt;code&gt;Git&lt;/code&gt;，输入&lt;code&gt;URL&lt;/code&gt;，将远程仓库克隆到本地。&lt;/li&gt;
+&lt;li&gt;在新建项目后，打开&lt;code&gt;菜单栏&lt;/code&gt;的&lt;code&gt;VSC&lt;/code&gt;，点击&lt;code&gt;创建Git仓库&lt;/code&gt;，然后选择&lt;code&gt;本地仓库储存路径&lt;/code&gt;，一般是&lt;strong&gt;当前项目文件夹&lt;/strong&gt;。（克隆已存在的远程库忽略此步骤）&lt;/li&gt;
+&lt;li&gt;此时可以打开终端，输入&lt;code&gt;git config&lt;/code&gt;设置相关信息。&lt;/li&gt;
+&lt;li&gt;此时&lt;code&gt;菜单栏&lt;/code&gt;的&lt;code&gt;VSC&lt;/code&gt;已变成&lt;code&gt;Git&lt;/code&gt;，在&lt;code&gt;Git菜单&lt;/code&gt;内，可以实现&lt;code&gt;提交&lt;/code&gt;、&lt;code&gt;推送&lt;/code&gt;、&lt;code&gt;更新项目&lt;/code&gt;、&lt;code&gt;拉取&lt;/code&gt;等操作。&lt;/li&gt;
+&lt;li&gt;在项目中新建一个&lt;code&gt;.gitignore&lt;/code&gt;文件，输入需要忽略的文件。&lt;/li&gt;
+&lt;li&gt;在项目中新建一个文件，IDE会提示&lt;code&gt;将文件添加到Git&lt;/code&gt;，选择添加。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;左侧菜单栏&lt;/code&gt;的&lt;code&gt;提交&lt;/code&gt;菜单中，勾选&lt;code&gt;变更的文件&lt;/code&gt;，然后在下方的&lt;code&gt;输入框&lt;/code&gt;输入&lt;code&gt;提交信息&lt;/code&gt;，点击&lt;code&gt;提交&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;底栏&lt;/code&gt;的&lt;code&gt;Git&lt;/code&gt;菜单中，在左侧可以看到&lt;code&gt;分支信息&lt;/code&gt;，在中间可以看到对应分支的&lt;code&gt;Git历史记录&lt;/code&gt;，在右侧可以看到对应&lt;code&gt;某次提交&lt;/code&gt;的&lt;code&gt;文件变更信息&lt;/code&gt;，可以在对应的提交和分支上打开右键菜单进行&lt;code&gt;签出(切换)分支&lt;/code&gt;、&lt;code&gt;新建分支&lt;/code&gt;、&lt;code&gt;回退提交&lt;/code&gt;等操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/docs&#34; title=&#34;git官方参考文档&#34;&gt;git官方参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v2&#34; title=&#34;git官方教程&#34;&gt;git官方教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://backlog.com/git-tutorial/cn&#34; title=&#34;猴子都能懂的GIT入门&#34;&gt;猴子都能懂的GIT入门&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Hello World</title>
+                <link>https://ls1030.github.io/essay/hello-world/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/essay/hello-world/</guid>
+                <pubDate>Mon, 17 Jan 2022 15:25:11 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/essay/">essay\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>C语言常见用法总结</title>
+                <link>https://ls1030.github.io/tech/c_usage_summary/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/c_usage_summary/</guid>
+                <pubDate>Wed, 01 Apr 2020 08:26:18 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;c语言常见用法总结&#34;&gt;C语言常见用法总结&lt;/h1&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;C语言的常见用法，从..语法..，..数据结构..，..语言特性..三个方面进行总结。&lt;/p&gt;
+&lt;h2 id=&#34;语法&#34;&gt;语法&lt;/h2&gt;
+&lt;h3 id=&#34;命名规则&#34;&gt;命名规则&lt;/h3&gt;
+&lt;p&gt;可以用小写字母、大写字母、数字和下划线（_）来命名。名称的第1个字符必须是字符或下划线，不能是数字。
+C语言的名称区分大小写。
+不能有空格。
+不能是关键字。&lt;/p&gt;
+&lt;h3 id=&#34;运算符&#34;&gt;运算符&lt;/h3&gt;
+&lt;h4 id=&#34;sizeof&#34;&gt;sizeof&lt;/h4&gt;
+&lt;p&gt;sizeof运算符以字节为单位返回运算对象的大小，在编译时计算，返回size_t类型的值。&lt;/p&gt;
+&lt;p&gt;运算对象可以是具体的数据对象（如，变量名）或类型。如果运算对象是类型（如，float），则..一般..用圆括号将其括起来。&lt;/p&gt;
+&lt;h5 id=&#34;sizeof-字符串区别strlen&#34;&gt;sizeof 字符串，区别strlen()&lt;/h5&gt;
+&lt;p&gt;strlen是函数，其声明为:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;运行时计算字符串的长度，遇到’\0’会截止。&lt;/p&gt;
+&lt;p&gt;sizeof会计算&lt;code&gt;&#39;\0&#39;&lt;/code&gt;的空间，而strlen不会。&lt;/p&gt;
+&lt;h5 id=&#34;sizeof-指针&#34;&gt;sizeof 指针&lt;/h5&gt;
+&lt;p&gt;在32位系统中，所有指针占用4 bytes = 32 bits的空间。
+在64位系统中，所有指针占用8 bytes = 64 bits的空间。&lt;/p&gt;
+&lt;h5 id=&#34;sizeof-结构体&#34;&gt;sizeof 结构体&lt;/h5&gt;
+&lt;p&gt;需要考虑..位域..与对齐的问题。&lt;/p&gt;
+&lt;p&gt;位域：定义了结构体成员占用的空间大小，若定义的空间大小不足以存放对应成员的数据，则扩充为能存放对应数据最小空间。举个例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;width_min&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;width_max&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在C语言中，int占用空间4 bytes。width_min 定义为1 byte，不足以存放int类型的数据，则扩充为4 bytes；width_max 规定为7 types，足以存放int类型的数据，占用7 bytes的空间。因为4bytes和7 bytes 无法对齐，则以&lt;code&gt;4 + 4 + 7 + 1 = 16&lt;/code&gt;的方式进行对齐，则&lt;code&gt;width&lt;/code&gt;占用16 bytes。&lt;/p&gt;
+&lt;h4 id=&#34;和-&#34;&gt;.和-&amp;gt;&lt;/h4&gt;
+&lt;p&gt;. 用于结构体；
+-&amp;gt;用于结构体指针。&lt;/p&gt;
+&lt;h4 id=&#34;运算符优先级&#34;&gt;运算符优先级&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;指针数组与括号：[]/./-&amp;gt;/()&lt;/li&gt;
+&lt;li&gt;单目运算符：++/–/*(解引用)/&amp;amp;(取地址)&lt;/li&gt;
+&lt;li&gt;双目运算符：算术 &amp;gt; 移位 &amp;gt; 关系(&amp;gt;=、!=) &amp;gt; 逻辑(&amp;amp; | ^、&amp;amp;&amp;amp; ||) &amp;gt; 赋值(&amp;gt;&amp;gt;=)&lt;/li&gt;
+&lt;li&gt;三目运算符与逗号运算符&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;表达式&#34;&gt;表达式&lt;/h3&gt;
+&lt;h4 id=&#34;逗号表达式&#34;&gt;逗号表达式&lt;/h4&gt;
+&lt;p&gt;逗号表达式：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;(表达式1，表达式2，…，表达式n)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表达式的运算从左到右。
+表达式的值为最右方的值。&lt;/p&gt;
+&lt;h4 id=&#34;赋值表达式&#34;&gt;赋值表达式&lt;/h4&gt;
+&lt;p&gt;表达式的值与赋值运算符..左侧..的值相同。&lt;/p&gt;
+&lt;h4 id=&#34;关系表达式&#34;&gt;关系表达式&lt;/h4&gt;
+&lt;p&gt;关系表达式是指..变量..或..表达式..进行..关系运算..的表达式。&lt;/p&gt;
+&lt;p&gt;关系表达式的值：真：1；假：0。&lt;/p&gt;
+&lt;h3 id=&#34;类型转换&#34;&gt;类型转换&lt;/h3&gt;
+&lt;h4 id=&#34;升级&#34;&gt;升级&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;char/short -&amp;gt; int&lt;/code&gt;和&lt;code&gt;float -&amp;gt; double&lt;/code&gt;：补零对齐，值不变。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;int -&amp;gt; float/double&lt;/code&gt;：结果未定义，一般储存整数部分。&lt;/p&gt;
+&lt;h4 id=&#34;降级&#34;&gt;降级&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;unsigned int -&amp;gt; unsigned char&lt;/code&gt;，额外的位将被忽略（取余）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int -&amp;gt; unsigned int&lt;/code&gt;: 若为正数，值不变；若为负数，则变为很大的正值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;float/double -&amp;gt; int&lt;/code&gt;：小数点后截断。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>电脑安装系统指南</title>
+                <link>https://ls1030.github.io/tech/computer_reinstall_system_guide/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/computer_reinstall_system_guide/</guid>
+                <pubDate>Mon, 12 Aug 2019 08:45:58 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;电脑安装系统指南&#34;&gt;电脑安装系统指南&lt;/h1&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;安装系统是很常见的操作，刚组的新电脑需要安装系统，旧电脑出现未知的BUG或者莫名其妙地蓝屏的时候，最简单明了的方法也就是直接重装系统，重装之外所需要的仅仅是就是备份资料和重新安装软件，简单直接。以下就是安装系统的详细操作。&lt;/p&gt;
+&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;重装前所需的准备有以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统镜像&lt;/li&gt;
+&lt;li&gt;电脑相关驱动&lt;/li&gt;
+&lt;li&gt;8G以上的U盘(非必须，但一般都要)&lt;/li&gt;
+&lt;li&gt;激活工具(Windows需要)&lt;/li&gt;
+&lt;li&gt;常用软件安装包(非必须，但最好准备一下以免重新下载)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;..系统原版镜像.. 从网上下载就行，Windows可以从&lt;a href=&#34;https://msdn.itellyou.cn/&#34;&gt;MSDN_itellyou&lt;/a&gt;、&lt;a href=&#34;https://next.itellyou.cn/&#34;&gt;MSDN_next&lt;/a&gt;下载，Linxu可以从各发行版的官网下载，比如&lt;a href=&#34;https://ubuntu.com/download/desktop&#34;&gt;Ubuntu&lt;/a&gt;、&lt;a href=&#34;https://www.centos.org/download/&#34;&gt;CentOS&lt;/a&gt;、&lt;a href=&#34;https://www.deepin.org/download/&#34;&gt;Deepin&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;电脑驱动最重要就是&lt;strong&gt;网卡驱动&lt;/strong&gt;，其他驱动可以在联网后用其他软件进行安装，比如&lt;a href=&#34;http://www.ludashi.com/&#34;&gt;鲁大师&lt;/a&gt;、&lt;a href=&#34;http://www.drivergenius.com/&#34;&gt;驱动精灵&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;下载驱动的地方最靠谱的当然是官网，比如说&lt;a href=&#34;https://www.intel.cn/content/www/cn/zh/support/detect.html&#34;&gt;Intel&lt;/a&gt;、&lt;a href=&#34;https://www.realtek.com/zh/downloads&#34;&gt;瑞昱&lt;/a&gt;。第三方的网站也有比较靠谱的，比如&lt;a href=&#34;https://drivers.mydrivers.com/&#34;&gt;驱动之家&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;在官网或者第三方网站搜索相关驱动首先要了解驱动型号，驱动检测软件除上面的鲁大师、驱动精灵之外，&lt;a href=&#34;https://www.aida64.com/downloads&#34;&gt;AIDA64&lt;/a&gt;也不错。&lt;/p&gt;
+&lt;h2 id=&#34;安装步骤&#34;&gt;安装步骤&lt;/h2&gt;
+&lt;h3 id=&#34;备份资料&#34;&gt;备份资料&lt;/h3&gt;
+&lt;p&gt;一般来说，重装系统仅需要备份..系统盘(C盘)..的资料，将C盘的文档、图片、视频备份到其他盘即可，安装在C盘的软件在重装系统后重新安装，仅需备份配置文件，无需完整备份（因为如果不重新安装的话，采取先备份到其他盘，在重装系统后复制到系统盘的方式，可能会遇到注册表、环境变量等问题，重新安装比较快）。&lt;/p&gt;
+&lt;p&gt;但碰到其他一些特殊情况，比如说需要将MBR磁盘转换为GPT磁盘的情况，可能要把全盘的个人文档全部备份，此时就需要大容量的U盘或者移动硬盘了。&lt;/p&gt;
+&lt;h3 id=&#34;安装系统&#34;&gt;安装系统&lt;/h3&gt;
+&lt;p&gt;安装系统有三种方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;硬盘安装&lt;/li&gt;
+&lt;li&gt;U 盘安装&lt;/li&gt;
+&lt;li&gt;光盘安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;硬盘安装&#34;&gt;硬盘安装&lt;/h4&gt;
+&lt;p&gt;硬盘安装适用于可以正常开机的系统，也就是仅适用于系统重装，仅适用于安装Windows。&lt;/p&gt;
+&lt;p&gt;首先先用光盘刻录软件&lt;a href=&#34;https://www.ultraiso.com/download.html&#34;&gt;UltraISO&lt;/a&gt;、或者解压缩软件&lt;a href=&#34;https://cn.bandisoft.com/bandizip/&#34;&gt;bandizip&lt;/a&gt;、&lt;a href=&#34;https://www.7-zip.org/&#34;&gt;7zip&lt;/a&gt;、&lt;a href=&#34;http://yasuo.360.cn/&#34;&gt;360zip&lt;/a&gt;，将下载后的镜像完整解压到..C盘以外的文件夹..中。进入文件夹，直接点击Setup.exe，然后按步骤操作即可。&lt;/p&gt;
+&lt;p&gt;可能遇到分区的问题，在资料备份完毕后，直接把C盘的分区全部删除，让Windows自动新建分区就行，&lt;strong&gt;注意，此操作会删除C盘的所有数据&lt;/strong&gt;，当然，为了保险起见，一般C盘的大小为100G以上比较好。&lt;/p&gt;
+&lt;p&gt;安装完毕后会自动重启，之后激活并且安装相应软件，重装完成。&lt;/p&gt;
+&lt;h4 id=&#34;u盘安装&#34;&gt;U盘安装&lt;/h4&gt;
+&lt;p&gt;U盘安装适用于任何系统，包括新系统的安装和老系统的重装，安装Windows和Linux都可以。&lt;/p&gt;
+&lt;h5 id=&#34;制作装机u盘&#34;&gt;制作装机U盘&lt;/h5&gt;
+&lt;p&gt;制作装机U盘可以使用..系统镜像烧录..或者是..PE..的方式。&lt;/p&gt;
+&lt;p&gt;系统镜像可以用&lt;a href=&#34;https://rufus.ie/&#34;&gt;Rufus&lt;/a&gt;或者&lt;a href=&#34;https://www.ultraiso.com/download.html&#34;&gt;UltraISO&lt;/a&gt;将..原版镜像..刻录到U盘中，此过程需要格式化U盘，注意备份U盘文件。
+或者可以自行格式化U盘为FAT32格式(考虑到兼容性一般使用FAT32)，再把解压后的镜像的所有内容拷到U盘中。&lt;/p&gt;
+&lt;p&gt;PE可以实现更多功能，需要较复杂的操作(分区、转换磁盘)的时候会选择用PE的方式。
+PE可以选择&lt;a href=&#34;http://www.wepe.com.cn/download.html&#34;&gt;微PE&lt;/a&gt;、&lt;a href=&#34;http://www.laomaotao.org/&#34;&gt;老毛桃&lt;/a&gt;、&lt;a href=&#34;https://www.dabaicai.com/&#34;&gt;大白菜&lt;/a&gt;。由于考虑到广告问题，一般采用比较纯净的微PE，但是微PE对较老的电脑支持不太好，老电脑重装可以考虑使用后两者。
+下载完PE后，按各PE的操作直接制作装机U盘即可。&lt;/p&gt;
+&lt;h5 id=&#34;bios设置u盘启动&#34;&gt;BIOS设置U盘启动&lt;/h5&gt;
+&lt;p&gt;按正常情况，BIOS默认设置从已经装好系统的硬盘进行启动。此时，应进入BIOS设置从U盘进行启动。&lt;/p&gt;
+&lt;h6 id=&#34;进入bios&#34;&gt;进入BIOS&lt;/h6&gt;
+&lt;p&gt;进入BIOS的方法是在开机后的5秒内（系统未启动之前）按下相关热键进入，此热键根据主板的生产厂家有所不同，有F2, F7, F10, F12, Del, Esc, Enter等等。&lt;/p&gt;
+&lt;p&gt;各品牌电脑(主板)的BIOS热键（第一个常用）:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;戴尔Dell: F2, F12, Del&lt;/li&gt;
+&lt;li&gt;惠普HP: F10, Esc&lt;/li&gt;
+&lt;li&gt;联想Lenovo: Enter, F1, Del, F2&lt;/li&gt;
+&lt;li&gt;华硕Asus: F2&lt;/li&gt;
+&lt;li&gt;宏碁Acer: F2&lt;/li&gt;
+&lt;li&gt;华擎、微星、技嘉: Del&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;综上，常用的热键一般是Del, Esc, 可以同时反复按进行尝试。&lt;/p&gt;
+&lt;p&gt;以上热键是进入BIOS进行详细设置所用，某些厂商专门为启动项更改提供专门的热键，比如微星的F11，华硕的F8，技嘉的F12等，此时直接用上(↑)下(↓)键和Entel选择U盘即可，可跳过之后的BIOS设置这一步。&lt;/p&gt;
+&lt;h6 id=&#34;修改系统启动项&#34;&gt;修改系统启动项&lt;/h6&gt;
+&lt;p&gt;进入BIOS后，用上下左右键进入Boot菜单，首先选择启动方式Boot Mode，一般来讲，装win7或者winXP等老系统并且是MBR磁盘选择legacy，装win8或者win10并且是GPT磁盘用UEFI模式，当然也有在UEFI+GPT模式下装win7的骚操作，在此先略过不提，此两种模式一般都能读到装机U盘，若读取不到就只能用legacy了。&lt;/p&gt;
+&lt;p&gt;选择完启动方式Boot Mode后，对启动项进行排序，将U盘启动放在第一位。
+在启动优先级设备选择Boot Device Priority的第一启动设备选择装机U盘。&lt;/p&gt;
+&lt;p&gt;设置完毕之后，按F10保存操作并且自动重启。&lt;/p&gt;
+&lt;h5 id=&#34;进入安装界面安装系统&#34;&gt;进入安装界面安装系统&lt;/h5&gt;
+&lt;h6 id=&#34;系统镜像&#34;&gt;系统镜像&lt;/h6&gt;
+&lt;p&gt;若是采用..系统镜像烧录..的方式制作的装机U盘，重启完毕后，进入到系统安装界面，选择自定义方式，然后进行分区。&lt;/p&gt;
+&lt;p&gt;若是原有的系统进行重装，并且C盘是独立的磁盘（比如是固态+机械的电脑）,直接把C盘的分区删除，让系统自动分配C盘的分区就行。**注意：此操作会删除C盘的所有数据。**若C盘和数据盘是同一个磁盘（纯机械或者纯固态的电脑），也可以用上述方式，只是需要小心操作避免删除其他盘的数据。&lt;/p&gt;
+&lt;p&gt;当然也可以手动进行分区，不过比较麻烦，一般来讲，C盘分区分100G左右就可以了，情况允许的话越大越好，分区后最好格式化后再装系统。&lt;/p&gt;
+&lt;p&gt;接下来就一路确定等待重启就行，第一次重启之后一般是已经使用完装机U盘了，可以进BIOS调整开机启动项为硬盘开机或者直接拔下U盘。&lt;/p&gt;
+&lt;h6 id=&#34;pe方式&#34;&gt;PE方式&lt;/h6&gt;
+&lt;p&gt;采用PE方式制作的装机U盘，重启完毕后，会进入到对应的PE界面。在PE界面可以采取很多操作，下面以微PE为例讲解如何在PE下装系统。&lt;/p&gt;
+&lt;p&gt;在微PE的界面下，以下常用工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dism++：用于系统优化&lt;/li&gt;
+&lt;li&gt;分区助手、DiskGenius；用于磁盘分区、磁盘转换、数据备份&lt;/li&gt;
+&lt;li&gt;UEFI引导修复、BOOTICE： 修复、调整引导启动项&lt;/li&gt;
+&lt;li&gt;HDTune 硬盘检测：硬盘检测及数据擦除&lt;/li&gt;
+&lt;li&gt;Windows安装器：安装Windows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;新电脑装系统一般需要先分区，可以选择用分区助手或者DiskGenius，分区助手比较可靠，DiskGenius功能更强大但偶尔会出问题，为了不丢失数据，一般选择用分区助手。&lt;/p&gt;
+&lt;p&gt;分区的话，主要看个人使用习惯，一般情况下，系统盘（C盘）要保证在100G以上，把系统、驱动、软件装上100G已经差不多了。采取128G/256G固态+1T机械的电脑，推荐固态不分区当系统盘；若是纯固态的电脑（500G以上），推荐分两个区，一个系统盘一个数据盘；若是纯机械的电脑，系统盘分150G，数据盘按使用习惯分2~3个区就行了。&lt;/p&gt;
+&lt;p&gt;在常规的可见盘（C盘D盘等）以外，还需要对不可见盘进行分区操作。不可见盘有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;EFI(ESP)系统分区：EFI system partition，UEFI启动必须有此分区，一般分100MB就行。&lt;/li&gt;
+&lt;li&gt;MSR分区：Microsoft Reserved Partition，保留分区，保存分区表数据，必须有此分区，一般大小为128MB。&lt;/li&gt;
+&lt;li&gt;WRE分区：恢复分区，用于恢复或修复系统，可以没有此分区。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分完区后，就可以装系统了，可以选择用Windows安装器进行安装，选择镜像文件，选择引导分区(ESP分区)，选择安装分区(C盘)，选择系统版本，然后开始安装。&lt;/p&gt;
+&lt;p&gt;此时安装器就开始将系统直接部署到选定的安装分区中，可以理解为直接把文件复制进去。安装完毕后，重启进入系统即可(可以先进BIOS改启动项)。&lt;/p&gt;
+&lt;h4 id=&#34;光盘安装&#34;&gt;光盘安装&lt;/h4&gt;
+&lt;p&gt;光盘安装比较现在比较少见，整体过程和U盘安装大同小异，只不过由U盘变成光盘而已。&lt;/p&gt;
+&lt;p&gt;首先先准备一张装机光盘，内部刻录有原版镜像或者PE。&lt;/p&gt;
+&lt;p&gt;然后将光盘放入光驱，进入BIOS，选择从光盘启动，重启。&lt;/p&gt;
+&lt;p&gt;重启后进入系统安装界面或者是PE界面，直接参考U盘安装的相关内容安装系统就行。&lt;/p&gt;
+&lt;h2 id=&#34;安装完毕&#34;&gt;安装完毕&lt;/h2&gt;
+&lt;p&gt;如无意外，重启后进入了系统，系统安装完毕。&lt;/p&gt;
+&lt;p&gt;对于Windows系统而言，进入系统之后还不够，需要激活。Windows激活工具有很多，一般采用KMS方式激活，推荐使用&lt;a href=&#34;http://www.yishimei.cn/network/319.html&#34;&gt;神龙版KMS激活工具&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;激活后，就可以打上相关驱动，安装常用软件了，推荐把所有软件直接安装到C盘。打完驱动，安装完软件，就可以正常使用了。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Markdown基础指南</title>
+                <link>https://ls1030.github.io/tech/markdown_basic_guide/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/markdown_basic_guide/</guid>
+                <pubDate>Sun, 11 Aug 2019 18:32:08 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;markdown基础指南&#34;&gt;Markdown基础指南&lt;/h1&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。&lt;/p&gt;
+&lt;p&gt;Markdown 可以用于编辑 .md后缀的文档，也可以用于博客文章、笔记的写作，可以在印象笔记(马克飞象)、有道云笔记、简书、掘金、CSDN等平台上发表自己的文章。&lt;/p&gt;
+&lt;p&gt;Markdown 最大的特点就是它的易读易写性，无需过多的排版操作就能写出美观简洁的文章。&lt;/p&gt;
+&lt;h2 id=&#34;语法&#34;&gt;语法&lt;/h2&gt;
+&lt;h3 id=&#34;标题&#34;&gt;标题&lt;/h3&gt;
+&lt;p&gt;可以在标题内容前输入特定数量的井号(‘#’)来实现对应级别的HTML样式的标题，一共支持六级标题。
+例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## 二级标题
+&lt;/span&gt;&lt;span class=&#34;gu&#34;&gt;#### 四级标题
+&lt;/span&gt;&lt;span class=&#34;gu&#34;&gt;###### 六级标题
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者用 = （最高阶标题）和 - （第二阶标题）的方法，此方法只支持两级标题。
+例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;This is an H1
+=============
+This is an H2
+-------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;列表&#34;&gt;列表&lt;/h3&gt;
+&lt;p&gt;Markdown 支持有序列表和无序列表。
+无序列表使用星号（*）、加号（+）或是减号（-），作为列表标记，可以进行嵌套：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; 红
+&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; 黄
++ 蓝
+    + 绿
+    + 紫
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;红&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;黄&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;蓝&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;绿&lt;/li&gt;
+&lt;li&gt;紫&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有序列表则使用数字接着一个英文句点（.），甚至可以不在意数字排序(但还是希望用有序写法)：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; 第一
+&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; 第二
+&lt;span class=&#34;k&#34;&gt;4.&lt;/span&gt; 第三
+&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; 第四
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一&lt;/li&gt;
+&lt;li&gt;第二&lt;/li&gt;
+&lt;li&gt;第三&lt;/li&gt;
+&lt;li&gt;第四&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;列表项目标记通常是放在最左边，但是其实也可以缩进，最多 3 个空格。&lt;/li&gt;
+&lt;li&gt;列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符。&lt;/li&gt;
+&lt;li&gt;如果要在列表项目内放进引用，那就需要缩进。&lt;/li&gt;
+&lt;li&gt;如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;分隔线&#34;&gt;分隔线&lt;/h3&gt;
+&lt;p&gt;以在一行中用三个以上的星号（*）、减号（-）、底线（_）来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。
+例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; * *
+***
+&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; - -
+---------------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;强调&#34;&gt;强调&lt;/h3&gt;
+&lt;p&gt;Markdown 使用星号（*）和底线（_）作为标记强调字词的符号。强调就是&lt;strong&gt;加粗&lt;/strong&gt;、&lt;em&gt;倾斜&lt;/em&gt;、&lt;del&gt;删除线&lt;/del&gt;三种效果。
+倾斜:用1个星号或者底线将待处理文本包围起来。
+加粗：用2个星号或者底线将待处理文本包围起来。
+删除线：用2条波浪线（~~）**将待处理文本包围起来。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;*倾斜效果* 或者 &lt;span class=&#34;ge&#34;&gt;_倾斜效果_&lt;/span&gt;
+&lt;span class=&#34;gs&#34;&gt;**加粗效果**&lt;/span&gt; 或者 &lt;span class=&#34;gs&#34;&gt;__加粗效果__&lt;/span&gt;
+&lt;span class=&#34;gd&#34;&gt;~~删除线效果~~&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：
+&lt;em&gt;倾斜效果&lt;/em&gt; 或者 &lt;em&gt;倾斜效果&lt;/em&gt;
+&lt;strong&gt;加粗效果&lt;/strong&gt; 或者 &lt;strong&gt;加粗效果&lt;/strong&gt;
+&lt;del&gt;删除线效果&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 * 和 _ 两边都有空白的话，它们就只会被当成普通的符号。&lt;/li&gt;
+&lt;li&gt;如果要在文字前后直接插入普通的星号或底线，可以用反斜线。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;\*this text is surrounded by literal asterisks\*
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：
+*this text is surrounded by literal asterisks*&lt;/p&gt;
+&lt;p&gt;另外，在Meme博客主题中，还支持一种叫..着重号..的强调格式：用2个点(.)将待处理文本包围起来。
+例如：
+&lt;code&gt;.. 着重号效果 ..&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;效果如下：..着重号效果..&lt;/p&gt;
+&lt;h3 id=&#34;插入链接&#34;&gt;插入链接&lt;/h3&gt;
+&lt;p&gt;Markdown 支持两种形式的链接语法： ..行内式.. 和 ..参考式.. 两种形式。不管是哪一种，链接文字都是用 [方括号] 来标记。&lt;/p&gt;
+&lt;p&gt;行内式的格式为：&lt;code&gt;[link text](URL &#39;title text&#39;&amp;quot;title&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makrdown&#34; data-lang=&#34;makrdown&#34;&gt;[Google](http://www.google.com/ &amp;quot;谷歌&amp;quot;)
+[百度](http://www.baidu.com/ &amp;quot;baidu&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;显示效果如下：
+&lt;a href=&#34;http://www.google.com/&#34; title=&#34;谷歌&#34;&gt;Google&lt;/a&gt;
+&lt;a href=&#34;http://www.baidu.com/&#34; title=&#34;baidu&#34;&gt;百度&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考式链接的写法相当于行内式拆分成两部分，并通过一个[id]来连接两部分。id，可以用字母、数字和空格，不分大小写，方便我们在文章中多次引用。参考式能尽量保持文章结构的简单，也方便统一管理 URL。
+格式为：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makrdown&#34; data-lang=&#34;makrdown&#34;&gt;[link text][name]
+[name]: link &amp;quot;title&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;我日常使用 [Google][1] 多一些,偶尔使用 [百度][2]，很少使用[Bing][3]。
+我不得不使用 [百度搜索][2]的时候，总是感觉 [谷歌][1]大法好啊。
+
+[1]: https://www.google.com/ &amp;#34;Google&amp;#34;
+[2]: https://www.baidu.com/ &amp;#34;Baidu Search&amp;#34;
+[3]: https://cn.bing.com/ &amp;#34;Bing Search&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;显示效果：
+我日常使用 &lt;a href=&#34;https://www.google.com/&#34; title=&#34;Google&#34;&gt;Google&lt;/a&gt; 多一些,偶尔使用 &lt;a href=&#34;https://www.baidu.com/&#34; title=&#34;Baidu Search&#34;&gt;百度&lt;/a&gt;，很少使用&lt;a href=&#34;https://cn.bing.com/&#34; title=&#34;Bing Search&#34;&gt;Bing&lt;/a&gt;。
+我不得不使用 &lt;a href=&#34;https://www.baidu.com/&#34; title=&#34;Baidu Search&#34;&gt;百度搜索&lt;/a&gt;的时候，总是感觉 &lt;a href=&#34;https://www.google.com/&#34; title=&#34;Google&#34;&gt;谷歌&lt;/a&gt;大法好啊。&lt;/p&gt;
+&lt;h3 id=&#34;插入代码&#34;&gt;插入代码&lt;/h3&gt;
+&lt;p&gt;Markdown 中在行内插入代码用1个反引号（`）把代码包围起来，效果如下：
+在行内插入&lt;code&gt;代码code&lt;/code&gt;效果。&lt;/p&gt;
+&lt;p&gt;Markdown 中建立代码区块有两种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在代码区前缩进 4 个空格或是 1 个制表符&lt;/li&gt;
+&lt;li&gt;代码段落的头部和尾部用```包围起来&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一种用法很简单，直接用Tab就好。第二种用法可以实现代码高亮等特殊效果，更推荐用第二种方法。&lt;/p&gt;
+&lt;p&gt;第二种方法用法如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;\`\`\`
+[language] [title] [url] [link-text]
+代码段
+\`\`\`
+
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; [language] 是代码语言的名称，用来设置代码块颜色高亮，非必须；
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; [title] 是顶部左边的说明，非必须；
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; [url] 是顶部右边的超链接地址，非必须；
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt; [link text] 如它的字面意思，超链接的名称，非必须。
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;\`\`\` [C] [文件位置：helloworld.c]
+&lt;span class=&#34;gh&#34;&gt;#incldue &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;&lt;/span&gt;
+int main()
+{
+printf(“hello world！\n”);
+return 0;
+}
+\`\`\`
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#incldue &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello world！&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;插入表格&#34;&gt;插入表格&lt;/h3&gt;
+&lt;p&gt;Markdown中插入表格的方法如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;详细说明如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一行为定义表格头部标题，而第二行是区分头部和设置对齐方式, 减号(-)至少有3个。&lt;/li&gt;
+&lt;li&gt;表格外围的管道的可选的, 也不需要让每行的每个TD的管道对齐。&lt;/li&gt;
+&lt;li&gt;在减号的两侧定义冒号”:” 可设置该竖行的对齐方式, 左边加等于左对齐，两边都加等于居中对齐。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;显示效果如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tables&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Are&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Cool&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;col 3 is&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;right-aligned&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;$1600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;col 2 is&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;centered&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;$12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zebra stripes&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;are neat&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;$1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;插入图片&#34;&gt;插入图片&lt;/h3&gt;
+&lt;p&gt;Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式：..行内式.. 和 ..参考式.. 。&lt;/p&gt;
+&lt;p&gt;行内式的图片语法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span class=&#34;nt&#34;&gt;Alt text&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;/path/to/img.jpg&lt;/span&gt;)
+![&lt;span class=&#34;nt&#34;&gt;Alt text&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;/path/to/img.jpg &amp;#34;Optional title&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;详细叙述如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一个惊叹号 !&lt;/li&gt;
+&lt;li&gt;接着一个方括号，里面放上图片的替代文字&lt;/li&gt;
+&lt;li&gt;接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 文字。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span class=&#34;nt&#34;&gt;百度Logo&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;https://www.baidu.com/img/baidu_jgylogo3.gif&lt;/span&gt;)
+![&lt;span class=&#34;nt&#34;&gt;百度Logo&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;https://www.baidu.com/img/baidu_jgylogo3.gif &amp;#34;Baidu logo&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：
+&lt;img src=&#34;https://www.baidu.com/img/baidu_jgylogo3.gif&#34; alt=&#34;百度Logo&#34;&gt;
+&lt;img src=&#34;https://www.baidu.com/img/baidu_jgylogo3.gif&#34; alt=&#34;百度Logo&#34; title=&#34;Baidu logo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;参考式的图片语法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![Alt text][id]
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makrdown&#34; data-lang=&#34;makrdown&#34;&gt;[id]: url/to/image  &amp;quot;Optional title attribute&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;插入音乐&#34;&gt;插入音乐&lt;/h3&gt;
+&lt;p&gt;插入音乐有两种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用HTML标签&lt;/li&gt;
+&lt;li&gt;使用aplayer插件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;html方法&#34;&gt;HTML方法&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;audio&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://什么什么什么.mp3&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;controls&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;loop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;loop&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;preload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;meta&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Your browser does not support the audio tag.&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;audio&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以直接使用网易云音乐等音乐平台的外链直接粘贴&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;iframe&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;frameborder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;border&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;marginwidth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;marginheight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;330&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;86&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;//music.163.com/outchain/player?type=2&amp;amp;id=27867503&amp;amp;auto=0&amp;amp;height=66&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;iframe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;iframe
+frameborder=&#34;no&#34;
+border=&#34;0&#34;
+marginwidth=&#34;0&#34;
+marginheight=&#34;0&#34;
+width=672
+height=86
+src=&#34;//music.163.com/outchain/player?type=2&amp;id=27867503&amp;auto=0&amp;height=66&#34;&gt;
+&lt;/iframe&gt;
+&lt;h3 id=&#34;插入视频&#34;&gt;插入视频&lt;/h3&gt;
+&lt;p&gt;像插入音乐一样，可以采取HTML标签和插件两种方法。&lt;/p&gt;
+&lt;h4 id=&#34;使用html标签&#34;&gt;使用HTML标签&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;poster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://封面图.jpg&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://什么什么什么.mp4&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;max-height :100%;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;max-width: 100%;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;display: block;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;margin-left: auto;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;margin-right: auto;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;controls&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;loop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;loop&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;preload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;meta&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以在哔哩哔哩或者YouTube上复制嵌入代码，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;iframe&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;//player.bilibili.com/player.html?aid=633862695&amp;amp;bvid=BV13b4y1a7mG&amp;amp;cid=432970254&amp;amp;page=1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;scrolling&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;border&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;frameborder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;framespacing&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;allowfullscreen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width: 672px; height: 500px;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;iframe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;iframe
+src=&#34;//player.bilibili.com/player.html?aid=633862695&amp;bvid=BV13b4y1a7mG&amp;cid=432970254&amp;page=1&#34;
+scrolling=&#34;no&#34;
+border=&#34;0&#34;
+frameborder=&#34;no&#34;
+framespacing=&#34;0&#34;
+allowfullscreen=&#34;true&#34;
+style=&#34;width: 672px; height: 500px;&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调整视频显示尺寸: style=”width: 672px; height: 500px;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;插入公式&#34;&gt;插入公式&lt;/h3&gt;
+&lt;p&gt;NexT主题支持 MathJax 进行数学公式显示。
+可以利用gulp 和 gulp-mathjax-page 对将公式渲染为SVG并嵌入HTML并实现静态化。&lt;/p&gt;
+&lt;h4 id=&#34;安装插件&#34;&gt;安装插件&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-npm&#34; data-lang=&#34;npm&#34;&gt;npm install -g gulp@3.9.1
+npm install -s gulp@3.9.1 gulp-mathjax-page
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改gulpfile.js&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;文件位置&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/blog/gulpfile.js]&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;gulp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mathjax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;gulp-mathjax-page&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;gulp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;mathjax&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;gulp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./public/**/*.html&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pipe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mathjax&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;mjpageConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;TeX&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;singleDollars&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;cssInline&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;mhchem&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;legacy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;mjnodeConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;svg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;css&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;speakText&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}))&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pipe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;gulp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./public&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改样式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;文件位置&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/blog/themes/next/source/css/_custom/custom.styl]&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mjpage__block&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;inline&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;center&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;overflow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;vertical&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;bottom&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;cm&#34;&gt;/*
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;如果出现尺寸过大的问题，则加上以下代码
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mjpage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;font&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;使用&#34;&gt;使用&lt;/h4&gt;
+&lt;p&gt;语法请参考MathJax 中文文档&lt;/p&gt;
+&lt;h2 id=&#34;编辑器&#34;&gt;编辑器&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MarkdownPad: 一款全功能的编辑器，被很多人称赞为Windows 平台最好用的Markdown 编辑器&lt;/li&gt;
+&lt;li&gt;Typora: 颜值不错，支持Windows、Linux、OS X&lt;/li&gt;
+&lt;li&gt;Boostnote: 对程序员友好，支持多种代码高亮功能&lt;/li&gt;
+&lt;li&gt;VSCode: 宇宙第一编辑器，当然要支持Markdown了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;Markdown语法说明
+打造个性超赞博客 Hexo + NexT + GitHub Pages 的超深度优化
+Markdown教程
+Markdown在线编辑器&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
         
     </channel>
 </rss>

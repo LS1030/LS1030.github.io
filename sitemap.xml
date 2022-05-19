@@ -2,7 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ls1030.github.io/tech/git_basic_userguide/</loc>
+    <lastmod>2022-05-19T23:17:24+08:00</lastmod>
+  </url><url>
     <loc>https://ls1030.github.io/</loc>
+    <lastmod>2022-05-19T23:17:24+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/</loc>
+    <lastmod>2022-05-19T23:17:24+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/about/</loc>
+    <lastmod>2022-01-17T15:30:10+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/essay/</loc>
+    <lastmod>2022-01-17T18:34:49+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/essay/hello-world/</loc>
+    <lastmod>2022-01-17T18:34:49+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/c_usage_summary/</loc>
+    <lastmod>2022-05-19T23:17:24+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/computer_reinstall_system_guide/</loc>
+    <lastmod>2022-05-19T23:17:24+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/markdown_basic_guide/</loc>
+    <lastmod>2022-05-18T18:40:09+08:00</lastmod>
   </url><url>
     <loc>https://ls1030.github.io/tags/</loc>
   </url>

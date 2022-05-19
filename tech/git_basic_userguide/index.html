@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.91.2" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>Git基础使用不完全指北 | LS1030的自留地</title>
+
+    <link rel="stylesheet" href="/css/meme.min.6b77e7fe6532984c4dbeaee5d61036f813bf5056251e639a92506cbe1475a2c8.css"/>
+
+    
+    
+        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="LS1030" /><meta name="description" content="Git基础使用不完全指北 简介 Git是一个分布式版本控制系统，可以在本地与远程端均部署……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="LS1030的自留地" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="LS1030的自留地" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://ls1030.github.io/tech/git_basic_userguide/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2022-02-23T09:54:21+08:00",
+        "dateModified": "2022-05-19T23:17:24+08:00",
+        "url": "https://ls1030.github.io/tech/git_basic_userguide/",
+        "headline": "Git基础使用不完全指北",
+        "description": "Git基础使用不完全指北 简介 Git是一个分布式版本控制系统，可以在本地与远程端均部署……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "tech",
+        "wordCount":  3456 ,
+        "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "L.S.1030@outlook.com",
+            "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+            "url": "https://ls1030.github.io/",
+            "name": "LS1030"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LS1030的自留地",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://ls1030.github.io/icons/apple-touch-icon.png"
+            },
+            "url": "https://ls1030.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://ls1030.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+
+    
+
+
+
+<meta property="og:title" content="Git基础使用不完全指北" />
+<meta property="og:description" content="Git基础使用不完全指北 简介 Git是一个分布式版本控制系统，可以在本地与远程端均部署……" />
+<meta property="og:url" content="https://ls1030.github.io/tech/git_basic_userguide/" />
+<meta property="og:site_name" content="LS1030的自留地" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://ls1030.github.io/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-02-23T09:54:21&#43;08:00" />
+    <meta property="article:modified_time" content="2022-05-19T23:17:24&#43;08:00" />
+    
+    <meta property="article:section" content="tech" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">LS1030的自留地</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/essay/"><span class="menu-item-name">随笔</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item active"><a href="/tech/"><span class="menu-item-name">技术</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="tech" data-toc-num="true">
+
+            <h1 class="post-title p-name">Git基础使用不完全指北</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2022-02-23T09:54:21&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.2.23</time>
+    
+    
+        
+        <time datetime="2022-05-19T23:17:24&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.5.19</time>
+    
+    
+    
+        
+        
+            
+            
+                
+                
+                
+                
+                    
+                    
+                    
+                        
+                            
+                            
+                        
+                    
+                
+            
+            
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/tech/" class="category-link p-category">Tech</a></span>
+            
+        
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;3456</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;7&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <div class="post-body e-content">
+                <h1 id="git基础使用不完全指北"><a href="#git基础使用不完全指北" class="anchor-link">#</a>Git基础使用不完全指北</h1>
+<h2 id="简介"><a href="#简介" class="anchor-link">#</a>简介</h2>
+<p>Git是一个<strong>分布式版本控制系统</strong>，可以在本地与远程端均部署一个仓库，本地与远程之间可以同步更改。</p>
+<p>Git的特点：</p>
+<ol>
+<li>Git直接记录快照，而非差异比较： 在Git中，每当你提交更新或保存项目状态时，它基本上就会对当时的全部文件创建一个快照并保存这个快照的索引。 为了效率，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。Git对待数据更像是一个<strong>快照流</strong>。</li>
+<li>近乎所有操作都是本地执行：在Git中的绝大多数操作都只需要访问本地文件和资源，一般不需要来自网络上其它计算机的信息。仅仅在与远程端同步的时候需要网络操作。</li>
+<li>Git保证完整性：Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。</li>
+<li>Git一般只添加数据：你执行的Git操作，几乎只往Git数据库中<strong>添加</strong>数据。你<strong>很难</strong>使用Git从数据库中<strong>删除</strong>数据，也就是说Git几乎不会执行任何可能导致文件不可恢复的操作。</li>
+</ol>
+<h2 id="基础使用流程"><a href="#基础使用流程" class="anchor-link">#</a>基础使用流程</h2>
+<h3 id="git的概念"><a href="#git的概念" class="anchor-link">#</a>Git的概念</h3>
+<p>Git有三种状态，你的文件可能处于其中之一： 已提交（committed）、已修改（modified） 和 已暂存（staged）。</p>
+<ul>
+<li>已修改表示修改了文件，但还没保存到数据库中。</li>
+<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</li>
+<li>已提交表示数据已经安全地保存在本地数据库中。</li>
+</ul>
+<p>对应的，Git 项目拥有三个阶段：工作区、暂存区以及Git目录。</p>
+<ul>
+<li>工作区是对项目的某个版本独立提取出来的内容。 这些从Git仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。</li>
+<li>暂存区是一个文件，保存了下次将要提交的文件列表信息，一般在Git仓库目录中。 按照Git的术语叫做“索引”，不过一般说法还是叫“暂存区”。</li>
+<li>Git仓库目录是Git用来保存项目的元数据和对象数据库的地方。 这是Git中最重要的部分，从其它计算机克隆仓库时，复制的就是这里的数据。</li>
+</ul>
+<h3 id="git的使用流程"><a href="#git的使用流程" class="anchor-link">#</a>Git的使用流程</h3>
+<p>基本的Git工作流程如下：</p>
+<ol>
+<li>在工作区中修改文件。</li>
+<li>将你想要下次提交的更改选择性地暂存，这样只会将更改的部分添加到暂存区。</li>
+<li>提交更新，找到暂存区的文件，将快照永久性存储到Git目录。</li>
+</ol>
+<p>如果Git目录中保存着特定版本的文件，就属于<strong>已提交</strong>状态。 如果文件已修改并放入暂存区，就属于<strong>已暂存</strong>状态。 如果自上次检出后，作了修改但还没有放到暂存区域，就是<strong>已修改</strong>状态。</p>
+<p>简而言之，就是修改文件-提交暂存-提交更新。</p>
+<p>在日常使用中，还会使用到在本地新建仓库(init)、在本地克隆远程仓库(clone)、拉取远程仓库(pull)、把本地仓库推送到远程(push)、合并(merge)、变基(rebase)、新建分支(branch)、标记(tag)、软回退(soft)、硬回退(hard)。</p>
+<h2 id="使用示例"><a href="#使用示例" class="anchor-link">#</a>使用示例</h2>
+<p>下面演示如何在本地新建一个Git仓库(Hello_Git)，新建一个文件，把该文件添加到暂存区，提交，新建一个分支，做一个标记，然后推送到 Github 上。</p>
+<h3 id="命令行"><a href="#命令行" class="anchor-link">#</a>命令行</h3>
+<ol>
+<li>新建文件夹(Hello_Git), 并在文件夹打开终端。</li>
+<li>终端输入<code>git init</code>，可以通过<code>git config user.name</code>和<code>git config user.email</code>查询并修改当前用户的名字和邮箱。可以输入<code>git config --list</code>查看所有Git配置信息。</li>
+<li><strong>或者</strong>在目标仓库储存位置打开终端，输入<code>git clone [URL]</code>，把远程仓库克隆到本地。</li>
+<li>在仓库中添加一个文件(Git_Basic_UserGuide.md)。</li>
+<li>终端输入<code>git add .</code>添加所有文件到暂存区，或者<code>git add Git_Basic_UserGuide.md</code>添加仅指定目录或文件。</li>
+<li>在完成一次添加后，可以通过<code>git status -s</code>查看git仓库状态。如果此时修改了已经添加到暂存区的文件，需要再次添加。</li>
+<li>在所有文件都修改完毕后，添加到暂存区，然后输入<code>git commit -m [message]</code>把当前暂存区文件提交到本地仓库中。可以通过<code>git log</code>查询历史提交信息。</li>
+<li>新建一个分支<code>git branch [branch name]</code>, 用<code>git checkout [branch name]</code>切换到对应分支, 并做出一些修改，然后进行一次提交。</li>
+<li>切换到<code>master</code>, 使用<code>git merge [branch name]</code>, 将<code>[branch name]</code>分支的内容合并到<code>master</code>分支，此时<code>master分支</code>会多一次提交记录。也可以使用<code>git rebase master [branch name]</code>实现<strong>结果相同</strong>的操作。但通常使用<code>merge</code>。</li>
+<li>如果发现合并的提交有错误，或者在合并冲突的时候未保留有必要的文件，则可以进行回退操作(reset)。回退有<code>软回退(soft)</code>和<code>硬回退(hard)</code>和<code>混合(mixed)回退</code>。默认使用混合即<code>git reset --mixed [HEAD^]</code>，混会回退将放弃<code>暂存区</code>的文件及<code>之前提交</code>的文件，<code>工作区</code>的文件保持<strong>不变</strong>，[HEAD^]指上一个版本。软回退使用<code>git reset --soft HEAD^</code>，放弃<code>提交记录</code>，但会<strong>尽可能地保留</strong><code>之前提交的文件</code>，若<code>暂存区</code>没有与之前相同的文件即文件在上次提交后<strong>未添加到暂存区</strong>，则将之前提交的文件放入<code>暂存区</code>,<code>工作区</code>文件保持不变。硬回退则放弃<code>工作区</code>、<code>暂存区</code>和<code>Git目录中上次提交</code>的所有文件，将文件回退到对应的版本。</li>
+<li>在对应的提交上进行标记<code>git tag [tags]</code>，一般<code>[tags]</code>的内容是版本号如v1.0.0之类的。</li>
+<li>添加远程仓库<code>git remote add origin [remote address]</code>。</li>
+<li>把本地仓库推送到远程。<code>git push origin master</code>：将本地的master分支推送到远程。注意，默认情况下，不会传送标签到远程仓库，必须显式地推送标签<code>git push origin [tags]</code></li>
+</ol>
+<h3 id="vscode"><a href="#vscode" class="anchor-link">#</a>VSCode</h3>
+<p>在<code>VSCode</code>有非常方便的图形化操作，在安装了各种非常好的插件后，除非比较复杂的操作，一般就不需要使用命令行了。</p>
+<h4 id="插件安装"><a href="#插件安装" class="anchor-link">#</a>插件安装</h4>
+<ul>
+<li>Git History</li>
+<li>git ignore</li>
+<li>Git Lens</li>
+<li>Git Graph</li>
+</ul>
+<h4 id="操作步骤"><a href="#操作步骤" class="anchor-link">#</a>操作步骤</h4>
+<ol>
+<li>新建文件夹, 并用<code>VSCode</code>打开文件夹。</li>
+<li>在<code>VSCode</code>打开终端，输入<code>git init</code>初始化GIT仓库。可同时使用<code>git config</code>来设置相关参数。</li>
+<li><strong>或者</strong>打开<code>VSCode</code>新窗口，进入左边栏的源代码管理，点击<code>克隆储存库</code>，在弹出的输入框输入<code>URL</code>，并选择储存路径，克隆远程库。</li>
+<li>在项目中新建一个<code>.gitignore</code>文件，输入需要忽略的文件。</li>
+<li>新建一个文件，此时左边栏的<strong>源代码管理图标</strong>会出现更改提示，单击打开。</li>
+<li>将会会看到更改的文件，单击文件，会出现<strong>文件更改记录</strong>，本地文件与上次提交后的文件比较。确认无误后，可点击<strong>加号</strong>把文件添加到<code>暂存区</code>，也可点击<strong>返回图标</strong>放弃更改。</li>
+<li>将所有文件添加到<code>暂存区</code>后，可在上面的输入框输入<strong>提交信息</strong>，并点击输入框上方的<strong>对号</strong>进行提交。</li>
+<li>提交后，在<strong>对号图标</strong>旁边有<strong>Git History</strong>和<strong>Git Graph</strong>的图标，可图形化查看提交记录。在<code>Git History</code>页面中，可对每一个提交很方便地进行<code>hard</code>、<code>soft</code>、<code>+tag</code>、<code>+branch</code>操作。</li>
+<li>在页面的<strong>左下角</strong>，即底栏的左边，有一个写着<strong>分支名</strong>的图标，可用它进行<code>切换分支</code>、<code>新建分支</code>操作。</li>
+<li>在左边栏的源代码管理中，还可以看到<code>VSCode</code>自带的以<strong>列表</strong>形式展现的<code>commit</code>、<code>File History</code>、<code>branches</code>、<code>remotes</code>、<code>status</code>、<code>tags</code>、<code>serch&amp;compare</code>，不过不太好看就是了。</li>
+<li>在左边栏的源代码管理的<code>···</code>中，可使用它进行<code>推送</code>、<code>拉取</code>、<code>克隆</code>操作。</li>
+<li>在底栏的分支名图标旁边，有一个<code>同步按钮</code>，可将本地仓库与远程仓库同步。将本地提交推送到远程同时拉取远程仓库的提交，有可能会产生冲突，需要合并冲突。</li>
+<li>合并冲突时，<code>VSCode</code>会按照文件列出<strong>每一处冲突</strong>的部分，可选择<strong>保留一方</strong>的更改或者<strong>全部保留</strong>。</li>
+</ol>
+<h3 id="clionpycharm"><a href="#clionpycharm" class="anchor-link">#</a>CLion/PyCharm</h3>
+<p>跟<code>VSCode</code>一样，<code>Clion</code>或者<code>PyCharm</code>这些<code>IDE</code>也有比较好的插件和图形化管理工具。</p>
+<h4 id="插件安装-1"><a href="#插件安装-1" class="anchor-link">#</a>插件安装</h4>
+<ul>
+<li>GitToolBox</li>
+</ul>
+<h4 id="操作步骤-1"><a href="#操作步骤-1" class="anchor-link">#</a>操作步骤</h4>
+<ol>
+<li>打开<code>IDE(CLion/PyCharm)</code>，然后新建一个项目。</li>
+<li>或者直接点击<code>从VSC获取</code>，版本控制选择<code>Git</code>，输入<code>URL</code>，将远程仓库克隆到本地。</li>
+<li>在新建项目后，打开<code>菜单栏</code>的<code>VSC</code>，点击<code>创建Git仓库</code>，然后选择<code>本地仓库储存路径</code>，一般是<strong>当前项目文件夹</strong>。（克隆已存在的远程库忽略此步骤）</li>
+<li>此时可以打开终端，输入<code>git config</code>设置相关信息。</li>
+<li>此时<code>菜单栏</code>的<code>VSC</code>已变成<code>Git</code>，在<code>Git菜单</code>内，可以实现<code>提交</code>、<code>推送</code>、<code>更新项目</code>、<code>拉取</code>等操作。</li>
+<li>在项目中新建一个<code>.gitignore</code>文件，输入需要忽略的文件。</li>
+<li>在项目中新建一个文件，IDE会提示<code>将文件添加到Git</code>，选择添加。</li>
+<li>在<code>左侧菜单栏</code>的<code>提交</code>菜单中，勾选<code>变更的文件</code>，然后在下方的<code>输入框</code>输入<code>提交信息</code>，点击<code>提交</code>。</li>
+<li>在<code>底栏</code>的<code>Git</code>菜单中，在左侧可以看到<code>分支信息</code>，在中间可以看到对应分支的<code>Git历史记录</code>，在右侧可以看到对应<code>某次提交</code>的<code>文件变更信息</code>，可以在对应的提交和分支上打开右键菜单进行<code>签出(切换)分支</code>、<code>新建分支</code>、<code>回退提交</code>等操作。</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="anchor-link">#</a>参考链接</h2>
+<ol>
+<li>
+<p><a href="https://git-scm.com/docs" target="_blank" rel="noopener" title="git官方参考文档">git官方参考文档</a></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener" title="git官方教程">git官方教程</a></p>
+</li>
+<li>
+<p><a href="https://backlog.com/git-tutorial/cn" target="_blank" rel="noopener" title="猴子都能懂的GIT入门">猴子都能懂的GIT入门</a></p>
+</li>
+</ol>
+
+            </div>
+
+            
+
+
+        </article>
+
+        
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+    <footer class="minimal-footer">
+        
+        
+            <div class="post-category">
+                <a href="/tech/" class="post-category-link active">tech</a> | <a href="/essay/" class="post-category-link">essay</a>
+            </div>
+        
+        
+    </footer>
+
+
+
+        
+
+
+        
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;LS1030</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:L.S.1030@outlook.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/ls1030" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://t.me/ls1030" target="_blank" rel="external noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon social-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+
+    </body>
+</html>
