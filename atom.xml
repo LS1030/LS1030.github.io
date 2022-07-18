@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-07-15T17:53:41&#43;08:00</updated>
+    <updated>2022-07-18T18:30:58&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Hugo基础使用不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/hugo_basic_userguide/" />
             <id>https://ls1030.github.io/tech/hugo_basic_userguide/</id>
-            <updated>2022-07-15T17:08:50&#43;08:00</updated>
+            <updated>2022-07-15T17:54:46&#43;08:00</updated>
             <published>2022-07-14T17:28:56&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -136,7 +136,7 @@
             <title type="text">Git基础使用不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/git_basic_userguide/" />
             <id>https://ls1030.github.io/tech/git_basic_userguide/</id>
-            <updated>2022-07-15T17:08:50&#43;08:00</updated>
+            <updated>2022-07-15T17:54:46&#43;08:00</updated>
             <published>2022-02-23T09:54:21&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -288,7 +288,7 @@
             <title type="text">C语言常见用法总结</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/c_usage_summary/" />
             <id>https://ls1030.github.io/tech/c_usage_summary/</id>
-            <updated>2022-07-15T17:08:50&#43;08:00</updated>
+            <updated>2022-07-15T17:54:46&#43;08:00</updated>
             <published>2020-04-01T08:26:18&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -410,7 +410,7 @@ C语言的名称区分大小写。
             <title type="text">电脑安装系统指南</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/computer_reinstall_system_guide/" />
             <id>https://ls1030.github.io/tech/computer_reinstall_system_guide/</id>
-            <updated>2022-07-15T17:08:50&#43;08:00</updated>
+            <updated>2022-07-15T17:54:46&#43;08:00</updated>
             <published>2019-08-12T08:45:58&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -551,7 +551,7 @@ PE可以选择&lt;a href=&#34;http://www.wepe.com.cn/download.html&#34;&gt;微PE
             <title type="text">Markdown基础指南</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/markdown_basic_guide/" />
             <id>https://ls1030.github.io/tech/markdown_basic_guide/</id>
-            <updated>2022-07-15T17:08:50&#43;08:00</updated>
+            <updated>2022-07-15T17:54:46&#43;08:00</updated>
             <published>2019-08-11T18:32:08&#43;08:00</published>
             <author>
                     <name>LS1030</name>
