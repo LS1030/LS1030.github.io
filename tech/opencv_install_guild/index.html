@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.101.0" /><meta name="theme-color" content="#16171d" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>OpenCV安装不完全指北 | LS1030的自留地</title>
+
+    <link rel="stylesheet" href="/css/meme.min.70596e7bcf53638cb8a91ae965a7c9d0b1ce87a0da4de1904f4ddcdb3cbc8528.css"/>
+
+    
+    
+        <script src="/js/meme.min.e46abe484398824efc70edec3126437916974df592d7c395b44f8f60e0f57e9d.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="LS1030" /><meta name="description" content="简介 OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。O……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="LS1030的自留地" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="LS1030的自留地" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://ls1030.github.io/tech/opencv_install_guild/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2022-07-15T17:16:45+08:00",
+        "dateModified": "2022-07-18T18:34:44+08:00",
+        "url": "https://ls1030.github.io/tech/opencv_install_guild/",
+        "headline": "OpenCV安装不完全指北",
+        "description": "简介 OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。O……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "tech",
+        "wordCount":  5839 ,
+        "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "L.S.1030@outlook.com",
+            "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+            "url": "https://ls1030.github.io/",
+            "name": "LS1030"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LS1030的自留地",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://ls1030.github.io/icons/apple-touch-icon.png"
+            },
+            "url": "https://ls1030.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://ls1030.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+
+    
+
+
+
+<meta property="og:title" content="OpenCV安装不完全指北" />
+<meta property="og:description" content="简介 OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。O……" />
+<meta property="og:url" content="https://ls1030.github.io/tech/opencv_install_guild/" />
+<meta property="og:site_name" content="LS1030的自留地" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://ls1030.github.io/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-07-15T17:16:45&#43;08:00" />
+    <meta property="article:modified_time" content="2022-07-18T18:34:44&#43;08:00" />
+    
+    <meta property="article:section" content="tech" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">LS1030的自留地</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/essay/"><span class="menu-item-name">随笔</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item active"><a href="/tech/"><span class="menu-item-name">技术</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="tech" data-toc-num="true">
+
+            <h1 class="post-title p-name">OpenCV安装不完全指北</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2022-07-15T17:16:45&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.7.15</time>
+    
+    
+        
+        <time datetime="2022-07-18T18:34:44&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.7.18</time>
+    
+    
+    
+        
+        
+            
+            
+                
+                
+                
+                
+                    
+                    
+                    
+                        
+                            
+                            
+                        
+                    
+                
+            
+            
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/tech/" class="category-link p-category">Tech</a></span>
+            
+        
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;5839</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;12&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:简介" href="#简介">简介</a></li>
+    <li><a id="contents:python版本安装" href="#python版本安装">python版本安装</a></li>
+    <li><a id="contents:c版本安装ubuntu" href="#c版本安装ubuntu">C++版本安装（ubuntu）</a>
+      <ol>
+        <li><a id="contents:安装编译环境" href="#安装编译环境">安装编译环境</a>
+          <ol>
+            <li><a id="contents:安装编译工具" href="#安装编译工具">安装编译工具</a></li>
+            <li><a id="contents:安装依赖" href="#安装依赖">安装依赖</a></li>
+          </ol>
+        </li>
+        <li><a id="contents:下载opencv源码" href="#下载opencv源码">下载OpenCV源码</a></li>
+        <li><a id="contents:本机编译安装opencv及opencv_contrib" href="#本机编译安装opencv及opencv_contrib">本机编译安装opencv及opencv_contrib</a>
+          <ol>
+            <li><a id="contents:新建opencv_build文件夹" href="#新建opencv_build文件夹">新建opencv_build文件夹</a></li>
+            <li><a id="contents:利用cmake配置编译选项" href="#利用cmake配置编译选项">利用cmake配置编译选项</a></li>
+            <li><a id="contents:cmake构建时常见问题" href="#cmake构建时常见问题">cmake构建时常见问题</a>
+              <ol>
+                <li><a id="contents:无法下载某些文件" href="#无法下载某些文件">无法下载某些文件</a></li>
+                <li><a id="contents:opencv与ffmpeg编译问题" href="#opencv与ffmpeg编译问题">OpenCV与ffmpeg编译问题</a></li>
+                <li><a id="contents:opencv与openblaslapacke的配置问题" href="#opencv与openblaslapacke的配置问题">OpenCV与OpenBLAS、Lapacke的配置问题</a></li>
+              </ol>
+            </li>
+            <li><a id="contents:编译及安装" href="#编译及安装">编译及安装</a>
+              <ol>
+                <li><a id="contents:编译时出现的问题" href="#编译时出现的问题">编译时出现的问题</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a id="contents:交叉编译安装opencv及opencv_contrib" href="#交叉编译安装opencv及opencv_contrib">交叉编译安装opencv及opencv_contrib</a>
+          <ol>
+            <li><a id="contents:下载交叉编译工具链" href="#下载交叉编译工具链">下载交叉编译工具链</a></li>
+            <li><a id="contents:新建编译文件夹和安装文件夹" href="#新建编译文件夹和安装文件夹">新建编译文件夹和安装文件夹</a></li>
+            <li><a id="contents:配置交叉编译脚本" href="#配置交叉编译脚本">配置交叉编译脚本</a></li>
+          </ol>
+        </li>
+        <li><a id="contents:编译及安装及打包" href="#编译及安装及打包">编译及安装及打包</a></li>
+      </ol>
+    </li>
+    <li><a id="contents:参考资料" href="#参考资料">参考资料</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+                <h2 id="简介"><a href="#简介" class="anchor-link">#</a><a href="#contents:简介" class="headings">简介</a></h2>
+<p>OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。OpenCV是由英特尔公司发起并参与开发，以BSD许可证授权发行，可以在商业和研究领域中免费使用。OpenCV可用于开发实时的图像处理、计算机视觉以及模式识别程序。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">[1]</a></sup></p>
+<p>OpenCV的<a href="https://opencv.org/" target="_blank" rel="noopener">官方网站</a>为<code>https://opencv.org</code>,包含<a href="https://opencv.org/releases/" target="_blank" rel="noopener" title="OpenCV Release">发布页面</a>、<a href="https://docs.opencv.org/4.x/d9/df8/tutorial_root.html" target="_blank" rel="noopener" title="OpenCV Tutorial">教程</a>、<a href="https://docs.opencv.org/4.6.0/" target="_blank" rel="noopener" title="OpenCV Docs">文档</a>等资料。</p>
+<p>OpenCV源码托管在Github，有基础包<a href="https://github.com/opencv/opencv" target="_blank" rel="noopener" title="opencv">opencv</a>，同时还有一个扩展包<a href="https://github.com/opencv/opencv_contrib" target="_blank" rel="noopener" title="opencv_contrib">opencv_contrib
+</a>。此外，在gitee上也有对应的镜像<a href="https://gitee.com/mirrors/opencv" target="_blank" rel="noopener">gitee opencv</a>和<a href="https://gitee.com/mirrors/opencv_contrib" target="_blank" rel="noopener">gitee opencv_contrib</a></p>
+<h2 id="python版本安装"><a href="#python版本安装" class="anchor-link">#</a><a href="#contents:python版本安装" class="headings">python版本安装</a></h2>
+<p>OpenCV的python版本安装比较简单:</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">pip</span> <span class="nv">install</span> <span class="nv">opencv</span><span class="o">-</span><span class="nv">python</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">pip</span> <span class="nv">install</span> <span class="nv">opencv</span><span class="o">-</span><span class="nv">contrib</span><span class="o">-</span><span class="nv">python</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">conda</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">c</span> <span class="nv">conda</span><span class="o">-</span><span class="nv">forge</span> <span class="nv">opencv</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="c版本安装ubuntu"><a href="#c版本安装ubuntu" class="anchor-link">#</a><a href="#contents:c版本安装ubuntu" class="headings">C++版本安装（ubuntu）</a></h2>
+<p>C++版本的OpenCV需要编译安装，因此比较麻烦，大致的步骤是：</p>
+<ol>
+<li>安装编译环境</li>
+<li>配置cmake参数</li>
+<li>cmake build</li>
+<li>make build</li>
+<li>make install</li>
+</ol>
+<p>另外，编译安装也可以一起安装python版本的包。</p>
+<h3 id="安装编译环境"><a href="#安装编译环境" class="anchor-link">#</a><a href="#contents:安装编译环境" class="headings">安装编译环境</a></h3>
+<h4 id="安装编译工具"><a href="#安装编译工具" class="anchor-link">#</a><a href="#contents:安装编译工具" class="headings">安装编译工具</a></h4>
+<p>编译工具主要是cmake、make、gcc/g++、build-essential</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">cmake</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nb">make</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">gcc</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">g</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">build</span><span class="o">-</span><span class="nv">essential</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>一行命令版本：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">cmake</span> <span class="nb">make</span> <span class="nv">gcc</span> <span class="nv">g</span><span class="o">++</span> <span class="nv">build</span><span class="o">-</span><span class="nv">essential</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>如果版本不适合，则可以自行编译安装不同版本，在此不概述。</p>
+<p>另外，<code>git</code>也是非常常用的工具，建议一起安装：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">git</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="安装依赖"><a href="#安装依赖" class="anchor-link">#</a><a href="#contents:安装依赖" class="headings">安装依赖</a></h4>
+<p>OpenCV的依赖项更多的是显示图像的GUI库，比如GTK、QT等。OpenCV默认启用GTK，不启用QT。ubuntu默认已经安装好GTK3，但仍然需要安装<code>libgtk-3-dev</code>才能正常编译带GUI版本的OpenCV。但是，如果是在wsl2内的ubuntu，则默认未安装GTK，自行安装非常麻烦，可以选择放弃依赖GTK部分的功能（比如<code>imshow</code>），在OpenCV的编译选项里关闭GTK。</p>
+<p>OpenCV可以不依赖任何第三方库读取bmp、hdr、sun raster、ppm、pgm、pbm、pfm格式的图片，默认安装第三方扩展以支持png、jpg、tiff、webp、jpeg2000等格式。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">[2]</a></sup>如果OpenCV检测到部分扩展未安装，则会进行下载，也可能导致下载失败，可以先自行安装对应的第三方库再安装OpenCV。</p>
+<p>OpenCV的视频处理的可以直接使用linux内的<code>v4l2</code>库，但是，如果要更强的视频处理能力，需要使用<code>ffmpeg</code>库，建议直接安装完整的<code>ffmpeg</code>。但是，一些兼容性问题，直接通过<code>apt</code>安装的版本与OpenCV不兼容，因此需要手动编译安装，具体方法见下一小节。</p>
+<p>如果需要安装python版的话，需要先再python环境下安装numpy：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">pip</span> <span class="nv">install</span> <span class="nv">numpy</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>OpenCV还可以用许多计算库，比如说<code>OpenBlas</code>、<code>Eigen</code>。<code>OpenBlas</code>的配置比较麻烦，详见下一小节。</p>
+<p>OpenCV还可以使用了intel的<code>libva</code>库来加速视频处理。可以直接通过<code>apt</code>安装。</p>
+<p>因此，需要必要安装的第三方依赖项有：</p>
+<ol>
+<li>libgtk-3-dev</li>
+<li>numpy</li>
+</ol>
+<p>一行命令：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Applescript" data-lang="Applescript"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">libgtk</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">python3</span><span class="o">-</span><span class="nv">numpy</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>建议安装的第三方依赖项有：</p>
+<ol>
+<li>ccache</li>
+<li>libva-dev</li>
+<li>libhdf5-dev</li>
+<li>libeigen3-dev</li>
+<li>libgflags-dev</li>
+<li>libgoogle-glog-dev</li>
+<li>tesseract-ocr</li>
+<li>libtesseract-dev</li>
+<li>libopenblas-dev</li>
+<li>libopenblas-base</li>
+<li>liblapacke-dev</li>
+<li>ffmpeg（手动编译安装）</li>
+</ol>
+<p>一行命令：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">apt</span> <span class="nv">install</span> <span class="nv">ccache</span> <span class="nv">libva</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">hdf5</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">libeigen3</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">libgflags</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">libgoogle</span><span class="o">-</span><span class="nv">glog</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">tesseract</span><span class="o">-</span><span class="nv">ocr</span> <span class="nv">libtesseract</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">libopenblas</span><span class="o">-</span><span class="nv">dev</span> <span class="nv">libopenblas</span><span class="o">-</span><span class="nv">base</span> <span class="nv">liblapacke</span><span class="o">-</span><span class="nv">dev</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 id="下载opencv源码"><a href="#下载opencv源码" class="anchor-link">#</a><a href="#contents:下载opencv源码" class="headings">下载OpenCV源码</a></h3>
+<p>新建一个文件夹，比如说<code>Software</code>，然后下载OpenCV源码。</p>
+<p>在OpenCV官网的<a href="https://opencv.org/releases/" target="_blank" rel="noopener">Release</a>页面下载最新版本（截止到2022-07-19是4.6.0）的<a href="https://github.com/opencv/opencv/archive/4.6.0.zip" target="_blank" rel="noopener">zip压缩包</a>，也可以去官方Github的<a href="https://github.com/opencv/opencv/releases" target="_blank" rel="noopener">Release</a>里下载对应的<a href="https://github.com/opencv/opencv/archive/refs/tags/4.6.0.zip" target="_blank" rel="noopener">zip压缩包</a>或者<a href="https://github.com/opencv/opencv/archive/refs/tags/4.6.0.tar.gz" target="_blank" rel="noopener">tar.gz压缩包</a>。下载后，<code>~/Software</code>下新建<code>opencv</code>文件夹，并把压缩包内容解压到里面。</p>
+<p>如果是安装了<code>git</code>，则可以使用git clone的方式下载源码，需要使用<code>-b [版本号]</code>来切换最新版本。在新建的文件夹<code>~/Software</code>下，打开终端，输入以下命令，则会新建一个<code>opencv</code>文件夹，对应的源码下载到里面。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">clone</span> <span class="o">-</span><span class="nv">b</span> <span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">opencv</span><span class="o">/</span><span class="nv">opencv</span><span class="p">.</span><span class="nv">git</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>如果github访问比较慢，则可以使用gitee的镜像库：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">clone</span> <span class="o">-</span><span class="nv">b</span> <span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">gitee</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">mirrors</span><span class="o">/</span><span class="nv">opencv</span><span class="p">.</span><span class="nv">git</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>如果需要扩展包<code>opencv_contrib</code>，则可以在扩展包的github仓库的<a href="https://github.com/opencv/opencv_contrib/tags" target="_blank" rel="noopener">Tags</a>页面下载对应的<a href="https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.zip" target="_blank" rel="noopener">zip</a>或者<a href="https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.tar.gz" target="_blank" rel="noopener">tar.gz</a>压缩包，下载完后，解压到<code>~/Software/opencv_contrib</code>文件夹。同理，也可以使用<code>git clone</code>
+的方式下载源码，在<code>~/Software</code>下打开终端，输入以下命令：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">clone</span> <span class="o">-</span><span class="nv">b</span> <span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">opencv</span><span class="o">/</span><span class="nv">opencv_contrib</span><span class="p">.</span><span class="nv">git</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">clone</span> <span class="o">-</span><span class="nv">b</span> <span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">gitee</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">mirrors</span><span class="o">/</span><span class="nv">opencv_contrib</span><span class="p">.</span><span class="nv">git</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>现在，我们目录结构如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Software
+</span></span><span class="line"><span class="cl">├───opencv
+</span></span><span class="line"><span class="cl">└───opencv_contrib
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 id="本机编译安装opencv及opencv_contrib"><a href="#本机编译安装opencv及opencv_contrib" class="anchor-link">#</a><a href="#contents:本机编译安装opencv及opencv_contrib" class="headings">本机编译安装opencv及opencv_contrib</a></h3>
+<h4 id="新建opencv_build文件夹"><a href="#新建opencv_build文件夹" class="anchor-link">#</a><a href="#contents:新建opencv_build文件夹" class="headings">新建opencv_build文件夹</a></h4>
+<p>在<code>~/Software/</code>下文件夹，新建<code>opencv_build</code>文件夹，编译的中间产物及结果都存放在<code>opencv_build</code>里，命令行的操作为：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">cd</span> <span class="nv">opencv</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mkdir</span> <span class="nv">build</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>现在，我们目录结构如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Software
+</span></span><span class="line"><span class="cl">├───opencv
+</span></span><span class="line"><span class="cl">├───opencv_build
+</span></span><span class="line"><span class="cl">└───opencv_contrib
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="利用cmake配置编译选项"><a href="#利用cmake配置编译选项" class="anchor-link">#</a><a href="#contents:利用cmake配置编译选项" class="headings">利用cmake配置编译选项</a></h4>
+<p>进入<code>opencv_build</code>文件夹，运行<code>cmake ../opencv</code>，就可以生成默认的编译配置，但一般情况下都需要对默认的选项进行更改，可以使用<code>cmake-gui</code>(需要安装<code>sudo apt install cmake-qt-gui</code>)或者是在<code>cmake</code>和<code>../opencv</code>之间插入<code>-D[编译选项]</code>的方式。</p>
+<p>具体的参数含义可以参考<a href="https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html" target="_blank" rel="noopener">OpenCV官方文档</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">[3]</a></sup> 、<em class="emphasis-point">参考资料2</em>的cmake编译参数部分<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">[4]</a></sup>、<a href="https://blog.csdn.net/j_d_c/article/details/53365381" target="_blank" rel="noopener">CMake编译opencv各选项的含义</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">[5]</a></sup>。</p>
+<p>一般来说，根据架构或者功能的选择，常用的配置参数有：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WITH_OPENCL</td>
+<td>ON</td>
+<td>Multiple OpenCL-accelerated algorithms are available via so-called &quot;Transparent API (T-API)&quot;.</td>
+</tr>
+<tr>
+<td>WITH_OPENGL</td>
+<td>OFF</td>
+<td>OpenGL integration can be used to draw HW-accelerated windows with following backends: GTK, WIN32 and Qt. And enables basic interoperability with OpenGL, see <a href="https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html" target="_blank" rel="noopener">OpenGL interoperability</a> and <a href="https://docs.opencv.org/4.x/df/d24/group__highgui__opengl.html" target="_blank" rel="noopener">OpenGL support</a> for details.</td>
+</tr>
+<tr>
+<td>WITH_GTK</td>
+<td>ON</td>
+<td>GTK is a common toolkit in Linux and Unix-like OS-es. By default version 3 will be used if found, version 2 can be forced with the WITH_GTK_2_X option.</td>
+</tr>
+<tr>
+<td>WITH_QT</td>
+<td>OFF</td>
+<td>Qt is a cross-platform GUI framework.</td>
+</tr>
+<tr>
+<td>WITH_OPENMP</td>
+<td>OFF</td>
+<td>OpenMP API relies on compiler support.</td>
+</tr>
+<tr>
+<td>WITH_TBB</td>
+<td>OFF</td>
+<td>Threading Building Blocks is a cross-platform library for parallel programming.</td>
+</tr>
+<tr>
+<td>BUILD_TBB</td>
+<td>OFF</td>
+<td>OpenCV can download and build TBB library from GitHub, this functionality can be enabled with the BUILD_TBB option.</td>
+</tr>
+<tr>
+<td>BUILD_opencv_python3</td>
+<td>ON</td>
+<td>Build python3 bindings. Python with development files and numpy must be installed.</td>
+</tr>
+<tr>
+<td>INSTALL_C_EXAMPLES</td>
+<td>OFF</td>
+<td>Install C++ sample sources from the samples/cpp directory.</td>
+</tr>
+<tr>
+<td>INSTALL_PYTHON_EXAMPLES</td>
+<td>OFF</td>
+<td>Install Python sample sources from the samples/python directory.</td>
+</tr>
+</tbody>
+</table></div>
+<p>另外，如果需要<code>opencv_contrib</code>，则需要通过<code>-DOPENCV_EXTRA_MODULES_PATH=</code>来指定<code>opencv_contrib</code>所在的路径(<em class="emphasis-point">相对路径</em>即可)。</p>
+<p>如果需要指定安装路径，则通过<code>-DCMAKE_INSTALL_PREFIX=</code>指定，一般安装在<code>/usr/</code>或者<code>/usr/local/</code>或者<code>/usr/local/opencv</code>。</p>
+<p>现在附上参考的cmake配置脚本，放置在<code>opencv_build</code>下，然后运行即可。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// ~/Software/opencv_build
+</span></span><span class="line"><span class="cl">cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>RELEASE <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DOPENCV_EXTRA_MODULES_PATH<span class="o">=</span>../opencv_contrib/modules/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENCL<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENGL<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_GTK<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_QT<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_TBB<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENMP<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_C_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_PYTHON_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_opencv_python3<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_SHARED_LIBS<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    ../opencv
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>若<code>cmake</code>生成失败或需要更改配置重新生成，则可删除<code>CmakeCache.txt</code>后重新运行。</p>
+<p>另外，比较推荐用<code>cmake-gui</code>来进行配置，通过<code>sudo apt install cmake-qt-gui</code>安装即可。</p>
+<h4 id="cmake构建时常见问题"><a href="#cmake构建时常见问题" class="anchor-link">#</a><a href="#contents:cmake构建时常见问题" class="headings">cmake构建时常见问题</a></h4>
+<h5 id="无法下载某些文件"><a href="#无法下载某些文件" class="anchor-link">#</a><a href="#contents:无法下载某些文件" class="headings">无法下载某些文件</a></h5>
+<p>在cmake构建时，会出现<code>Download failed</code>的警告<code>Warning</code>，解决方法是到<code>~/Software/build/CMakeDownloadLog.txt</code>里面，查看下载失败的文件的<em class="emphasis-point">文件名</em> 和 <em class="emphasis-point">下载链接</em>，以及下载后存放的<em class="emphasis-point">位置</em>，一般是从<code>cmake_download</code>里下载对应文件并改名，保存到<code>~/Software/opencv/.cache</code>。常见的下载失败的文件有：</p>
+<ol>
+<li>ippicv</li>
+<li>ade</li>
+<li>data</li>
+<li>wechat_qrcode</li>
+<li>xfeatures2d</li>
+</ol>
+<h5 id="opencv与ffmpeg编译问题"><a href="#opencv与ffmpeg编译问题" class="anchor-link">#</a><a href="#contents:opencv与ffmpeg编译问题" class="headings">OpenCV与ffmpeg编译问题</a></h5>
+<p>OpenCV可以调用ffmpeg来作为视频处理的后端，大大提高视频处理的能力，但是OpenCV使用cmake生成配置时，经常会出现检测不到ffmpeg的问题，解决办法<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">[6]</a></sup>如下：</p>
+<ol>
+<li>
+<p>不使用<code>apt</code>安装ffmpeg，需采用<em class="emphasis-point">源码编译安装</em>的方式安装</p>
+</li>
+<li>
+<p>安装<code>ffmpeg</code>时，需指定<code>pkg-config</code>的路径，关闭<code>pic</code>，使能<code>shared</code>，即</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="p">.</span><span class="o">/</span><span class="nv">configure</span> <span class="c">--prefix=/usr/local/ffmpeg --pkgconfigdir=/usr/lib/  x86_64-linux-gnu/pkgconfig/ --enable-pic --enbale-shared --disable-x86asm</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div></li>
+<li>
+<p>因为设定了<code>--enable-shared</code>，因此需要手动指定<code>ffmpeg动态库</code>的路径，在<code>/etc/ld.so.conf.d/</code>新建<code>ffmpeg.conf</code>，然后输入<code>ffmpeg动态库</code>的路径：<code>/usr/local/ffmpeg/lib/</code>，然后<code>sudo ldconfig</code>更新一下，即：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="nv">sudu</span> <span class="nv">vim</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">ld</span><span class="p">.</span><span class="nv">conf</span><span class="p">.</span><span class="nv">d</span><span class="o">/</span><span class="nv">ffmpeg</span><span class="p">.</span><span class="nv">conf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 进入/etc/ld.conf.d/ffmpeg.conf，并输入：</span>
+</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="nv">ffmpeg</span><span class="o">/</span><span class="nv">lib</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 保存退出，返回终端</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">ldconfig</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div></li>
+<li>
+<p>不知道什么原因，OpenCV在<em class="emphasis-point">编译</em>时未能正确识别到<code>libavcodec</code>的版本号<code>LIBAVCODEC_VERSION_INT</code>（但在<code>cmake</code>生成的时候可以），因此需要在<code>~/Software/opencv/modules/videoio/src/ffmpeg_codecs.hpp:80:5</code>加一句<code>#define LIBAVCODEC_VERSION_INT 5939100</code>（把<code>cmake</code>检测到的版本号填进去）。这种方法虽然比较ugly但能用，如果有其他解决方法麻烦提个issue告知，谢谢。</p>
+</li>
+</ol>
+<h5 id="opencv与openblaslapacke的配置问题"><a href="#opencv与openblaslapacke的配置问题" class="anchor-link">#</a><a href="#contents:opencv与openblaslapacke的配置问题" class="headings">OpenCV与OpenBLAS、Lapacke的配置问题</a></h5>
+<p>OpenCV和OpenBLAS、Lapacke之间的兼容性存在问题，需要进行一些设置，主要是参考opencv的<a href="https://github.com/opencv/opencv/issues/12957" target="_blank" rel="noopener">issue#12957</a><sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">[7]</a></sup>:</p>
+<ol>
+<li><code>apt</code>安装<code>libopenblas-dev</code>、<code>libopenblas-base</code>、<code>liblapacke-dev</code></li>
+<li>添加<code>lapacke.h</code>软连接: <code>sudo ln -s /usr/include/lapacke.h /usr/include/x86_64-linux-gnu/lapacke.h</code></li>
+<li>添加<code>libcblas.so</code>软连接: <code>sudo ln -s /usr/include/x86_64-linux-gnu/libblas.so /usr/include/x86_64-linux-gnu/libcblas.so</code></li>
+<li>在<code>opencv/cmake/OpenCVFindOpenBLAS.cmake</code>内添加<code>Open_BLAS_INCLUDE_SEARCH_PATHS</code>到<code>/usr/include/x86_64-linux-gnu</code></li>
+<li>在<code>opencv/cmake/OpenCVFindOpenBLAS.cmake</code>内添加<code>Open_BLAS_LIB_SEARCH_PATHS</code>到<code>/usr/lib/x86_64-linux-gnu</code></li>
+<li>添加链接参数<code>-lcblas</code>:<code>CMAKE_EXE_LINKER_FLAGS=-lcblas</code><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">[8]</a></sup></li>
+</ol>
+<h4 id="编译及安装"><a href="#编译及安装" class="anchor-link">#</a><a href="#contents:编译及安装" class="headings">编译及安装</a></h4>
+<p>在<code>cmake</code>成功生成<code>Makefile</code>后，运行<code>make -j8</code>后，运行<code>sudo make install</code>，即可完成安装。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="o">//</span> <span class="err">~</span><span class="o">/</span><span class="nv">Software</span><span class="o">/</span><span class="nv">opencv_build</span>
+</span></span><span class="line"><span class="cl"><span class="nb">make</span> <span class="o">-</span><span class="nv">j8</span>
+</span></span><span class="line"><span class="cl"><span class="nb">make</span> <span class="nv">check</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nb">make</span> <span class="nv">install</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h5 id="编译时出现的问题"><a href="#编译时出现的问题" class="anchor-link">#</a><a href="#contents:编译时出现的问题" class="headings">编译时出现的问题</a></h5>
+<p>在编译时曾出现编译到<code>modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2.cpp.o</code>的时候出现卡很长时间的问题，可能是因为4个进程内存不足的问题，中断并使用<code>make -j1</code>继续编译即可。</p>
+<h3 id="交叉编译安装opencv及opencv_contrib"><a href="#交叉编译安装opencv及opencv_contrib" class="anchor-link">#</a><a href="#contents:交叉编译安装opencv及opencv_contrib" class="headings">交叉编译安装opencv及opencv_contrib</a></h3>
+<h4 id="下载交叉编译工具链"><a href="#下载交叉编译工具链" class="anchor-link">#</a><a href="#contents:下载交叉编译工具链" class="headings">下载交叉编译工具链</a></h4>
+<p>从arm官网的<a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads" target="_blank" rel="noopener">下载页面</a>下载对应架构的工具链，并解压到<code>~/Software</code>目录下。交叉编译工具链的命名可以参考<a href="https://blog.csdn.net/LEON1741/article/details/81537529" target="_blank" rel="noopener">交叉编译器的命名规则及详细解释</a><sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">[9]</a></sup></p>
+<p>现在选择<a href="https://developer.arm.com/-/media/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu.tar.xz" target="_blank" rel="noopener">gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu</a>，解压到<code>~/Software/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu</code></p>
+<h4 id="新建编译文件夹和安装文件夹"><a href="#新建编译文件夹和安装文件夹" class="anchor-link">#</a><a href="#contents:新建编译文件夹和安装文件夹" class="headings">新建编译文件夹和安装文件夹</a></h4>
+<p>在<code>~/Software</code>下，新建<code>opencv_build_aarch64</code>作为编译文件夹，新建<code>opencv_install_aarch64</code>作为安装文件夹，交叉编译完成后，把<code>opencv_install_aarch64</code>文件夹打包一下，复制到对应的平台上，在解压到<code>/usr/</code>或者<code>/usr/local</code>或者<code>/usr/local/opencv</code>就可以使用了。</p>
+<p>现在，我们目录结构如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Software
+</span></span><span class="line"><span class="cl">├───opencv
+</span></span><span class="line"><span class="cl">├───opencv_contrib
+</span></span><span class="line"><span class="cl">├───opencv_build
+</span></span><span class="line"><span class="cl">├───opencv_build_aarch64
+</span></span><span class="line"><span class="cl">├───opencv_install_aarch64
+</span></span><span class="line"><span class="cl">└───gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="配置交叉编译脚本"><a href="#配置交叉编译脚本" class="anchor-link">#</a><a href="#contents:配置交叉编译脚本" class="headings">配置交叉编译脚本</a></h4>
+<p>进入<code>opencv_build_aarch64</code>，新建<code>cmake_build_aarch64.sh</code>，在之前的脚本上，更改安装鲁姆到<code>opencv_install_aarch64</code>，加上交叉编译工具链相关内容，指定对应系统类型<code>CMAKE_SYSTEM_NAME</code>、C编译器<code>CMAKE_C_COMPILER</code>、C++编译器<code>CMAKE_CXX_COMPILER</code>，参考脚本如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// ~/Software/opencv_build_aarch64.sh
+</span></span><span class="line"><span class="cl">cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>RELEASE <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_C_COMPILER<span class="o">=</span>../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-gcc
+</span></span><span class="line"><span class="cl">    -DCMAKE_CXX_COMPILER<span class="o">=</span>../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-g++
+</span></span><span class="line"><span class="cl">    -DCMAKE_INSTALL_PREFIX<span class="o">=</span>../opencv_install_aarch64/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DOPENCV_EXTRA_MODULES_PATH<span class="o">=</span>../opencv_contrib/modules/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENCL<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENGL<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_GTK<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_QT<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_TBB<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENMP<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_C_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_PYTHON_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_opencv_python3<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_SHARED_LIBS<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    ../opencv
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者也可以新建一个<code>crosscompiler_aarch64.cmake</code>，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_SYSTEM_NAME</span> <span class="s">Linux</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_SYSTEM_PROCESSOR</span> <span class="s">aarch64</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">​
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># set(CMAKE_SYSROOT /home/devel/rasp-pi-rootfs)
+</span></span></span><span class="line"><span class="cl"><span class="c"># set(CMAKE_STAGING_PREFIX /home/devel/stage)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">tools</span> <span class="s">../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_COMPILER</span> <span class="o">${</span><span class="nv">tools</span><span class="o">}</span><span class="s">/bin/aarch64-none-linux-gnu-gcc</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_COMPILER</span> <span class="o">${</span><span class="nv">tools</span><span class="o">}</span><span class="s">/bin/aarch64-none-linux-gnu-g++</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+</span></span></span><span class="line"><span class="cl"><span class="c"># set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+</span></span></span><span class="line"><span class="cl"><span class="c"># set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+</span></span></span><span class="line"><span class="cl"><span class="c"># set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>然后在未交叉编译的脚本下添加<code>CMAKE_TOOLCHAIN_FILE</code>，完整脚本如下：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// ~/Software/opencv_build_aarch64.sh
+</span></span><span class="line"><span class="cl">cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>RELEASE <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>./crosscompiler_aarch64.cmake <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_INSTALL_PREFIX<span class="o">=</span>../opencv_install_aarch64/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DOPENCV_EXTRA_MODULES_PATH<span class="o">=</span>../opencv_contrib/modules/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENCL<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENGL<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_GTK<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_QT<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_TBB<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DWITH_OPENMP<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_C_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DINSTALL_PYTHON_EXAMPLES<span class="o">=</span>OFF <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_opencv_python3<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DBUILD_SHARED_LIBS<span class="o">=</span>ON <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    ../opencv
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者也可以使用<code>cmake-gui</code>进行配置</p>
+<h3 id="编译及安装及打包"><a href="#编译及安装及打包" class="anchor-link">#</a><a href="#contents:编译及安装及打包" class="headings">编译及安装及打包</a></h3>
+<p>跟之前一样，在<code>cmake</code>成功生成<code>Makefile</code>后，运行<code>make -j8</code>后，运行<code>make install</code>，即可把编译后的最终产物复制到<code>opencv_install_aarch64</code>内，然后将其打包就行。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-AppleScript" data-lang="AppleScript"><span class="line"><span class="cl"><span class="o">//</span> <span class="err">~</span><span class="o">/</span><span class="nv">Software</span><span class="o">/</span><span class="nv">opencv_build</span>
+</span></span><span class="line"><span class="cl"><span class="nb">make</span> <span class="o">-</span><span class="nv">j8</span>
+</span></span><span class="line"><span class="cl"><span class="nb">make</span> <span class="nv">check</span>
+</span></span><span class="line"><span class="cl"><span class="nb">make</span> <span class="nv">install</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">cd</span> <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="err">~</span><span class="o">/</span><span class="nv">Software</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">tar</span> <span class="o">-</span><span class="nv">cvf</span> <span class="nv">opencv_install_aarch64</span><span class="p">.</span><span class="nv">tar</span> <span class="p">.</span><span class="o">/</span><span class="nv">opencv_install_aarch64</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="参考资料"><a href="#参考资料" class="anchor-link">#</a><a href="#contents:参考资料" class="headings">参考资料</a></h2>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/375566593" target="_blank" rel="noopener">在Ubuntu平台编译OpenCV的正确姿势</a></li>
+<li><a href="https://blog.csdn.net/qq_31112205/article/details/105161419" target="_blank" rel="noopener">Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本
+</a></li>
+<li><a href="https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html" target="_blank" rel="noopener">OpenCV configuration options reference</a></li>
+<li><a href="https://blog.csdn.net/sheqianweilong/article/details/102646929" target="_blank" rel="noopener">opencv编译安装--踩坑</a></li>
+</ol>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>维基百科<a href="https://zh.m.wikipedia.org/zh-hans/OpenCV" target="_blank" rel="noopener">OpenCV</a>页面&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://zhuanlan.zhihu.com/p/375566593" target="_blank" rel="noopener">在Ubuntu平台编译OpenCV的正确姿势</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html" target="_blank" rel="noopener">OpenCV configuration options reference</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://blog.csdn.net/qq_31112205/article/details/105161419" target="_blank" rel="noopener">Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://zhuanlan.zhihu.com/p/472115312" target="_blank" rel="noopener">opencv+ffmpeg编译打包全解指南</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://cloud.tencent.com/developer/article/1916880" target="_blank" rel="noopener">编译FFMpeg n4.2.5、OpenCV-3.4.16、OpenCV-4.5.4</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://github.com/opencv/opencv/issues/12957" target="_blank" rel="noopener">Correction in OpenCV's default CMAKE search Path for OpenBLAS Library on Ubuntu-64bit Machines</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://blog.csdn.net/Evanzxh/article/details/122617896" target="_blank" rel="noopener">opencv3.3.0安装过程报错 undefined reference to cblas_zgemm解决方案</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://blog.csdn.net/LEON1741/article/details/81537529" target="_blank" rel="noopener">交叉编译器的命名规则及详细解释（arm/gnu/none/linux/eabi/eabihf/gcc/g++）</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+</ol>
+</div>
+
+            </div>
+
+            
+
+
+        </article>
+
+        
+
+        
+
+
+        
+    
+        <div class="post-gitinfo">
+            
+                <div class="post-gitinfo-left">
+                    
+                        <div class="gitinfo-item commit"><a href="https://github.com/LS1030/LS1030_Blog/commit/cf7429080d307f86748b6ccc31dd3ff7459d48c8" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon git-icon"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"/></svg>cf74290</a></div>
+                    
+                    
+                </div>
+            
+            
+                <div class="post-gitinfo-right">
+                    
+                        
+                            <div class="gitinfo-item feedback">
+                                <a href="https://github.com/LS1030/LS1030_Blog/issues" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon feedback-icon"><path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"/></svg>Feedback</a>
+                            </div>
+                        
+                    
+                    
+                        
+                            
+                            <div class="gitinfo-item edit">
+                                <a href="https://github.com/LS1030/LS1030_Blog/blob/master/content/tech/OpenCV_Install_Guild.md" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon edit-icon"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>Edit Me?</a>
+                            </div>
+                        
+                    
+                </div>
+            
+        </div>
+    
+
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+    <footer class="minimal-footer">
+        
+        
+            <div class="post-category">
+                <a href="/tech/" class="post-category-link active">tech</a> | <a href="/essay/" class="post-category-link">essay</a>
+            </div>
+        
+        
+    </footer>
+
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+            
+                <li class="post-nav-next">
+                    <a href="/tech/hugo_basic_userguide/" rel="next">Hugo基础使用不完全指北 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;LS1030</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:L.S.1030@outlook.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/ls1030" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://t.me/ls1030" target="_blank" rel="external noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon social-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+    </body>
+</html>

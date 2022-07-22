@@ -23,10 +23,666 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 18 Jul 2022 18:30:58 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 22 Jul 2022 18:37:22 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://ls1030.github.io/rss.xml" />
         
+        
+            <item>
+                <title>OpenCV安装不完全指北</title>
+                <link>https://ls1030.github.io/tech/opencv_install_guild/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/opencv_install_guild/</guid>
+                <pubDate>Fri, 15 Jul 2022 17:16:45 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库。OpenCV是由英特尔公司发起并参与开发，以BSD许可证授权发行，可以在商业和研究领域中免费使用。OpenCV可用于开发实时的图像处理、计算机视觉以及模式识别程序。&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;OpenCV的&lt;a href=&#34;https://opencv.org/&#34;&gt;官方网站&lt;/a&gt;为&lt;code&gt;https://opencv.org&lt;/code&gt;,包含&lt;a href=&#34;https://opencv.org/releases/&#34; title=&#34;OpenCV Release&#34;&gt;发布页面&lt;/a&gt;、&lt;a href=&#34;https://docs.opencv.org/4.x/d9/df8/tutorial_root.html&#34; title=&#34;OpenCV Tutorial&#34;&gt;教程&lt;/a&gt;、&lt;a href=&#34;https://docs.opencv.org/4.6.0/&#34; title=&#34;OpenCV Docs&#34;&gt;文档&lt;/a&gt;等资料。&lt;/p&gt;
+&lt;p&gt;OpenCV源码托管在Github，有基础包&lt;a href=&#34;https://github.com/opencv/opencv&#34; title=&#34;opencv&#34;&gt;opencv&lt;/a&gt;，同时还有一个扩展包&lt;a href=&#34;https://github.com/opencv/opencv_contrib&#34; title=&#34;opencv_contrib&#34;&gt;opencv_contrib
+&lt;/a&gt;。此外，在gitee上也有对应的镜像&lt;a href=&#34;https://gitee.com/mirrors/opencv&#34;&gt;gitee opencv&lt;/a&gt;和&lt;a href=&#34;https://gitee.com/mirrors/opencv_contrib&#34;&gt;gitee opencv_contrib&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;python版本安装&#34;&gt;python版本安装&lt;/h2&gt;
+&lt;p&gt;OpenCV的python版本安装比较简单:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;contrib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;forge&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;c版本安装ubuntu&#34;&gt;C++版本安装（ubuntu）&lt;/h2&gt;
+&lt;p&gt;C++版本的OpenCV需要编译安装，因此比较麻烦，大致的步骤是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装编译环境&lt;/li&gt;
+&lt;li&gt;配置cmake参数&lt;/li&gt;
+&lt;li&gt;cmake build&lt;/li&gt;
+&lt;li&gt;make build&lt;/li&gt;
+&lt;li&gt;make install&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;另外，编译安装也可以一起安装python版本的包。&lt;/p&gt;
+&lt;h3 id=&#34;安装编译环境&#34;&gt;安装编译环境&lt;/h3&gt;
+&lt;h4 id=&#34;安装编译工具&#34;&gt;安装编译工具&lt;/h4&gt;
+&lt;p&gt;编译工具主要是cmake、make、gcc/g++、build-essential&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cmake&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;essential&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;一行命令版本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cmake&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcc&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;essential&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果版本不适合，则可以自行编译安装不同版本，在此不概述。&lt;/p&gt;
+&lt;p&gt;另外，&lt;code&gt;git&lt;/code&gt;也是非常常用的工具，建议一起安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h4&gt;
+&lt;p&gt;OpenCV的依赖项更多的是显示图像的GUI库，比如GTK、QT等。OpenCV默认启用GTK，不启用QT。ubuntu默认已经安装好GTK3，但仍然需要安装&lt;code&gt;libgtk-3-dev&lt;/code&gt;才能正常编译带GUI版本的OpenCV。但是，如果是在wsl2内的ubuntu，则默认未安装GTK，自行安装非常麻烦，可以选择放弃依赖GTK部分的功能（比如&lt;code&gt;imshow&lt;/code&gt;），在OpenCV的编译选项里关闭GTK。&lt;/p&gt;
+&lt;p&gt;OpenCV可以不依赖任何第三方库读取bmp、hdr、sun raster、ppm、pgm、pbm、pfm格式的图片，默认安装第三方扩展以支持png、jpg、tiff、webp、jpeg2000等格式。&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;如果OpenCV检测到部分扩展未安装，则会进行下载，也可能导致下载失败，可以先自行安装对应的第三方库再安装OpenCV。&lt;/p&gt;
+&lt;p&gt;OpenCV的视频处理的可以直接使用linux内的&lt;code&gt;v4l2&lt;/code&gt;库，但是，如果要更强的视频处理能力，需要使用&lt;code&gt;ffmpeg&lt;/code&gt;库，建议直接安装完整的&lt;code&gt;ffmpeg&lt;/code&gt;。但是，一些兼容性问题，直接通过&lt;code&gt;apt&lt;/code&gt;安装的版本与OpenCV不兼容，因此需要手动编译安装，具体方法见下一小节。&lt;/p&gt;
+&lt;p&gt;如果需要安装python版的话，需要先再python环境下安装numpy：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;numpy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;OpenCV还可以用许多计算库，比如说&lt;code&gt;OpenBlas&lt;/code&gt;、&lt;code&gt;Eigen&lt;/code&gt;。&lt;code&gt;OpenBlas&lt;/code&gt;的配置比较麻烦，详见下一小节。&lt;/p&gt;
+&lt;p&gt;OpenCV还可以使用了intel的&lt;code&gt;libva&lt;/code&gt;库来加速视频处理。可以直接通过&lt;code&gt;apt&lt;/code&gt;安装。&lt;/p&gt;
+&lt;p&gt;因此，需要必要安装的第三方依赖项有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;libgtk-3-dev&lt;/li&gt;
+&lt;li&gt;numpy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一行命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libgtk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;python3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;numpy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;建议安装的第三方依赖项有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ccache&lt;/li&gt;
+&lt;li&gt;libva-dev&lt;/li&gt;
+&lt;li&gt;libhdf5-dev&lt;/li&gt;
+&lt;li&gt;libeigen3-dev&lt;/li&gt;
+&lt;li&gt;libgflags-dev&lt;/li&gt;
+&lt;li&gt;libgoogle-glog-dev&lt;/li&gt;
+&lt;li&gt;tesseract-ocr&lt;/li&gt;
+&lt;li&gt;libtesseract-dev&lt;/li&gt;
+&lt;li&gt;libopenblas-dev&lt;/li&gt;
+&lt;li&gt;libopenblas-base&lt;/li&gt;
+&lt;li&gt;liblapacke-dev&lt;/li&gt;
+&lt;li&gt;ffmpeg（手动编译安装）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一行命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;apt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ccache&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libva&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;hdf5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libeigen3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libgflags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libgoogle&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;glog&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;tesseract&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ocr&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libtesseract&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libopenblas&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;libopenblas&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;base&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;liblapacke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dev&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;下载opencv源码&#34;&gt;下载OpenCV源码&lt;/h3&gt;
+&lt;p&gt;新建一个文件夹，比如说&lt;code&gt;Software&lt;/code&gt;，然后下载OpenCV源码。&lt;/p&gt;
+&lt;p&gt;在OpenCV官网的&lt;a href=&#34;https://opencv.org/releases/&#34;&gt;Release&lt;/a&gt;页面下载最新版本（截止到2022-07-19是4.6.0）的&lt;a href=&#34;https://github.com/opencv/opencv/archive/4.6.0.zip&#34;&gt;zip压缩包&lt;/a&gt;，也可以去官方Github的&lt;a href=&#34;https://github.com/opencv/opencv/releases&#34;&gt;Release&lt;/a&gt;里下载对应的&lt;a href=&#34;https://github.com/opencv/opencv/archive/refs/tags/4.6.0.zip&#34;&gt;zip压缩包&lt;/a&gt;或者&lt;a href=&#34;https://github.com/opencv/opencv/archive/refs/tags/4.6.0.tar.gz&#34;&gt;tar.gz压缩包&lt;/a&gt;。下载后，&lt;code&gt;~/Software&lt;/code&gt;下新建&lt;code&gt;opencv&lt;/code&gt;文件夹，并把压缩包内容解压到里面。&lt;/p&gt;
+&lt;p&gt;如果是安装了&lt;code&gt;git&lt;/code&gt;，则可以使用git clone的方式下载源码，需要使用&lt;code&gt;-b [版本号]&lt;/code&gt;来切换最新版本。在新建的文件夹&lt;code&gt;~/Software&lt;/code&gt;下，打开终端，输入以下命令，则会新建一个&lt;code&gt;opencv&lt;/code&gt;文件夹，对应的源码下载到里面。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clone&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果github访问比较慢，则可以使用gitee的镜像库：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clone&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;gitee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mirrors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果需要扩展包&lt;code&gt;opencv_contrib&lt;/code&gt;，则可以在扩展包的github仓库的&lt;a href=&#34;https://github.com/opencv/opencv_contrib/tags&#34;&gt;Tags&lt;/a&gt;页面下载对应的&lt;a href=&#34;https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.zip&#34;&gt;zip&lt;/a&gt;或者&lt;a href=&#34;https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.tar.gz&#34;&gt;tar.gz&lt;/a&gt;压缩包，下载完后，解压到&lt;code&gt;~/Software/opencv_contrib&lt;/code&gt;文件夹。同理，也可以使用&lt;code&gt;git clone&lt;/code&gt;
+的方式下载源码，在&lt;code&gt;~/Software&lt;/code&gt;下打开终端，输入以下命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clone&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_contrib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clone&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;gitee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mirrors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_contrib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;现在，我们目录结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Software
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───opencv_contrib
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;本机编译安装opencv及opencv_contrib&#34;&gt;本机编译安装opencv及opencv_contrib&lt;/h3&gt;
+&lt;h4 id=&#34;新建opencv_build文件夹&#34;&gt;新建opencv_build文件夹&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;~/Software/&lt;/code&gt;下文件夹，新建&lt;code&gt;opencv_build&lt;/code&gt;文件夹，编译的中间产物及结果都存放在&lt;code&gt;opencv_build&lt;/code&gt;里，命令行的操作为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;现在，我们目录结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Software
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv_build
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───opencv_contrib
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;利用cmake配置编译选项&#34;&gt;利用cmake配置编译选项&lt;/h4&gt;
+&lt;p&gt;进入&lt;code&gt;opencv_build&lt;/code&gt;文件夹，运行&lt;code&gt;cmake ../opencv&lt;/code&gt;，就可以生成默认的编译配置，但一般情况下都需要对默认的选项进行更改，可以使用&lt;code&gt;cmake-gui&lt;/code&gt;(需要安装&lt;code&gt;sudo apt install cmake-qt-gui&lt;/code&gt;)或者是在&lt;code&gt;cmake&lt;/code&gt;和&lt;code&gt;../opencv&lt;/code&gt;之间插入&lt;code&gt;-D[编译选项]&lt;/code&gt;的方式。&lt;/p&gt;
+&lt;p&gt;具体的参数含义可以参考&lt;a href=&#34;https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html&#34;&gt;OpenCV官方文档&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; 、..参考资料2..的cmake编译参数部分&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;、&lt;a href=&#34;https://blog.csdn.net/j_d_c/article/details/53365381&#34;&gt;CMake编译opencv各选项的含义&lt;/a&gt;&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;p&gt;一般来说，根据架构或者功能的选择，常用的配置参数有：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Option&lt;/th&gt;
+&lt;th&gt;Default&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_OPENCL&lt;/td&gt;
+&lt;td&gt;ON&lt;/td&gt;
+&lt;td&gt;Multiple OpenCL-accelerated algorithms are available via so-called &amp;quot;Transparent API (T-API)&amp;quot;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_OPENGL&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;OpenGL integration can be used to draw HW-accelerated windows with following backends: GTK, WIN32 and Qt. And enables basic interoperability with OpenGL, see &lt;a href=&#34;https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html&#34;&gt;OpenGL interoperability&lt;/a&gt; and &lt;a href=&#34;https://docs.opencv.org/4.x/df/d24/group__highgui__opengl.html&#34;&gt;OpenGL support&lt;/a&gt; for details.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_GTK&lt;/td&gt;
+&lt;td&gt;ON&lt;/td&gt;
+&lt;td&gt;GTK is a common toolkit in Linux and Unix-like OS-es. By default version 3 will be used if found, version 2 can be forced with the WITH_GTK_2_X option.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_QT&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;Qt is a cross-platform GUI framework.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_OPENMP&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;OpenMP API relies on compiler support.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WITH_TBB&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;Threading Building Blocks is a cross-platform library for parallel programming.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;BUILD_TBB&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;OpenCV can download and build TBB library from GitHub, this functionality can be enabled with the BUILD_TBB option.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;BUILD_opencv_python3&lt;/td&gt;
+&lt;td&gt;ON&lt;/td&gt;
+&lt;td&gt;Build python3 bindings. Python with development files and numpy must be installed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INSTALL_C_EXAMPLES&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;Install C++ sample sources from the samples/cpp directory.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INSTALL_PYTHON_EXAMPLES&lt;/td&gt;
+&lt;td&gt;OFF&lt;/td&gt;
+&lt;td&gt;Install Python sample sources from the samples/python directory.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;另外，如果需要&lt;code&gt;opencv_contrib&lt;/code&gt;，则需要通过&lt;code&gt;-DOPENCV_EXTRA_MODULES_PATH=&lt;/code&gt;来指定&lt;code&gt;opencv_contrib&lt;/code&gt;所在的路径(..相对路径..即可)。&lt;/p&gt;
+&lt;p&gt;如果需要指定安装路径，则通过&lt;code&gt;-DCMAKE_INSTALL_PREFIX=&lt;/code&gt;指定，一般安装在&lt;code&gt;/usr/&lt;/code&gt;或者&lt;code&gt;/usr/local/&lt;/code&gt;或者&lt;code&gt;/usr/local/opencv&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;现在附上参考的cmake配置脚本，放置在&lt;code&gt;opencv_build&lt;/code&gt;下，然后运行即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// ~/Software/opencv_build
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cmake -DCMAKE_BUILD_TYPE&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;RELEASE &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DCMAKE_INSTALL_PREFIX&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/local/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DOPENCV_EXTRA_MODULES_PATH&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../opencv_contrib/modules/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENCL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENGL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_GTK&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_QT&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_TBB&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENMP&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_C_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_PYTHON_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_opencv_python3&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_SHARED_LIBS&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    ../opencv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;若&lt;code&gt;cmake&lt;/code&gt;生成失败或需要更改配置重新生成，则可删除&lt;code&gt;CmakeCache.txt&lt;/code&gt;后重新运行。&lt;/p&gt;
+&lt;p&gt;另外，比较推荐用&lt;code&gt;cmake-gui&lt;/code&gt;来进行配置，通过&lt;code&gt;sudo apt install cmake-qt-gui&lt;/code&gt;安装即可。&lt;/p&gt;
+&lt;h4 id=&#34;cmake构建时常见问题&#34;&gt;cmake构建时常见问题&lt;/h4&gt;
+&lt;h5 id=&#34;无法下载某些文件&#34;&gt;无法下载某些文件&lt;/h5&gt;
+&lt;p&gt;在cmake构建时，会出现&lt;code&gt;Download failed&lt;/code&gt;的警告&lt;code&gt;Warning&lt;/code&gt;，解决方法是到&lt;code&gt;~/Software/build/CMakeDownloadLog.txt&lt;/code&gt;里面，查看下载失败的文件的..文件名.. 和 ..下载链接..，以及下载后存放的..位置..，一般是从&lt;code&gt;cmake_download&lt;/code&gt;里下载对应文件并改名，保存到&lt;code&gt;~/Software/opencv/.cache&lt;/code&gt;。常见的下载失败的文件有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ippicv&lt;/li&gt;
+&lt;li&gt;ade&lt;/li&gt;
+&lt;li&gt;data&lt;/li&gt;
+&lt;li&gt;wechat_qrcode&lt;/li&gt;
+&lt;li&gt;xfeatures2d&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;opencv与ffmpeg编译问题&#34;&gt;OpenCV与ffmpeg编译问题&lt;/h5&gt;
+&lt;p&gt;OpenCV可以调用ffmpeg来作为视频处理的后端，大大提高视频处理的能力，但是OpenCV使用cmake生成配置时，经常会出现检测不到ffmpeg的问题，解决办法&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不使用&lt;code&gt;apt&lt;/code&gt;安装ffmpeg，需采用..源码编译安装..的方式安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装&lt;code&gt;ffmpeg&lt;/code&gt;时，需指定&lt;code&gt;pkg-config&lt;/code&gt;的路径，关闭&lt;code&gt;pic&lt;/code&gt;，使能&lt;code&gt;shared&lt;/code&gt;，即&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;configure&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;--prefix=/usr/local/ffmpeg --pkgconfigdir=/usr/lib/  x86_64-linux-gnu/pkgconfig/ --enable-pic --enbale-shared --disable-x86asm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为设定了&lt;code&gt;--enable-shared&lt;/code&gt;，因此需要手动指定&lt;code&gt;ffmpeg动态库&lt;/code&gt;的路径，在&lt;code&gt;/etc/ld.so.conf.d/&lt;/code&gt;新建&lt;code&gt;ffmpeg.conf&lt;/code&gt;，然后输入&lt;code&gt;ffmpeg动态库&lt;/code&gt;的路径：&lt;code&gt;/usr/local/ffmpeg/lib/&lt;/code&gt;，然后&lt;code&gt;sudo ldconfig&lt;/code&gt;更新一下，即：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudu&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;vim&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ld&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ffmpeg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 进入/etc/ld.conf.d/ffmpeg.conf，并输入：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ffmpeg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 保存退出，返回终端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ldconfig&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不知道什么原因，OpenCV在..编译..时未能正确识别到&lt;code&gt;libavcodec&lt;/code&gt;的版本号&lt;code&gt;LIBAVCODEC_VERSION_INT&lt;/code&gt;（但在&lt;code&gt;cmake&lt;/code&gt;生成的时候可以），因此需要在&lt;code&gt;~/Software/opencv/modules/videoio/src/ffmpeg_codecs.hpp:80:5&lt;/code&gt;加一句&lt;code&gt;#define LIBAVCODEC_VERSION_INT 5939100&lt;/code&gt;（把&lt;code&gt;cmake&lt;/code&gt;检测到的版本号填进去）。这种方法虽然比较ugly但能用，如果有其他解决方法麻烦提个issue告知，谢谢。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;opencv与openblaslapacke的配置问题&#34;&gt;OpenCV与OpenBLAS、Lapacke的配置问题&lt;/h5&gt;
+&lt;p&gt;OpenCV和OpenBLAS、Lapacke之间的兼容性存在问题，需要进行一些设置，主要是参考opencv的&lt;a href=&#34;https://github.com/opencv/opencv/issues/12957&#34;&gt;issue#12957&lt;/a&gt;&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;apt&lt;/code&gt;安装&lt;code&gt;libopenblas-dev&lt;/code&gt;、&lt;code&gt;libopenblas-base&lt;/code&gt;、&lt;code&gt;liblapacke-dev&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;lapacke.h&lt;/code&gt;软连接: &lt;code&gt;sudo ln -s /usr/include/lapacke.h /usr/include/x86_64-linux-gnu/lapacke.h&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;libcblas.so&lt;/code&gt;软连接: &lt;code&gt;sudo ln -s /usr/include/x86_64-linux-gnu/libblas.so /usr/include/x86_64-linux-gnu/libcblas.so&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;opencv/cmake/OpenCVFindOpenBLAS.cmake&lt;/code&gt;内添加&lt;code&gt;Open_BLAS_INCLUDE_SEARCH_PATHS&lt;/code&gt;到&lt;code&gt;/usr/include/x86_64-linux-gnu&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;opencv/cmake/OpenCVFindOpenBLAS.cmake&lt;/code&gt;内添加&lt;code&gt;Open_BLAS_LIB_SEARCH_PATHS&lt;/code&gt;到&lt;code&gt;/usr/lib/x86_64-linux-gnu&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加链接参数&lt;code&gt;-lcblas&lt;/code&gt;:&lt;code&gt;CMAKE_EXE_LINKER_FLAGS=-lcblas&lt;/code&gt;&lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;编译及安装&#34;&gt;编译及安装&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;cmake&lt;/code&gt;成功生成&lt;code&gt;Makefile&lt;/code&gt;后，运行&lt;code&gt;make -j8&lt;/code&gt;后，运行&lt;code&gt;sudo make install&lt;/code&gt;，即可完成安装。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Software&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;j8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;check&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;编译时出现的问题&#34;&gt;编译时出现的问题&lt;/h5&gt;
+&lt;p&gt;在编译时曾出现编译到&lt;code&gt;modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2.cpp.o&lt;/code&gt;的时候出现卡很长时间的问题，可能是因为4个进程内存不足的问题，中断并使用&lt;code&gt;make -j1&lt;/code&gt;继续编译即可。&lt;/p&gt;
+&lt;h3 id=&#34;交叉编译安装opencv及opencv_contrib&#34;&gt;交叉编译安装opencv及opencv_contrib&lt;/h3&gt;
+&lt;h4 id=&#34;下载交叉编译工具链&#34;&gt;下载交叉编译工具链&lt;/h4&gt;
+&lt;p&gt;从arm官网的&lt;a href=&#34;https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads&#34;&gt;下载页面&lt;/a&gt;下载对应架构的工具链，并解压到&lt;code&gt;~/Software&lt;/code&gt;目录下。交叉编译工具链的命名可以参考&lt;a href=&#34;https://blog.csdn.net/LEON1741/article/details/81537529&#34;&gt;交叉编译器的命名规则及详细解释&lt;/a&gt;&lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;现在选择&lt;a href=&#34;https://developer.arm.com/-/media/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu.tar.xz&#34;&gt;gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu&lt;/a&gt;，解压到&lt;code&gt;~/Software/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;新建编译文件夹和安装文件夹&#34;&gt;新建编译文件夹和安装文件夹&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;~/Software&lt;/code&gt;下，新建&lt;code&gt;opencv_build_aarch64&lt;/code&gt;作为编译文件夹，新建&lt;code&gt;opencv_install_aarch64&lt;/code&gt;作为安装文件夹，交叉编译完成后，把&lt;code&gt;opencv_install_aarch64&lt;/code&gt;文件夹打包一下，复制到对应的平台上，在解压到&lt;code&gt;/usr/&lt;/code&gt;或者&lt;code&gt;/usr/local&lt;/code&gt;或者&lt;code&gt;/usr/local/opencv&lt;/code&gt;就可以使用了。&lt;/p&gt;
+&lt;p&gt;现在，我们目录结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Software
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv_contrib
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv_build
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv_build_aarch64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├───opencv_install_aarch64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;配置交叉编译脚本&#34;&gt;配置交叉编译脚本&lt;/h4&gt;
+&lt;p&gt;进入&lt;code&gt;opencv_build_aarch64&lt;/code&gt;，新建&lt;code&gt;cmake_build_aarch64.sh&lt;/code&gt;，在之前的脚本上，更改安装鲁姆到&lt;code&gt;opencv_install_aarch64&lt;/code&gt;，加上交叉编译工具链相关内容，指定对应系统类型&lt;code&gt;CMAKE_SYSTEM_NAME&lt;/code&gt;、C编译器&lt;code&gt;CMAKE_C_COMPILER&lt;/code&gt;、C++编译器&lt;code&gt;CMAKE_CXX_COMPILER&lt;/code&gt;，参考脚本如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// ~/Software/opencv_build_aarch64.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cmake -DCMAKE_BUILD_TYPE&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;RELEASE &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DCMAKE_SYSTEM_NAME&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Linux &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DCMAKE_C_COMPILER&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-gcc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    -DCMAKE_CXX_COMPILER&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-g++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    -DCMAKE_INSTALL_PREFIX&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../opencv_install_aarch64/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DOPENCV_EXTRA_MODULES_PATH&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../opencv_contrib/modules/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENCL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENGL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_GTK&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_QT&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_TBB&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENMP&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_C_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_PYTHON_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_opencv_python3&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_SHARED_LIBS&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    ../opencv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者也可以新建一个&lt;code&gt;crosscompiler_aarch64.cmake&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmake&#34; data-lang=&#34;cmake&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;CMAKE_SYSTEM_NAME&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Linux&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;CMAKE_SYSTEM_PROCESSOR&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;aarch64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;​
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_SYSROOT /home/devel/rasp-pi-rootfs)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_STAGING_PREFIX /home/devel/stage)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;tools&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;../gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;CMAKE_C_COMPILER&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;tools&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;/bin/aarch64-none-linux-gnu-gcc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;CMAKE_CXX_COMPILER&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;tools&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;/bin/aarch64-none-linux-gnu-g++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在未交叉编译的脚本下添加&lt;code&gt;CMAKE_TOOLCHAIN_FILE&lt;/code&gt;，完整脚本如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// ~/Software/opencv_build_aarch64.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cmake -DCMAKE_BUILD_TYPE&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;RELEASE &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DCMAKE_TOOLCHAIN_FILE&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;./crosscompiler_aarch64.cmake &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DCMAKE_INSTALL_PREFIX&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../opencv_install_aarch64/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DOPENCV_EXTRA_MODULES_PATH&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;../opencv_contrib/modules/ &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENCL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENGL&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_GTK&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_QT&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_TBB&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DWITH_OPENMP&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_C_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DINSTALL_PYTHON_EXAMPLES&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;OFF &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_opencv_python3&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    -DBUILD_SHARED_LIBS&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ON &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    ../opencv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者也可以使用&lt;code&gt;cmake-gui&lt;/code&gt;进行配置&lt;/p&gt;
+&lt;h3 id=&#34;编译及安装及打包&#34;&gt;编译及安装及打包&lt;/h3&gt;
+&lt;p&gt;跟之前一样，在&lt;code&gt;cmake&lt;/code&gt;成功生成&lt;code&gt;Makefile&lt;/code&gt;后，运行&lt;code&gt;make -j8&lt;/code&gt;后，运行&lt;code&gt;make install&lt;/code&gt;，即可把编译后的最终产物复制到&lt;code&gt;opencv_install_aarch64&lt;/code&gt;内，然后将其打包就行。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Software&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;j8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;check&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;..&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Software&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cvf&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv_install_aarch64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_install_aarch64&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/375566593&#34;&gt;在Ubuntu平台编译OpenCV的正确姿势&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31112205/article/details/105161419&#34;&gt;Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本
+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html&#34;&gt;OpenCV configuration options reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/sheqianweilong/article/details/102646929&#34;&gt;opencv编译安装--踩坑&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;维基百科&lt;a href=&#34;https://zh.m.wikipedia.org/zh-hans/OpenCV&#34;&gt;OpenCV&lt;/a&gt;页面&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/375566593&#34;&gt;在Ubuntu平台编译OpenCV的正确姿势&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html&#34;&gt;OpenCV configuration options reference&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31112205/article/details/105161419&#34;&gt;Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/472115312&#34;&gt;opencv+ffmpeg编译打包全解指南&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1916880&#34;&gt;编译FFMpeg n4.2.5、OpenCV-3.4.16、OpenCV-4.5.4&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/opencv/opencv/issues/12957&#34;&gt;Correction in OpenCV&#39;s default CMAKE search Path for OpenBLAS Library on Ubuntu-64bit Machines&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:8&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Evanzxh/article/details/122617896&#34;&gt;opencv3.3.0安装过程报错 undefined reference to cblas_zgemm解决方案&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:9&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/LEON1741/article/details/81537529&#34;&gt;交叉编译器的命名规则及详细解释（arm/gnu/none/linux/eabi/eabihf/gcc/g++）&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/opencv_install_guild/#fnref:9&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Hugo基础使用不完全指北</title>
@@ -285,6 +941,40 @@
                                     <category domain="https://ls1030.github.io/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/">常用工具</category>
                                 
                             
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Hello World</title>
+                <link>https://ls1030.github.io/essay/hello-world/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/essay/hello-world/</guid>
+                <pubDate>Mon, 17 Jan 2022 15:25:11 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/essay/">essay\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
                         
                     
                 

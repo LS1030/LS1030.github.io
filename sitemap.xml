@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ls1030.github.io/</loc>
+    <lastmod>2022-07-18T18:34:44+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/opencv_install_guild/</loc>
+    <lastmod>2022-07-18T18:34:44+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/tech/</loc>
+    <lastmod>2022-07-18T18:34:44+08:00</lastmod>
+  </url><url>
     <loc>https://ls1030.github.io/tech/hugo_basic_userguide/</loc>
     <lastmod>2022-07-15T17:54:46+08:00</lastmod>
   </url><url>
-    <loc>https://ls1030.github.io/</loc>
-    <lastmod>2022-07-15T17:54:46+08:00</lastmod>
-  </url><url>
     <loc>https://ls1030.github.io/tags/</loc>
-    <lastmod>2022-07-15T17:54:46+08:00</lastmod>
-  </url><url>
-    <loc>https://ls1030.github.io/tech/</loc>
     <lastmod>2022-07-15T17:54:46+08:00</lastmod>
   </url><url>
     <loc>https://ls1030.github.io/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
@@ -19,6 +22,15 @@
   </url><url>
     <loc>https://ls1030.github.io/tech/git_basic_userguide/</loc>
     <lastmod>2022-07-15T17:54:46+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/about/</loc>
+    <lastmod>2022-01-17T15:30:10+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/essay/</loc>
+    <lastmod>2022-01-17T18:34:49+08:00</lastmod>
+  </url><url>
+    <loc>https://ls1030.github.io/essay/hello-world/</loc>
+    <lastmod>2022-01-17T18:34:49+08:00</lastmod>
   </url><url>
     <loc>https://ls1030.github.io/tech/c_usage_summary/</loc>
     <lastmod>2022-07-15T17:54:46+08:00</lastmod>
