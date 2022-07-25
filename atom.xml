@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-07-22T18:37:22&#43;08:00</updated>
+    <updated>2022-07-25T15:36:25&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">OpenCV安装不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/opencv_install_guild/" />
             <id>https://ls1030.github.io/tech/opencv_install_guild/</id>
-            <updated>2022-07-18T18:34:44&#43;08:00</updated>
+            <updated>2022-07-22T18:38:08&#43;08:00</updated>
             <published>2022-07-15T17:16:45&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -226,7 +226,7 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-AppleScript&#34; data-lang=&#34;AppleScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv_build&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;现在，我们目录结构如下：&lt;/p&gt;
@@ -354,7 +354,7 @@
 &lt;p&gt;另外，比较推荐用&lt;code&gt;cmake-gui&lt;/code&gt;来进行配置，通过&lt;code&gt;sudo apt install cmake-qt-gui&lt;/code&gt;安装即可。&lt;/p&gt;
 &lt;h4 id=&#34;cmake构建时常见问题&#34;&gt;cmake构建时常见问题&lt;/h4&gt;
 &lt;h5 id=&#34;无法下载某些文件&#34;&gt;无法下载某些文件&lt;/h5&gt;
-&lt;p&gt;在cmake构建时，会出现&lt;code&gt;Download failed&lt;/code&gt;的警告&lt;code&gt;Warning&lt;/code&gt;，解决方法是到&lt;code&gt;~/Software/build/CMakeDownloadLog.txt&lt;/code&gt;里面，查看下载失败的文件的..文件名.. 和 ..下载链接..，以及下载后存放的..位置..，一般是从&lt;code&gt;cmake_download&lt;/code&gt;里下载对应文件并改名，保存到&lt;code&gt;~/Software/opencv/.cache&lt;/code&gt;。常见的下载失败的文件有：&lt;/p&gt;
+&lt;p&gt;在cmake构建时，会出现&lt;code&gt;Download failed&lt;/code&gt;的警告&lt;code&gt;Warning&lt;/code&gt;，解决方法是到&lt;code&gt;~/Software/cmake_build/CMakeDownloadLog.txt&lt;/code&gt;里面，查看下载失败的文件的..文件名.. 和 ..下载链接..，以及下载后存放的..位置..，一般是从&lt;code&gt;cmake_download&lt;/code&gt;里下载对应文件并改名，保存到&lt;code&gt;~/Software/opencv/.cache&lt;/code&gt;。常见的下载失败的文件有：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;ippicv&lt;/li&gt;
 &lt;li&gt;ade&lt;/li&gt;
@@ -610,7 +610,27 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cvf&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;opencv_install_aarch64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;opencv_install_aarch64&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;不同版本共存问题&#34;&gt;不同版本共存问题&lt;/h3&gt;
+&lt;p&gt;现在OpenCV4.x版本和3.x版本都比较常用（很多老代码都是用OpenCV3.x），因此需要解决两个版本共存的问题。解决方式很简单，改一下&lt;code&gt;CMakeList.txt&lt;/code&gt;的搜索路径即可。&lt;/p&gt;
+&lt;p&gt;现在我们在&lt;code&gt;/usr/local/&lt;/code&gt;下有两个版本的OpenCV，分别为&lt;code&gt;/usr/local/OpenCV_4.6.0&lt;/code&gt;和&lt;code&gt;/usr/local/OpenCV_3.4.16&lt;/code&gt;。默认情况下，&lt;code&gt;CMakeList.txt&lt;/code&gt;里&lt;code&gt;find_package(OpenCV REQUIRED)&lt;/code&gt;会找到最新版本的OpenCV。在需要使用&lt;code&gt;3.4.16&lt;/code&gt;版本时，需要进行如下修改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmake&#34; data-lang=&#34;cmake&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;OpenCV_DIR&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/local/opencv-3.4.16/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;find_package&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;OpenCV&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;REQUIRED&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s&#34;&gt;PATHS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;OpenCV_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;s&#34;&gt;NO_DEFAULT_PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在需要切换版本时把3、4行注释即可。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/375566593&#34;&gt;在Ubuntu平台编译OpenCV的正确姿势&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31112205/article/details/105161419&#34;&gt;Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本
@@ -670,6 +690,14 @@
             
             
                 
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" term="环境搭建" label="环境搭建" />
+                            
+                        
                     
                 
             
@@ -1235,7 +1263,7 @@ PE可以选择&lt;a href=&#34;http://www.wepe.com.cn/download.html&#34;&gt;微PE
                             
                             
                             
-                                <category scheme="https://ls1030.github.io/tags/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
+                                <category scheme="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" term="环境搭建" label="环境搭建" />
                             
                         
                     
