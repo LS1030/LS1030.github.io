@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-07-25T15:36:25&#43;08:00</updated>
+    <updated>2022-11-23T11:49:46&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -17,10 +17,313 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.101.0">Hugo</generator>
         <entry>
+            <title type="text">Picture</title>
+            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/picture/" />
+            <id>https://ls1030.github.io/tech/picture/</id>
+            <updated>2022-11-23T11:49:35&#43;08:00</updated>
+            <published>2022-11-23T11:36:30&#43;08:00</published>
+            <author>
+                    <name>LS1030</name>
+                    <uri>https://ls1030.github.io/</uri>
+                    <email>L.S.1030@outlook.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">图片嵌入测试</summary>
+            
+                <content type="html">&lt;h1 id=&#34;图片嵌入测试&#34;&gt;图片嵌入测试&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/AbbeyGardens_ZH-CN4831631801_UHD.jpg&#34; alt=&#34;pic.jpg&#34; title=&#34;pic&#34;&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Python入门不完全指北</title>
+            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/python_tutorial/" />
+            <id>https://ls1030.github.io/tech/python_tutorial/</id>
+            <updated>2022-07-25T18:43:05&#43;08:00</updated>
+            <published>2022-07-25T15:40:14&#43;08:00</published>
+            <author>
+                    <name>LS1030</name>
+                    <uri>https://ls1030.github.io/</uri>
+                    <email>L.S.1030@outlook.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">简介 人生苦短，我用python。得益于简洁易懂的语法，数量众多的轮子，python迅……</summary>
+            
+                <content type="html">&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;人生苦短，我用python。得益于简洁易懂的语法，数量众多的轮子，python迅速地成为了第一受欢迎的编程语言。以下是简单的python入门指南，主要是包括了安装及环境配置、基本语法、常用库、学习参考资料。主要参考了&lt;a href=&#34;https://www.icodebang.com/article/220768&#34;&gt;这可能是一篇最贴心的Anaconda指北了&lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、&lt;a href=&#34;https://blog.csdn.net/zhayushui/article/details/80433768&#34;&gt;conda常用命令&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;、&lt;a href=&#34;https://docs.python.org/zh-cn/3/tutorial/index.html&#34;&gt;Python 官方教程&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;安装及环境配置windows&#34;&gt;安装及环境配置（windows）&lt;/h2&gt;
+&lt;h3 id=&#34;安装ide&#34;&gt;安装IDE&lt;/h3&gt;
+&lt;p&gt;python编程的IDE一般选择&lt;code&gt;VSCode&lt;/code&gt;或者&lt;code&gt;PyCharm&lt;/code&gt;。因为&lt;code&gt;PyCharm&lt;/code&gt;是商业软件，不能免费使用，因此选择&lt;code&gt;VSCode&lt;/code&gt;。可以从&lt;a href=&#34;https://code.visualstudio.com/download&#34;&gt;VSCode官方下载页面&lt;/a&gt;下载对应版本的VSCode，安装完毕后再安装下面的插件：&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ms-python.python&#34;&gt;python&lt;/a&gt;、&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance&#34;&gt;Pylance&lt;/a&gt;即可。&lt;/p&gt;
+&lt;h3 id=&#34;安装python解释器包管理器虚拟环境&#34;&gt;安装python（解释器、包管理器、虚拟环境）&lt;/h3&gt;
+&lt;p&gt;安装&lt;code&gt;python解释器&lt;/code&gt;时一般都会同时&lt;code&gt;包管理器&lt;/code&gt;和&lt;code&gt;虚拟环境&lt;/code&gt;。因为python的包非常多，因此需要比较好的包管理器来管理包，同时要创建虚拟环境来做好环境隔离，比较常用的包管理器是&lt;code&gt;pip&lt;/code&gt;、&lt;code&gt;conda&lt;/code&gt;，它们的区别为&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类别&lt;/th&gt;
+&lt;th&gt;conda&lt;/th&gt;
+&lt;th&gt;pip&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;管理&lt;/td&gt;
+&lt;td&gt;二进制&lt;/td&gt;
+&lt;td&gt;wheel 或源码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;需要编译器&lt;/td&gt;
+&lt;td&gt;no&lt;/td&gt;
+&lt;td&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;语言&lt;/td&gt;
+&lt;td&gt;any&lt;/td&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;虚拟环境&lt;/td&gt;
+&lt;td&gt;支持&lt;/td&gt;
+&lt;td&gt;通过 virtualenv或venv等支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;依赖性检查&lt;/td&gt;
+&lt;td&gt;yes&lt;/td&gt;
+&lt;td&gt;屏幕提示用户选择&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;包来源&lt;/td&gt;
+&lt;td&gt;Anaconda repo和cloud&lt;/td&gt;
+&lt;td&gt;PyPi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;常用的虚拟环境有&lt;code&gt;conda&lt;/code&gt;、&lt;code&gt;venv&lt;/code&gt;、&lt;code&gt;virtualenv&lt;/code&gt;、&lt;code&gt;pipenv&lt;/code&gt;等，它们的区别可以参考stackoverflow下关于此问题的回答&lt;a href=&#34;https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe&#34;&gt;What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?&lt;/a&gt;&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;p&gt;由于&lt;code&gt;conda&lt;/code&gt;集成了包管理器和虚拟环境，使用时比较方便，因此选择使用&lt;code&gt;conda&lt;/code&gt;。安装&lt;code&gt;conda&lt;/code&gt;时可以选择&lt;code&gt;Anaconda&lt;/code&gt;或者&lt;code&gt;Miniconda&lt;/code&gt;，&lt;code&gt;Anaconda&lt;/code&gt;包含了除&lt;code&gt;conda&lt;/code&gt;本身之外的一些科学计算包，显得比较臃肿，而&lt;code&gt;Miniconda&lt;/code&gt;仅包含了&lt;code&gt;conda本身&lt;/code&gt;和&lt;code&gt;conda&#39;依赖&lt;/code&gt;的内容，比较精简，它们之间的区别见&lt;a href=&#34;https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda&#34;&gt;Anaconda or Miniconda?&lt;/a&gt;。为方便起见选择&lt;code&gt;Miniconda&lt;/code&gt;。但需要注意，&lt;code&gt;Anaconda&lt;/code&gt;和&lt;code&gt;Miniconda&lt;/code&gt;均是商业软件，仅仅是&lt;code&gt;个人免费版&lt;/code&gt;才可以自由使用，不可以商用，详见&lt;a href=&#34;https://anaconda.org.cn/&#34;&gt;Anaconda 文档&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;安装miniconda&#34;&gt;安装Miniconda&lt;/h4&gt;
+&lt;p&gt;首先是下载安装包并安装，从&lt;a href=&#34;https://docs.conda.io/en/latest/miniconda.html&#34;&gt;Miniconda下载页&lt;/a&gt;下载..Windows版本..的&lt;code&gt;Miniconda3&lt;/code&gt;，目前(2022-07-25)最新版本为&lt;a href=&#34;https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Windows-x86_64.exe&#34;&gt;Miniconda-python3.9&lt;/a&gt;。 下载完毕后，安装，注意在&lt;code&gt;Advanced Options&lt;/code&gt;里的&lt;code&gt;Add Miniconda3 to my PATH environment variable&lt;/code&gt; ..不勾选..，等安装完成后再手动添加环境变量，需要添加的环境变量为（默认安装路径）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Scripts&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Library&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后，打开&lt;code&gt;PowerTerminal&lt;/code&gt;，输入&lt;code&gt;conda --version&lt;/code&gt;，输出&lt;code&gt;conda&lt;/code&gt;的版本号，安装完成。&lt;/p&gt;
+&lt;p&gt;注意，早期的&lt;code&gt;conda官方源&lt;/code&gt;不稳定甚至需要科学访问，因此早期的许多教程都有修改conda源的操作，但目前conda官方源可以稳定访问，就不需要这一步了。&lt;/p&gt;
+&lt;h4 id=&#34;创建虚拟环境和安装工具包&#34;&gt;创建虚拟环境和安装工具包&lt;/h4&gt;
+&lt;p&gt;conda安装完毕之后，默认是&lt;code&gt;base&lt;/code&gt;环境。&lt;/p&gt;
+&lt;p&gt;conda创建新环境的命令为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;conda 安装工具包的命令为(官方源)：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;forge&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pkg_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;conda也可以安装本地包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;--use-local [pkg_path]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;另外，conda中也可以使用pip来安装工具包，需要先安装&lt;code&gt;pip&lt;/code&gt;：&lt;code&gt;conda install -c anaconda pip&lt;/code&gt;，然后再使用&lt;code&gt;pip install&lt;/code&gt;安装对应的工具包。&lt;/p&gt;
+&lt;h4 id=&#34;conda常用操作&#34;&gt;conda常用操作&lt;/h4&gt;
+&lt;p&gt;conda的常用操作有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;列出当前存在的环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;e&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切换环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;activate&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;deactivate&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;remove&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除某个包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;uninstall&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;conda清理(清楚缓存及不用的包)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;p&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;删除没有用的包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;t&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;删除tar包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;--all   // 删除所有的安装包及cache&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;conda环境打包及迁移，可参考官方教程&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;yml&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;导出环境包列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;yml&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;读取文件内容并恢复环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;配置ide&#34;&gt;配置IDE&lt;/h3&gt;
+&lt;p&gt;安装完&lt;code&gt;Miniconda&lt;/code&gt;后，会自带一个python环境&lt;code&gt;base&lt;/code&gt;，接下来配置一下VSCode就可以完成了。&lt;/p&gt;
+&lt;p&gt;首先打开一个&lt;code&gt;py文件&lt;/code&gt;，比如说&lt;code&gt;hello_world.py&lt;/code&gt;，然后在VSCode的右下角会有一个选择解释器的页面，或者按&lt;code&gt;F1&lt;/code&gt;然后搜索并点击&lt;code&gt;Python: Select Interpreter&lt;/code&gt;，然后选择对应的环境&lt;code&gt;base&lt;/code&gt;。一般情况下会直接搜索到，如果没有的话数据具体路径，如&lt;code&gt;C:\ProgramData\Miniconda3\python.exe&lt;/code&gt;或者&lt;code&gt;C:\ProgramData\Miniconda3\env\env_name\python.exe&lt;/code&gt;。然后按&lt;code&gt;F5&lt;/code&gt;就可以直接调试运行了。&lt;/p&gt;
+&lt;p&gt;还可以创建&lt;code&gt;launch.json&lt;/code&gt;来进行进一步配置：进入右边栏的&lt;code&gt;运行与调试&lt;/code&gt;，然后点击&lt;code&gt;创建launch.json&lt;/code&gt;，选择&lt;code&gt;python文件&lt;/code&gt;，然后就会在当前文件夹下新建&lt;code&gt;.vscode/launch.json&lt;/code&gt;文件了。一般来说，把&lt;code&gt;justMyCode&lt;/code&gt;设置为&lt;code&gt;false&lt;/code&gt;就可以在调试过程中进入工具包内的代码，更多的设置请参考&lt;a href=&#34;https://code.visualstudio.com/docs/python/debugging&#34;&gt;官方教程&lt;/a&gt;&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;python语法总结&#34;&gt;python语法总结&lt;/h2&gt;
+&lt;h2 id=&#34;python常用库&#34;&gt;python常用库&lt;/h2&gt;
+&lt;h2 id=&#34;python学习资料&#34;&gt;python学习资料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1zf4y1Z7zF?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=a255c980c5c2ae88e164110152093031&#34;&gt;MIT Python教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.icodebang.com/article/220768&#34;&gt;这可能是一篇最贴心的Anaconda指北了&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/zhayushui/article/details/80433768&#34;&gt;conda常用命令&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/zh-cn/3/tutorial/index.html&#34;&gt;Python 官方教程&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379321816&#34;&gt;Anaconda与conda、pip与conda的区别&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe&#34;&gt;What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com/blog/moving-conda-environments&#34;&gt;Moving Conda Environments&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://code.visualstudio.com/docs/python/debugging&#34;&gt;Python debugging in VS Code&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" term="环境配置" label="环境配置" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/%E7%BC%96%E7%A8%8B/" term="编程" label="编程" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">OpenCV安装不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/opencv_install_guild/" />
             <id>https://ls1030.github.io/tech/opencv_install_guild/</id>
-            <updated>2022-07-22T18:38:08&#43;08:00</updated>
+            <updated>2022-07-25T15:37:17&#43;08:00</updated>
             <published>2022-07-15T17:16:45&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -1134,7 +1437,7 @@ C语言的名称区分大小写。
             <title type="text">电脑安装系统指南</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/computer_reinstall_system_guide/" />
             <id>https://ls1030.github.io/tech/computer_reinstall_system_guide/</id>
-            <updated>2022-07-15T17:54:46&#43;08:00</updated>
+            <updated>2022-07-25T18:43:05&#43;08:00</updated>
             <published>2019-08-12T08:45:58&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -1275,7 +1578,7 @@ PE可以选择&lt;a href=&#34;http://www.wepe.com.cn/download.html&#34;&gt;微PE
             <title type="text">Markdown基础指南</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/markdown_basic_guide/" />
             <id>https://ls1030.github.io/tech/markdown_basic_guide/</id>
-            <updated>2022-07-15T17:54:46&#43;08:00</updated>
+            <updated>2022-07-25T18:43:05&#43;08:00</updated>
             <published>2019-08-11T18:32:08&#43;08:00</published>
             <author>
                     <name>LS1030</name>
