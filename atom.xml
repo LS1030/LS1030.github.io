@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-11-23T18:54:37&#43;08:00</updated>
+    <updated>2022-11-23T19:04:05&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -1097,7 +1097,7 @@ C语言的名称区分大小写。
             <title type="text">stm32学习笔记之GPIO</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/stm32_note_gpio/" />
             <id>https://ls1030.github.io/tech/stm32_note_gpio/</id>
-            <updated>2022-11-23T18:52:03&#43;08:00</updated>
+            <updated>2022-11-23T18:55:04&#43;08:00</updated>
             <published>2019-10-19T08:49:47&#43;08:00</published>
             <author>
                     <name>LS1030</name>
