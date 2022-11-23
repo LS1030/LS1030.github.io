@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-11-23T11:49:46&#43;08:00</updated>
+    <updated>2022-11-23T18:54:37&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -16,309 +16,6 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.101.0">Hugo</generator>
-        <entry>
-            <title type="text">Picture</title>
-            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/picture/" />
-            <id>https://ls1030.github.io/tech/picture/</id>
-            <updated>2022-11-23T11:49:35&#43;08:00</updated>
-            <published>2022-11-23T11:36:30&#43;08:00</published>
-            <author>
-                    <name>LS1030</name>
-                    <uri>https://ls1030.github.io/</uri>
-                    <email>L.S.1030@outlook.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">图片嵌入测试</summary>
-            
-                <content type="html">&lt;h1 id=&#34;图片嵌入测试&#34;&gt;图片嵌入测试&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/AbbeyGardens_ZH-CN4831631801_UHD.jpg&#34; alt=&#34;pic.jpg&#34; title=&#34;pic&#34;&gt;&lt;/p&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">Python入门不完全指北</title>
-            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/python_tutorial/" />
-            <id>https://ls1030.github.io/tech/python_tutorial/</id>
-            <updated>2022-07-25T18:43:05&#43;08:00</updated>
-            <published>2022-07-25T15:40:14&#43;08:00</published>
-            <author>
-                    <name>LS1030</name>
-                    <uri>https://ls1030.github.io/</uri>
-                    <email>L.S.1030@outlook.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">简介 人生苦短，我用python。得益于简洁易懂的语法，数量众多的轮子，python迅……</summary>
-            
-                <content type="html">&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-&lt;p&gt;人生苦短，我用python。得益于简洁易懂的语法，数量众多的轮子，python迅速地成为了第一受欢迎的编程语言。以下是简单的python入门指南，主要是包括了安装及环境配置、基本语法、常用库、学习参考资料。主要参考了&lt;a href=&#34;https://www.icodebang.com/article/220768&#34;&gt;这可能是一篇最贴心的Anaconda指北了&lt;/a&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、&lt;a href=&#34;https://blog.csdn.net/zhayushui/article/details/80433768&#34;&gt;conda常用命令&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;、&lt;a href=&#34;https://docs.python.org/zh-cn/3/tutorial/index.html&#34;&gt;Python 官方教程&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;安装及环境配置windows&#34;&gt;安装及环境配置（windows）&lt;/h2&gt;
-&lt;h3 id=&#34;安装ide&#34;&gt;安装IDE&lt;/h3&gt;
-&lt;p&gt;python编程的IDE一般选择&lt;code&gt;VSCode&lt;/code&gt;或者&lt;code&gt;PyCharm&lt;/code&gt;。因为&lt;code&gt;PyCharm&lt;/code&gt;是商业软件，不能免费使用，因此选择&lt;code&gt;VSCode&lt;/code&gt;。可以从&lt;a href=&#34;https://code.visualstudio.com/download&#34;&gt;VSCode官方下载页面&lt;/a&gt;下载对应版本的VSCode，安装完毕后再安装下面的插件：&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ms-python.python&#34;&gt;python&lt;/a&gt;、&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance&#34;&gt;Pylance&lt;/a&gt;即可。&lt;/p&gt;
-&lt;h3 id=&#34;安装python解释器包管理器虚拟环境&#34;&gt;安装python（解释器、包管理器、虚拟环境）&lt;/h3&gt;
-&lt;p&gt;安装&lt;code&gt;python解释器&lt;/code&gt;时一般都会同时&lt;code&gt;包管理器&lt;/code&gt;和&lt;code&gt;虚拟环境&lt;/code&gt;。因为python的包非常多，因此需要比较好的包管理器来管理包，同时要创建虚拟环境来做好环境隔离，比较常用的包管理器是&lt;code&gt;pip&lt;/code&gt;、&lt;code&gt;conda&lt;/code&gt;，它们的区别为&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;类别&lt;/th&gt;
-&lt;th&gt;conda&lt;/th&gt;
-&lt;th&gt;pip&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;管理&lt;/td&gt;
-&lt;td&gt;二进制&lt;/td&gt;
-&lt;td&gt;wheel 或源码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;需要编译器&lt;/td&gt;
-&lt;td&gt;no&lt;/td&gt;
-&lt;td&gt;yes&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;语言&lt;/td&gt;
-&lt;td&gt;any&lt;/td&gt;
-&lt;td&gt;Python&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;虚拟环境&lt;/td&gt;
-&lt;td&gt;支持&lt;/td&gt;
-&lt;td&gt;通过 virtualenv或venv等支持&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;依赖性检查&lt;/td&gt;
-&lt;td&gt;yes&lt;/td&gt;
-&lt;td&gt;屏幕提示用户选择&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;包来源&lt;/td&gt;
-&lt;td&gt;Anaconda repo和cloud&lt;/td&gt;
-&lt;td&gt;PyPi&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;常用的虚拟环境有&lt;code&gt;conda&lt;/code&gt;、&lt;code&gt;venv&lt;/code&gt;、&lt;code&gt;virtualenv&lt;/code&gt;、&lt;code&gt;pipenv&lt;/code&gt;等，它们的区别可以参考stackoverflow下关于此问题的回答&lt;a href=&#34;https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe&#34;&gt;What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?&lt;/a&gt;&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;p&gt;由于&lt;code&gt;conda&lt;/code&gt;集成了包管理器和虚拟环境，使用时比较方便，因此选择使用&lt;code&gt;conda&lt;/code&gt;。安装&lt;code&gt;conda&lt;/code&gt;时可以选择&lt;code&gt;Anaconda&lt;/code&gt;或者&lt;code&gt;Miniconda&lt;/code&gt;，&lt;code&gt;Anaconda&lt;/code&gt;包含了除&lt;code&gt;conda&lt;/code&gt;本身之外的一些科学计算包，显得比较臃肿，而&lt;code&gt;Miniconda&lt;/code&gt;仅包含了&lt;code&gt;conda本身&lt;/code&gt;和&lt;code&gt;conda&#39;依赖&lt;/code&gt;的内容，比较精简，它们之间的区别见&lt;a href=&#34;https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda&#34;&gt;Anaconda or Miniconda?&lt;/a&gt;。为方便起见选择&lt;code&gt;Miniconda&lt;/code&gt;。但需要注意，&lt;code&gt;Anaconda&lt;/code&gt;和&lt;code&gt;Miniconda&lt;/code&gt;均是商业软件，仅仅是&lt;code&gt;个人免费版&lt;/code&gt;才可以自由使用，不可以商用，详见&lt;a href=&#34;https://anaconda.org.cn/&#34;&gt;Anaconda 文档&lt;/a&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;安装miniconda&#34;&gt;安装Miniconda&lt;/h4&gt;
-&lt;p&gt;首先是下载安装包并安装，从&lt;a href=&#34;https://docs.conda.io/en/latest/miniconda.html&#34;&gt;Miniconda下载页&lt;/a&gt;下载..Windows版本..的&lt;code&gt;Miniconda3&lt;/code&gt;，目前(2022-07-25)最新版本为&lt;a href=&#34;https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Windows-x86_64.exe&#34;&gt;Miniconda-python3.9&lt;/a&gt;。 下载完毕后，安装，注意在&lt;code&gt;Advanced Options&lt;/code&gt;里的&lt;code&gt;Add Miniconda3 to my PATH environment variable&lt;/code&gt; ..不勾选..，等安装完成后再手动添加环境变量，需要添加的环境变量为（默认安装路径）：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Scripts&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ProgramData&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Miniconda3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Library&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bin&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;之后，打开&lt;code&gt;PowerTerminal&lt;/code&gt;，输入&lt;code&gt;conda --version&lt;/code&gt;，输出&lt;code&gt;conda&lt;/code&gt;的版本号，安装完成。&lt;/p&gt;
-&lt;p&gt;注意，早期的&lt;code&gt;conda官方源&lt;/code&gt;不稳定甚至需要科学访问，因此早期的许多教程都有修改conda源的操作，但目前conda官方源可以稳定访问，就不需要这一步了。&lt;/p&gt;
-&lt;h4 id=&#34;创建虚拟环境和安装工具包&#34;&gt;创建虚拟环境和安装工具包&lt;/h4&gt;
-&lt;p&gt;conda安装完毕之后，默认是&lt;code&gt;base&lt;/code&gt;环境。&lt;/p&gt;
-&lt;p&gt;conda创建新环境的命令为：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;conda 安装工具包的命令为(官方源)：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;forge&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pkg_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;conda也可以安装本地包：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;--use-local [pkg_path]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;另外，conda中也可以使用pip来安装工具包，需要先安装&lt;code&gt;pip&lt;/code&gt;：&lt;code&gt;conda install -c anaconda pip&lt;/code&gt;，然后再使用&lt;code&gt;pip install&lt;/code&gt;安装对应的工具包。&lt;/p&gt;
-&lt;h4 id=&#34;conda常用操作&#34;&gt;conda常用操作&lt;/h4&gt;
-&lt;p&gt;conda的常用操作有：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;列出当前存在的环境&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;list&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;e&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;切换环境&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;activate&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;deactivate&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;删除环境&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;remove&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;删除某个包：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;uninstall&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;]]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;conda清理(清楚缓存及不用的包)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;p&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;删除没有用的包&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;t&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;删除tar包&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clean&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;--all   // 删除所有的安装包及cache&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;conda环境打包及迁移，可参考官方教程&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Applescript&#34; data-lang=&#34;Applescript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;yml&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;导出环境包列表&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;yml&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;读取文件内容并恢复环境&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;配置ide&#34;&gt;配置IDE&lt;/h3&gt;
-&lt;p&gt;安装完&lt;code&gt;Miniconda&lt;/code&gt;后，会自带一个python环境&lt;code&gt;base&lt;/code&gt;，接下来配置一下VSCode就可以完成了。&lt;/p&gt;
-&lt;p&gt;首先打开一个&lt;code&gt;py文件&lt;/code&gt;，比如说&lt;code&gt;hello_world.py&lt;/code&gt;，然后在VSCode的右下角会有一个选择解释器的页面，或者按&lt;code&gt;F1&lt;/code&gt;然后搜索并点击&lt;code&gt;Python: Select Interpreter&lt;/code&gt;，然后选择对应的环境&lt;code&gt;base&lt;/code&gt;。一般情况下会直接搜索到，如果没有的话数据具体路径，如&lt;code&gt;C:\ProgramData\Miniconda3\python.exe&lt;/code&gt;或者&lt;code&gt;C:\ProgramData\Miniconda3\env\env_name\python.exe&lt;/code&gt;。然后按&lt;code&gt;F5&lt;/code&gt;就可以直接调试运行了。&lt;/p&gt;
-&lt;p&gt;还可以创建&lt;code&gt;launch.json&lt;/code&gt;来进行进一步配置：进入右边栏的&lt;code&gt;运行与调试&lt;/code&gt;，然后点击&lt;code&gt;创建launch.json&lt;/code&gt;，选择&lt;code&gt;python文件&lt;/code&gt;，然后就会在当前文件夹下新建&lt;code&gt;.vscode/launch.json&lt;/code&gt;文件了。一般来说，把&lt;code&gt;justMyCode&lt;/code&gt;设置为&lt;code&gt;false&lt;/code&gt;就可以在调试过程中进入工具包内的代码，更多的设置请参考&lt;a href=&#34;https://code.visualstudio.com/docs/python/debugging&#34;&gt;官方教程&lt;/a&gt;&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;python语法总结&#34;&gt;python语法总结&lt;/h2&gt;
-&lt;h2 id=&#34;python常用库&#34;&gt;python常用库&lt;/h2&gt;
-&lt;h2 id=&#34;python学习资料&#34;&gt;python学习资料&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1zf4y1Z7zF?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=a255c980c5c2ae88e164110152093031&#34;&gt;MIT Python教程&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.icodebang.com/article/220768&#34;&gt;这可能是一篇最贴心的Anaconda指北了&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/zhayushui/article/details/80433768&#34;&gt;conda常用命令&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.python.org/zh-cn/3/tutorial/index.html&#34;&gt;Python 官方教程&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:4&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379321816&#34;&gt;Anaconda与conda、pip与conda的区别&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:5&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe&#34;&gt;What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:6&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com/blog/moving-conda-environments&#34;&gt;Moving Conda Environments&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:7&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://code.visualstudio.com/docs/python/debugging&#34;&gt;Python debugging in VS Code&lt;/a&gt;&amp;#160;&lt;a href=&#34;https://ls1030.github.io/tech/python_tutorial/#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" term="环境配置" label="环境配置" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://ls1030.github.io/tags/%E7%BC%96%E7%A8%8B/" term="编程" label="编程" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
         <entry>
             <title type="text">OpenCV安装不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/opencv_install_guild/" />
@@ -1275,43 +972,6 @@
         </entry>
     
         <entry>
-            <title type="text">Hello World</title>
-            <link rel="alternate" type="text/html" href="https://ls1030.github.io/essay/hello-world/" />
-            <id>https://ls1030.github.io/essay/hello-world/</id>
-            <updated>2022-01-17T18:34:49&#43;08:00</updated>
-            <published>2022-01-17T15:25:11&#43;08:00</published>
-            <author>
-                    <name>LS1030</name>
-                    <uri>https://ls1030.github.io/</uri>
-                    <email>L.S.1030@outlook.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"></summary>
-            
-                <content type="html"></content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https://ls1030.github.io/essay/" term="essay\" label="essay\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
             <title type="text">C语言常见用法总结</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/c_usage_summary/" />
             <id>https://ls1030.github.io/tech/c_usage_summary/</id>
@@ -1426,6 +1086,367 @@ C语言的名称区分大小写。
                             
                             
                                 <category scheme="https://ls1030.github.io/tags/%E7%BC%96%E7%A8%8B/" term="编程" label="编程" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">stm32学习笔记之GPIO</title>
+            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/stm32_note_gpio/" />
+            <id>https://ls1030.github.io/tech/stm32_note_gpio/</id>
+            <updated>2022-11-23T18:52:03&#43;08:00</updated>
+            <published>2019-10-19T08:49:47&#43;08:00</published>
+            <author>
+                    <name>LS1030</name>
+                    <uri>https://ls1030.github.io/</uri>
+                    <email>L.S.1030@outlook.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">简介 GPIO，General-purpose input/output，译为通用型之输……</summary>
+            
+                <content type="html">&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;GPIO，General-purpose input/output，译为通用型之输入输出（端口），这是单片机最基础的功能，也是与外界交互的必备方式。GPIO的作用就是通过针脚对外输出高低电平，或者是检测输入电平。Stm32通过控制端口（Port）从而控制针脚（Pin），可以通过针脚对外输出0V或者3.3V的电压，或者是检测针脚处的电压（电平）。&lt;/p&gt;
+&lt;p&gt;stm32的GPIO有多种模式：输入浮空，输入上拉，输入下拉，模拟，具有上拉/下拉功能的开漏输出，具有上拉/下拉功能的推挽输出，具有上拉/下拉功能的复用功能推挽，具有上拉/下拉功能的复用功能开漏。简而言之，就是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;浮空/上拉/下拉输入&lt;/li&gt;
+&lt;li&gt;具有上拉/下拉功能的推挽/开漏输出&lt;/li&gt;
+&lt;li&gt;模拟&lt;/li&gt;
+&lt;li&gt;复用推挽/开漏输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;gpio模式&#34;&gt;GPIO模式&lt;/h2&gt;
+&lt;h3 id=&#34;输入模式&#34;&gt;输入模式&lt;/h3&gt;
+&lt;p&gt;输入模式有浮空输入、上拉输入、下拉输入、模拟输入四种。&lt;/p&gt;
+&lt;p&gt;在前三种输入模式下，CPU可通过输入数据寄存器GPIOx_IDR读取I/O状态，数据寄存器每个1个AHB时钟中期更新一次，同时，也可产生相应的中断。
+模拟输入模式CPU不可直接读取I/O状态，引脚电压信号直接导入片上外设ADC中。&lt;/p&gt;
+&lt;p&gt;浮空输入模式一般用于通信协议的I2C、USART、SPI的接收端。&lt;/p&gt;
+&lt;p&gt;上拉输入模式一般用于检测按键的输入。当按键未按下时，引脚经过上拉电阻保持在高电平状态；当按键按下时，引脚由高电平下降到低电平。&lt;/p&gt;
+&lt;p&gt;下拉输入模式默认低电平，也可以应用于按键的输入检测。&lt;/p&gt;
+&lt;p&gt;模拟输入一般用于通过ADC测量引脚外部电压。&lt;/p&gt;
+&lt;h3 id=&#34;输出模式&#34;&gt;输出模式&lt;/h3&gt;
+&lt;p&gt;输出模式有推挽输出、开漏输出、复用推挽/开漏输出、模拟输出四种模式。&lt;/p&gt;
+&lt;p&gt;推挽输出模式一般应用于输出电平为0或者3.3V的场合，比如LED的控制等。
+推挽模式可读取引脚电平状态。&lt;/p&gt;
+&lt;p&gt;开漏输出模式一般用于高电压的场合，通过外部加一个上拉电阻，电压为5V，当开漏输出为1，即高阻态时，由上拉电阻和电源对外输出5V电平。开漏输出也用于需要“线与”功能的场合。
+使用开漏模式输出时，都需要接外部上拉电阻。
+开漏模式可读取引脚电平状态。&lt;/p&gt;
+&lt;p&gt;复用模式一般根据具体功能来配置。
+复用推挽输出一般用于USART、SPI、CAN等场合。
+复用开漏输出一般用于I2C、SMBUS等场合。
+复用模式可读取引脚电平状态。&lt;/p&gt;
+&lt;p&gt;模拟输出一般用于DAC模式，对外输出精确的电压值。此时输入功耗变为0，无法读取引脚电压。&lt;/p&gt;
+&lt;p&gt;输出模式下，有三种输出速度选择，2MHz、10MHz和50MHz。这个速度是指GPIO口驱动电路的响应速度，而不是输出信号的速度，输出信号的速度与程序有关。通过选择速度来选择不同的输出驱动模块，达到最佳的噪声控制和降低功耗的目的。&lt;/p&gt;
+&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
+&lt;h3 id=&#34;结构框图分析&#34;&gt;结构框图分析&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/GPIO.jpg&#34; alt=&#34;GPIO结构框图&#34; title=&#34;GPIO结构框图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这个框图分为几个部分，上拉下拉电阻部分，P-MOS/N-MOS管部分，输入/输出部分。&lt;/p&gt;
+&lt;h4 id=&#34;上拉下拉电阻&#34;&gt;上拉下拉电阻&lt;/h4&gt;
+&lt;p&gt;这个部分包含上拉电阻，下拉电阻，两个保护二极管。&lt;/p&gt;
+&lt;p&gt;两个保护二极管用于防止引脚外部过高或过低的电压输入，当引脚电压高于VDD_FT时，上方的二极管导通，当引脚电压低于VSS时，下方的二极管导通，防止不正常电压引入芯片导致芯片烧毁。&lt;/p&gt;
+&lt;p&gt;输入电压的范围是VIL ~ VIH。
+VDD是标准工作电压，范围是2 ~ 3.6V。
+VIL，是输入低电平电压，范围是-0.5~0.8(0.35VDD)，单位：V。
+VIH，是输入高电平电压，范围是2(0.65VDD) ~ VDD+0.5/5.5，单位：V。
+对于标准I/O口来说，输入高电平电压的最大值是VDD+0.5，即2.5 ~ 4.1V。
+对于FT的I/O口来说，输入高电平电压的最大值是5.5V。&lt;/p&gt;
+&lt;p&gt;一般来说，默认输入低电平电压为0V，默认输入高电平电压为3.3V或5V，因此，输入电压的范围可以简单理解为0~3.3/5V。&lt;/p&gt;
+&lt;p&gt;上拉下拉电阻所起的作用是控制引脚..默认..状态，GPIO的输入输出，均可以设置为上拉、下拉、浮空模式。
+浮空模式是“既不上拉也不下拉”，此时检测的引脚电压不确定，为1点几V。
+上拉模式控制引脚电压为高电平，也就是3.3V/5V。
+下拉模式控制引脚电平为低电平，也就是0V。&lt;/p&gt;
+&lt;h4 id=&#34;输出驱动器&#34;&gt;输出驱动器&lt;/h4&gt;
+&lt;p&gt;输出驱动器由P-MOS管和N-MOS管组成，接受输出数据寄存器和复用输出的数据，控制对外输出高低电平。电路的输出方式有推挽输出和开漏输出。&lt;/p&gt;
+&lt;p&gt;推挽输出可以输出准确的低电平0V和高电平3.3V。
+要对外输出高电平时，上方的P-MOS导通，下方的N-MOS关闭；要对外输出低电平时，N-MOS管导通，P-MOS关闭。当引脚高低电平切换时，两个管子轮流导通，一个负责灌电流，一个负责拉电流，使其负载能力和开关速度都比普通的方式有很大的提高。&lt;/p&gt;
+&lt;p&gt;开漏输出仅能输出低电平0V，..不能..输出高电平。
+输出为0时，对外输出低电平时，P-MOS管关闭，N-MOS管导通，使输出接地；输出为1时，P-MOS管和N-MOS管都关闭，对外为高阻态。用开漏输出时，要输出高电平，必须要加上拉电阻，此时电压为上拉电阻所接电源的电压。开漏输出最主要的功能是“线与”的特性，但同一条线中，一个引脚为低电平，整条线路均为低电平（0V）。&lt;/p&gt;
+&lt;h4 id=&#34;输入驱动器&#34;&gt;输入驱动器&lt;/h4&gt;
+&lt;p&gt;输入驱动器部分有一个触发器，在输入模式下，引脚的电压输入到触发器上，触发器将输入的模拟信号转换成数字信号，即转化成高电平或低电平输出到输入数据寄存器中，即得到输出数据1或0。&lt;/p&gt;
+&lt;p&gt;模拟模式下，输入的电压并不经过触发器，输入的电压直接进入到片上外设，一般用于ADC这种需要直接读取外部电压的情况。&lt;/p&gt;
+&lt;h4 id=&#34;输入输出控制部分&#34;&gt;输入输出控制部分&lt;/h4&gt;
+&lt;p&gt;输入数据寄存器通过触发器把外部输入的电压信号转换成数字信号，并储存起来以供读取。&lt;/p&gt;
+&lt;p&gt;输出数据寄存器根据内部写入到置位/复位寄存器输出的数据，控制输出驱动器输出相应的高低电平。&lt;/p&gt;
+&lt;p&gt;片上外设也可不经过输入输出数据寄存器，通过模拟输入、复用功能输入、复用功能输出直接读取输入驱动器的电平或通过输出驱动器进行输出。&lt;/p&gt;
+&lt;h3 id=&#34;各模式信号流分析&#34;&gt;各模式信号流分析&lt;/h3&gt;
+&lt;h4 id=&#34;模拟输入&#34;&gt;模拟输入&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Analog_Signal_flow.jpg&#34; alt=&#34;模拟输入信号流图&#34; title=&#34;模拟输入信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;模拟输入模式下，触发器关闭，上拉电阻、下拉电阻断开。
+引脚电压信号直接输入到片上外设ADC内部。
+输入数据寄存器不能正常读取引脚电平状态，CPU不能在输入数据寄存器上读到有效的数据。&lt;/p&gt;
+&lt;h4 id=&#34;浮空输入&#34;&gt;浮空输入&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Input_floating_Signal_flow.jpg&#34; alt=&#34;浮空输入信号流图&#34; title=&#34;浮空输入信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;浮空输入模式下，上拉、下拉电阻断开，触发器开启。
+引脚电压信号直接输入到触发器，然后到输入数据寄存器。
+CPU可直接从输入数据寄存器读取引脚电平状态，因为缺少上下拉电阻，数据可能不准确。&lt;/p&gt;
+&lt;h4 id=&#34;上拉下拉输入&#34;&gt;上拉、下拉输入&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Input_pull-up-down_Signal_flow.jpg&#34; alt=&#34;上下拉输入信号流图&#34; title=&#34;上下拉输入信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上拉下拉输入模式下，上拉、下拉电阻接通，触发器开启。
+引脚电压信号经过上拉、下拉电阻，通过触发器，输入到输入数据寄存器中。
+CPU可直接从输入数据寄存器读取引脚电平状态。&lt;/p&gt;
+&lt;h4 id=&#34;模拟输出&#34;&gt;模拟输出&lt;/h4&gt;
+&lt;p&gt;模拟输入模式下，上拉、下拉电阻断开，触发器开启。
+CPU通过片上外设DAC直接输出对应的电压到引脚，不经过输出驱动器和上下拉电阻。&lt;/p&gt;
+&lt;h4 id=&#34;推挽输出&#34;&gt;推挽输出&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Output_push-pull_Signal_flow.jpg&#34; alt=&#34;推挽输出信号流图&#34; title=&#34;推挽输出信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;推挽输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS/N-MOS管导通。
+CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，输出控制电路通过P-MOS管对外输出高电平，N-MOS管不工作；当写入数据为0时，输出控制电路通过N-MOS管对外输出低电平，P-MOS管不工作。
+此时，触发器处于开启状态，CPU也可直接从输入数据寄存器读取引脚电平状态。&lt;/p&gt;
+&lt;h4 id=&#34;开漏输出&#34;&gt;开漏输出&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Output_open-drain_Signal_flow.jpg&#34; alt=&#34;开漏输出信号流图&#34; title=&#34;开漏输出信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;开漏输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS管关闭。
+CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，N-MOS管关闭，引脚电平由外部上拉电阻决定，当写入数据为0时，N-MOS管导通，输出控制电路通过N-MOS管对外输出低电平，P-MOS管一直不工作。
+此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。&lt;/p&gt;
+&lt;h4 id=&#34;复用推挽开漏输出&#34;&gt;复用推挽/开漏输出&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/stm32_gpio/Alternate_function_Signal_flow.jpg&#34; alt=&#34;复用功能输出信号流图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;复用推挽/开漏输出模式下，上拉、下拉电阻接通，触发器开启，MOS管按模式进行导通或关闭。
+此时，输出控制来自片上外设模块，CPU不能通过输出数据寄存器控制输出控制电路对外输出高低电平。片上外设直接控制输出控制电路对外输出高低电平。
+此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。&lt;/p&gt;
+&lt;h2 id=&#34;寄存器配置&#34;&gt;寄存器配置&lt;/h2&gt;
+&lt;p&gt;stm32一共有10个寄存器用于GPIO的配置，分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPIO 端口模式寄存器 (GPIOx_MODER)&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出类型寄存器 (GPIOx_OTYPER)&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出速度寄存器 (GPIOx_OSPEEDR)&lt;/li&gt;
+&lt;li&gt;GPIO 端口上拉/下拉寄存器 (GPIOx_PUPDR)&lt;/li&gt;
+&lt;li&gt;GPIO 端口输入数据寄存器 (GPIOx_IDR)&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出数据寄存器 (GPIOx_ODR)&lt;/li&gt;
+&lt;li&gt;GPIO 端口置位/复位寄存器 (GPIOx_BSRR)&lt;/li&gt;
+&lt;li&gt;GPIO 端口配置锁定寄存器 (GPIOx_LCKR)&lt;/li&gt;
+&lt;li&gt;GPIO 复用功能低位寄存器 (GPIOx_AFRL)&lt;/li&gt;
+&lt;li&gt;GPIO 复用功能高位寄存器 (GPIOx_AFRH)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以按字(32位)、半字(16位)、字节(8位)模式写入外设寄存器。&lt;/p&gt;
+&lt;p&gt;一组寄存器（10个）可以控制一组GPIO的16个引脚（I/O口）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPIO 端口模式寄存器 (GPIOx_MODER) ，只写，用于配置I/O模式：输入模式(00)、通用输出模式(01)、复用功能模式(10)、模拟模式(11)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出类型寄存器 (GPIOx_OTYPER) ，只写，用于配置I/O输出模式：推挽输出(0)，开漏输出(1)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出速度寄存器 (GPIOx_OSPEEDR) ，只写，用于配置I/O输出速度：低速(00)、中速(01)、快速(10)、高速(11)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口上拉/下拉寄存器 (GPIOx_PUPDR) ，只写，用于配置I/O输出是否需要上下拉：无上下拉(00)、上拉(01)、下拉(10)、保留(11)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口输入数据寄存器 (GPIOx_IDR) ，只读，位&lt;a href=&#34;IDR0..15&#34;&gt;15：0&lt;/a&gt;记录引脚输入状态，即端口输入数据(Port input data)，高电平(1)、低电平(0)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口输出数据寄存器 (GPIOx_ODR)，读写，位&lt;a href=&#34;ODR0..15&#34;&gt;15:0&lt;/a&gt;记录引脚输出状态，即端口输出数据 (Port output data)，高电平(1)、低电平(0)。&lt;/li&gt;
+&lt;li&gt;GPIO 端口置位/复位寄存器 (GPIOx_BSRR)，只写，位&lt;a href=&#34;BR0..15&#34;&gt;31:16&lt;/a&gt;写1复位（0）对应的ODRx位；位&lt;a href=&#34;BS0..15&#34;&gt;15:0&lt;/a&gt;写1置位（1）对应的ODRx位。&lt;/li&gt;
+&lt;li&gt;GPIO 端口配置锁定寄存器 (GPIOx_LCKR)，读写，用于锁定GPIO的配置，将 LOCK 序列应用到某个端口位后，在执行下一次 MCU 复位或外设复位之前，将无法对该端口位的值进行修改。
+位16，LCKK，锁定键 (Lock key) ，用于锁定锁定寄存器 (GPIOx_LCKR)，可以用锁定写序列对其修改，此时只允许使用字访问(32位)，且不能更改位[15:0]的值，位16的值如下：写入1-0-1-&amp;gt;读取0-1，一共5步。
+位15:0，端口 x 锁定位 y (Port x lock bit y) (y= 0..15)，0为未锁定，1为已锁定.&lt;/li&gt;
+&lt;li&gt;GPIO 复用功能低位寄存器 (GPIOx_AFRL)和GPIO 复用功能高位寄存器 (GPIOx_AFRH)，只写，用于复用功能的选择。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结一下，通过10个寄存器，我们可以对控制一组GPIO的16个引脚（I/O口），进行以下操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置模式：输入、输出、复用、模拟&lt;/li&gt;
+&lt;li&gt;配置输出类型：推挽、开漏&lt;/li&gt;
+&lt;li&gt;配置上下拉模式：无上下拉、上拉、下拉、保留&lt;/li&gt;
+&lt;li&gt;读取输入数据：1为高电平，0为低电平&lt;/li&gt;
+&lt;li&gt;读写输出数据：1为高电平，0为低电平&lt;/li&gt;
+&lt;li&gt;置位/复位输出状态：BRy写1复位，BSy写1置位&lt;/li&gt;
+&lt;li&gt;锁定GPIO状态：写1锁定&lt;/li&gt;
+&lt;li&gt;选择相应的复用功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;gpio库的使用&#34;&gt;GPIO库的使用&lt;/h2&gt;
+&lt;h3 id=&#34;hal库&#34;&gt;HAL库&lt;/h3&gt;
+&lt;p&gt;HAL 库中对GPIO相关的操作在stm32fxxx_hal_gpio.c/h，stmfxxx_hal_gpio_ex.c/h 里面，后面两个主要是配置GPIO中断的功能，暂且略过。现在主要分析stmfxxx_hal_gpio.c/h的库函数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HAL_GPIO_Init&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_DeInit&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_ReadPin&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_WritePin&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_TogglePin&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_LockPin&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_EXTI_IRQHandler&lt;/li&gt;
+&lt;li&gt;HAL_GPIO_EXTI_Callback&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;初始化去初始化&#34;&gt;初始化/去初始化&lt;/h4&gt;
+&lt;p&gt;void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init);
+这是用于初始化GPIO的库函数。&lt;/p&gt;
+&lt;p&gt;输入参数是两个结构体，
+第一个是GPIOx，用于指定GPIO端口(Port)，值为GPIOA~E不等，具体要看具体芯片型号。&lt;/p&gt;
+&lt;p&gt;第二个是GPIO_Init，它是GPIO初始化结构体，用于指定GPIO的引脚，模式，上下拉，速度。&lt;/p&gt;
+&lt;p&gt;引脚(Pin)：GPIO_PIN_0 ~ GPIO_PIN_15，或是GPIO_PIN_All。&lt;/p&gt;
+&lt;p&gt;模式(Mode)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;输入 GPIO_MODE_INPUT&lt;/li&gt;
+&lt;li&gt;推挽输出 GPIO_MODE_OUTPUT_PP)&lt;/li&gt;
+&lt;li&gt;开漏输出 GPIO_MODE_OUTPUT_OD)&lt;/li&gt;
+&lt;li&gt;复用推挽输出 GPIO_MODE_AF_PP)&lt;/li&gt;
+&lt;li&gt;复用开漏输出 GPIO_MODE_AF_OD)&lt;/li&gt;
+&lt;li&gt;复用输入 GPIO_MODE_AF_INPUT&lt;/li&gt;
+&lt;li&gt;模拟 GPIO_MODE_ANALOG&lt;/li&gt;
+&lt;li&gt;上升沿中断 GPIO_MODE_IT_RISING&lt;/li&gt;
+&lt;li&gt;下降沿中断 GPIO_MODE_IT_FALLING&lt;/li&gt;
+&lt;li&gt;跳变沿中断 GPIO_MODE_IT_RISING_FALLING&lt;/li&gt;
+&lt;li&gt;上升沿事件 GPIO_MODE_EVT_RISING&lt;/li&gt;
+&lt;li&gt;下降沿事件 GPIO_MODE_EVT_FALLING&lt;/li&gt;
+&lt;li&gt;跳变沿事件 GPIO_MODE_EVT_RISING_FALLING&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上下拉(Pull)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无上下拉 GPIO_NOPULL&lt;/li&gt;
+&lt;li&gt;上拉 GPIO_PULLUP&lt;/li&gt;
+&lt;li&gt;下拉 GPIO_PULLDOWN&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;速度(Speed):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;低速 GPIO_SPEED_FREQ_LOW&lt;/li&gt;
+&lt;li&gt;中速 GPIO_SPEED_FREQ_MEDIUM&lt;/li&gt;
+&lt;li&gt;高速 GPIO_SPEED_FREQ_HIGH&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin);&lt;/code&gt;
+这是去初始化的库函数，需要指定对应的端口和引脚。&lt;/p&gt;
+&lt;h4 id=&#34;输入输出操作&#34;&gt;输入输出操作&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+函数用于读取指定管脚的状态，返回值为&lt;code&gt;GPIO_PIN_RESET&lt;/code&gt;(0)或&lt;code&gt;GPIO_PIN_SET&lt;/code&gt;(1)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);&lt;/code&gt;
+函数用于控制指定管脚输出，操作的是BSRR(置位/复位)寄存器，需要指定对应的端口、管脚，还有欲写入的状态：&lt;code&gt;GPIO_PIN_RESET&lt;/code&gt;(0)或&lt;code&gt;GPIO_PIN_SET&lt;/code&gt;(1)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+函数用于翻转指定管脚的输出状态，操作的是ODR(输出数据)寄存器。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+函数用于锁定指定管脚的状态，操作的是LCKR(锁定)寄存器，返回值是&lt;code&gt;HAL_OK&lt;/code&gt;或&lt;code&gt;HAL_ERROR&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;中断配置&#34;&gt;中断配置&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);&lt;/code&gt;
+这是GPIO中断的处理函数，将会清除中断标志位，并且进入回调函数。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;__weak void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);&lt;/code&gt;
+这是GPIO中断的回调函数，可以重定义，无需清楚中断标志，直接在里面写相应的用户操作即可。&lt;/p&gt;
+&lt;h4 id=&#34;hal库总结&#34;&gt;HAL库总结&lt;/h4&gt;
+&lt;p&gt;HAL库的GPIO部分，可以实现以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化/去初始化 HAL_GPIO_Init 或 HAL_GPIO_DeInit&lt;/li&gt;
+&lt;li&gt;读取引脚状态 HAL_GPIO_WritePin&lt;/li&gt;
+&lt;li&gt;输出引脚状态 HAL_GPIO_ReadPin&lt;/li&gt;
+&lt;li&gt;翻转引脚状态 HAL_GPIO_TogglePin&lt;/li&gt;
+&lt;li&gt;锁定引脚状态 HAL_GPIO_LockPin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;标准库&#34;&gt;标准库&lt;/h3&gt;
+&lt;p&gt;标准库中对GPIO的操作在stm32fxxx_gpio.c/h中，包含以下库函数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPIO_Init&lt;/li&gt;
+&lt;li&gt;GPIO_DeInit&lt;/li&gt;
+&lt;li&gt;GPIO_AFIODeInit&lt;/li&gt;
+&lt;li&gt;GPIO_StructInit&lt;/li&gt;
+&lt;li&gt;GPIO_ReadInputDataBit&lt;/li&gt;
+&lt;li&gt;GPIO_ReadInputData&lt;/li&gt;
+&lt;li&gt;GPIO_ReadOutputDataBit&lt;/li&gt;
+&lt;li&gt;GPIO_ReadOutputData&lt;/li&gt;
+&lt;li&gt;GPIO_SetBits&lt;/li&gt;
+&lt;li&gt;GPIO_ResetBits&lt;/li&gt;
+&lt;li&gt;GPIO_WriteBit&lt;/li&gt;
+&lt;li&gt;GPIO_Write&lt;/li&gt;
+&lt;li&gt;GPIO_PinLockConfig&lt;/li&gt;
+&lt;li&gt;GPIO_EventOutputConfig&lt;/li&gt;
+&lt;li&gt;GPIO_EventOutputCmd&lt;/li&gt;
+&lt;li&gt;GPIO_PinRemapConfig&lt;/li&gt;
+&lt;li&gt;GPIO_EXTILineConfig&lt;/li&gt;
+&lt;li&gt;GPIO_ETH_MediaInterfaceConfig&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;初始化去初始化-1&#34;&gt;初始化/去初始化&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这是用于初始化GPIO的库函数，输入参数：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;GPIOx，用于指定GPIO端口(Port)，值为GPIOA~F不等；&lt;/li&gt;
+&lt;li&gt;GPIO_InitStruct，这是GPIO初始化结构体，用于指定GPIO的引脚(Pin)，速度(Speed)，模式(Mode)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;引脚(GPIO_Pin)，值为GPIO_Pin_0~15/ALL，一共16个引脚。&lt;/p&gt;
+&lt;p&gt;速度(GPIO_Pin_Speed)，值为&lt;code&gt;GPIO_Speed_10MHz&lt;/code&gt;/&lt;code&gt;GPIO_Speed_2MHz&lt;/code&gt;/&lt;code&gt;GPIO_Speed_50MHz&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;模式(GPIO_Mode)有以下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模拟输入 GPIO_Mode_AIN&lt;/li&gt;
+&lt;li&gt;浮空输入　GPIO_Mode_IN_FLOATING&lt;/li&gt;
+&lt;li&gt;下拉输入　GPIO_Mode_IPD&lt;/li&gt;
+&lt;li&gt;上拉输入　GPIO_Mode_IPU&lt;/li&gt;
+&lt;li&gt;开漏输出 GPIO_Mode_Out_OD&lt;/li&gt;
+&lt;li&gt;推挽输出 GPIO_Mode_Out_PP&lt;/li&gt;
+&lt;li&gt;复用开漏输出 GPIO_Mode_AF_OD&lt;/li&gt;
+&lt;li&gt;复用推挽输出 GPIO_Mode_AF_PP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct);&lt;/code&gt;这是初始化&lt;code&gt;GPIO初始化结构体(GPIO_InitTypeDef)&lt;/code&gt;的函数，初始化后的结果为 &lt;code&gt;GPIO_Pin_All, GPIO_Speed_2MHz,  GPIO_Mode_IN_FLOATING&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_DeInit(GPIO_TypeDef* GPIOx);&lt;/code&gt;
+这是去初始化的库函数，去除指定GPIO端口的所有引脚的初始化。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_AFIODeInit(void);&lt;/code&gt;
+这是去除GPIO复用功能的初始化函数，用于关闭复用功能的时钟，从而禁止复用功能的开启。&lt;/p&gt;
+&lt;h4 id=&#34;读取&#34;&gt;读取&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+读取指定 ..引脚(Pin).. &lt;strong&gt;1个引脚&lt;/strong&gt; 的输入电平数据，返回值为Bit_SET(1)/Bit_RESET(0)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx);&lt;/code&gt;
+读取指定 ..端口(Port).. 一共&lt;strong&gt;16个引脚&lt;/strong&gt; 的输入电平数据，返回值为(uint16_t)GPIOx-&amp;gt;IDR。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+读取指定 ..引脚(Pin).. &lt;strong&gt;1个引脚&lt;/strong&gt;的输出电平数据，返回值为Bit_SET(1)/Bit_RESET(0)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx);&lt;/code&gt;
+读取指定 ..端口(Port).. 一共&lt;strong&gt;16个引脚&lt;/strong&gt;的输出电平数据，返回值为(uint16_t)GPIOx-&amp;gt;ODR。&lt;/p&gt;
+&lt;h4 id=&#34;输出&#34;&gt;输出&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+置位指定 &lt;strong&gt;引脚(Pin)&lt;/strong&gt; 的输出数据，使其输出高电平(1)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+复位指定 &lt;strong&gt;引脚(Pin)&lt;/strong&gt; 的输出数据，使其输出低电平(0)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal);&lt;/code&gt;
+指定 &lt;strong&gt;引脚(Pin)&lt;/strong&gt; 的输出数据，使其输出高电平(Bit_SET)或低电平(Bit_RESET)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal);&lt;/code&gt;
+指定 &lt;strong&gt;端口(Port)&lt;/strong&gt; 的输出数据，使其输出高电平(Bit_SET)或低电平(Bit_RESET)。&lt;/p&gt;
+&lt;h4 id=&#34;事件管理&#34;&gt;事件管理&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_EventOutputConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);&lt;/code&gt;
+GPIO输出EVENTOUT信号配置，参数为端口(GPIO_PortSourceGPIOx)和 引脚(GPIO_PinSourcex)。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_EventOutputCmd(FunctionalState NewState);&lt;/code&gt;
+GPIO输出EVENTOUT信号使能，参数NewState是使能参数，值为关闭(DISABLE)或开启(ENABLE)。&lt;/p&gt;
+&lt;h4 id=&#34;中断管理&#34;&gt;中断管理&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);&lt;/code&gt;
+GPIO中断配置，指定端口(GPIO_PortSourcex)和引脚(GPIO_PinSource)开启外部中断功能。&lt;/p&gt;
+&lt;h4 id=&#34;其他&#34;&gt;其他&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);&lt;/code&gt;
+锁定**单个引脚(Pin)**的状态&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState);&lt;/code&gt;
+GPIO功能重映射的配置和使能，在开启复用功能的时候需要用到，参数GPIO_Remap为各功能的选择，NewState是使能参数，值为关闭(DISABLE)或开启(ENABLE)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void GPIO_ETH_MediaInterfaceConfig(uint32_t GPIO_ETH_MediaInterface);&lt;/code&gt;
+GPIO以太网功能配置，配置内部的以太网MAC使用外部的MII接口还是RMII接口的收发器(PHY)。&lt;/p&gt;
+&lt;h4 id=&#34;标准库总结&#34;&gt;标准库总结&lt;/h4&gt;
+&lt;p&gt;标准库中GPIO库包含以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化/去初始化&lt;/li&gt;
+&lt;li&gt;读取/写入/锁存 单个引脚(Pin)或者端口(Port)的电平数据&lt;/li&gt;
+&lt;li&gt;事件/中断功能配置&lt;/li&gt;
+&lt;li&gt;以太网功能配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hal库与标准库的比较&#34;&gt;HAL库与标准库的比较&lt;/h3&gt;
+&lt;p&gt;HAL库是ST官方目前大力推行的库，能应用于全系列的芯片，并可以用STM32CubeMX软件快速开发。HAL多了很多抽象层，方便开发，集成度高。但由于集成度太高，有时单靠库函数无法完成某些功能的开发，反而需要对寄存器编程。&lt;/p&gt;
+&lt;p&gt;标准库是ST比较早期的库，仅能应用于早期的芯片。标准库仅对寄存器进行封装，库函数能实现的操作都比较简单，应用时比较繁琐。由于标准库比较早期，早期芯片寄存器于现在的芯片的寄存器相比也有变化，因此，标准库对新出的芯片不支持，老芯片的操作与HAL库也不大相同。&lt;/p&gt;
+&lt;p&gt;GPIO库里面，HAL库和标准库均能完成对&lt;strong&gt;单个引脚&lt;/strong&gt;的初始化、输入输出锁存、中断管理的操作，但是标准库比HAL库多了一些功能:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同时对同一端口(Port)的16个引脚(Pin)的状态进行读取、写入&lt;/li&gt;
+&lt;li&gt;事件信号的功能功能配置&lt;/li&gt;
+&lt;li&gt;以太网功能配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.st.com/content/ccc/resource/technical/document/reference_manual/c5/cf/ef/52/c0/f1/4b/fa/DM00124865.pdf/files/DM00124865.pdf/jcr:content/translations/zh.DM00124865.pdf&#34; title=&#34;STM32F75xxx用户手册-中文版&#34;&gt;RM0385：先进的基于ARM 32位内核的微控制器STM32F75xxx and STM32F74xxx用户手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stmcu.com.cn/Designresource/design_resource_download/file_id/488479/file/CD00171190_ENV20.pdf/token/f1d575eae8d9ccb88c200f668c9e6c10&#34; title=&#34;stm32f10xxx参考手册-英文版&#34;&gt;RM0008_STM32F101xx,STM32F102xx,STM32F103xx,STM32F105xx和STM32F107xx单片机参考手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stmcu.com.cn/Designresource/design_resource_download/file_id/485616/file/CD00191185_ZHV5.pdf/token/43887ffab3aaba77db3a6b01ba36762d&#34; title=&#34;STM32F103x数据手册-中文版&#34;&gt;DS5792_STM32F103xC,STM32F103xD,STM32F103xE单片机数据手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Embdefire/products/wiki/%5B%E9%87%8E%E7%81%AB%5D%E3%80%8ASTM32-HAL%E5%BA%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E7%B3%BB%E5%88%97&#34; title=&#34;《STM32 HAL库开发实战指南》系列&#34;&gt;STM32 HAL 库开发实战指南—基于 F7&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Embdefire/products/wiki/%5B%E9%87%8E%E7%81%AB%5D%E3%80%8ASTM32%E5%BA%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E7%B3%BB%E5%88%97&#34; title=&#34;《STM32库开发实战指南》系列&#34;&gt;零死角玩转STM32—F103霸道&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_29350001/article/details/80681244&#34; title=&#34;STM32开发 -- GPIO详解&#34;&gt;STM32开发 – GPIO详解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/techexchangeischeap/article/details/72569999&#34; title=&#34;GPIO输入输出各种模式（推挽、开漏、准双向端口）详解&#34;&gt;GPIO输入输出各种模式（推挽、开漏、准双向端口）详解&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/stm32/" term="stm32" label="stm32" />
                             
                         
                     

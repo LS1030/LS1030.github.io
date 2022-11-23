@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.101.0" /><meta name="theme-color" content="#16171d" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>stm32学习笔记之GPIO | LS1030的自留地</title>
+
+    <link rel="stylesheet" href="/css/meme.min.70596e7bcf53638cb8a91ae965a7c9d0b1ce87a0da4de1904f4ddcdb3cbc8528.css"/>
+
+    
+    
+        <script src="/js/meme.min.e46abe484398824efc70edec3126437916974df592d7c395b44f8f60e0f57e9d.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="LS1030" /><meta name="description" content="简介 GPIO，General-purpose input/output，译为通用型之输……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="LS1030的自留地" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="LS1030的自留地" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://ls1030.github.io/tech/stm32_note_gpio/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2019-10-19T08:49:47+08:00",
+        "dateModified": "2022-11-23T18:52:03+08:00",
+        "url": "https://ls1030.github.io/tech/stm32_note_gpio/",
+        "headline": "stm32学习笔记之GPIO",
+        "description": "简介 GPIO，General-purpose input/output，译为通用型之输……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "tech",
+        "wordCount":  7216 ,
+        "image": ["https://ls1030.github.io/images/stm32_gpio/GPIO.jpg","https://ls1030.github.io/images/stm32_gpio/Analog_Signal_flow.jpg","https://ls1030.github.io/images/stm32_gpio/Input_floating_Signal_flow.jpg","https://ls1030.github.io/images/stm32_gpio/Input_pull-up-down_Signal_flow.jpg","https://ls1030.github.io/images/stm32_gpio/Output_push-pull_Signal_flow.jpg","https://ls1030.github.io/images/stm32_gpio/Output_open-drain_Signal_flow.jpg","https://ls1030.github.io/images/stm32_gpio/Alternate_function_Signal_flow.jpg"],
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "L.S.1030@outlook.com",
+            "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+            "url": "https://ls1030.github.io/",
+            "name": "LS1030"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LS1030的自留地",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://ls1030.github.io/icons/apple-touch-icon.png"
+            },
+            "url": "https://ls1030.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://ls1030.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+
+    
+
+
+
+<meta property="og:title" content="stm32学习笔记之GPIO" />
+<meta property="og:description" content="简介 GPIO，General-purpose input/output，译为通用型之输……" />
+<meta property="og:url" content="https://ls1030.github.io/tech/stm32_note_gpio/" />
+<meta property="og:site_name" content="LS1030的自留地" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://ls1030.github.io/images/stm32_gpio/GPIO.jpg" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-10-19T08:49:47&#43;08:00" />
+    <meta property="article:modified_time" content="2022-11-23T18:52:03&#43;08:00" />
+    
+    <meta property="article:section" content="tech" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">LS1030的自留地</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href=""><span class="menu-item-name">随笔</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item active"><a href="/tech/"><span class="menu-item-name">技术</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href=""><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="tech" data-toc-num="true">
+
+            <h1 class="post-title p-name">stm32学习笔记之GPIO</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2019-10-19T08:49:47&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2019.10.19</time>
+    
+    
+        
+        <time datetime="2022-11-23T18:52:03&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.11.23</time>
+    
+    
+    
+        
+        
+            
+            
+                
+                
+                
+                
+                    
+                    
+                    
+                        
+                            
+                            
+                        
+                    
+                
+            
+            
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/tech/" class="category-link p-category">Tech</a></span>
+            
+        
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;7216</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;15&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:简介" href="#简介">简介</a></li>
+    <li><a id="contents:gpio模式" href="#gpio模式">GPIO模式</a>
+      <ol>
+        <li><a id="contents:输入模式" href="#输入模式">输入模式</a></li>
+        <li><a id="contents:输出模式" href="#输出模式">输出模式</a></li>
+      </ol>
+    </li>
+    <li><a id="contents:原理" href="#原理">原理</a>
+      <ol>
+        <li><a id="contents:结构框图分析" href="#结构框图分析">结构框图分析</a>
+          <ol>
+            <li><a id="contents:上拉下拉电阻" href="#上拉下拉电阻">上拉下拉电阻</a></li>
+            <li><a id="contents:输出驱动器" href="#输出驱动器">输出驱动器</a></li>
+            <li><a id="contents:输入驱动器" href="#输入驱动器">输入驱动器</a></li>
+            <li><a id="contents:输入输出控制部分" href="#输入输出控制部分">输入输出控制部分</a></li>
+          </ol>
+        </li>
+        <li><a id="contents:各模式信号流分析" href="#各模式信号流分析">各模式信号流分析</a>
+          <ol>
+            <li><a id="contents:模拟输入" href="#模拟输入">模拟输入</a></li>
+            <li><a id="contents:浮空输入" href="#浮空输入">浮空输入</a></li>
+            <li><a id="contents:上拉下拉输入" href="#上拉下拉输入">上拉、下拉输入</a></li>
+            <li><a id="contents:模拟输出" href="#模拟输出">模拟输出</a></li>
+            <li><a id="contents:推挽输出" href="#推挽输出">推挽输出</a></li>
+            <li><a id="contents:开漏输出" href="#开漏输出">开漏输出</a></li>
+            <li><a id="contents:复用推挽开漏输出" href="#复用推挽开漏输出">复用推挽/开漏输出</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a id="contents:寄存器配置" href="#寄存器配置">寄存器配置</a></li>
+    <li><a id="contents:gpio库的使用" href="#gpio库的使用">GPIO库的使用</a>
+      <ol>
+        <li><a id="contents:hal库" href="#hal库">HAL库</a>
+          <ol>
+            <li><a id="contents:初始化去初始化" href="#初始化去初始化">初始化/去初始化</a></li>
+            <li><a id="contents:输入输出操作" href="#输入输出操作">输入输出操作</a></li>
+            <li><a id="contents:中断配置" href="#中断配置">中断配置</a></li>
+            <li><a id="contents:hal库总结" href="#hal库总结">HAL库总结</a></li>
+          </ol>
+        </li>
+        <li><a id="contents:标准库" href="#标准库">标准库</a>
+          <ol>
+            <li><a id="contents:初始化去初始化-1" href="#初始化去初始化-1">初始化/去初始化</a></li>
+            <li><a id="contents:读取" href="#读取">读取</a></li>
+            <li><a id="contents:输出" href="#输出">输出</a></li>
+            <li><a id="contents:事件管理" href="#事件管理">事件管理</a></li>
+            <li><a id="contents:中断管理" href="#中断管理">中断管理</a></li>
+            <li><a id="contents:其他" href="#其他">其他</a></li>
+            <li><a id="contents:标准库总结" href="#标准库总结">标准库总结</a></li>
+          </ol>
+        </li>
+        <li><a id="contents:hal库与标准库的比较" href="#hal库与标准库的比较">HAL库与标准库的比较</a></li>
+      </ol>
+    </li>
+    <li><a id="contents:参考文献" href="#参考文献">参考文献</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+                <h2 id="简介"><a href="#简介" class="anchor-link">#</a><a href="#contents:简介" class="headings">简介</a></h2>
+<p>GPIO，General-purpose input/output，译为通用型之输入输出（端口），这是单片机最基础的功能，也是与外界交互的必备方式。GPIO的作用就是通过针脚对外输出高低电平，或者是检测输入电平。Stm32通过控制端口（Port）从而控制针脚（Pin），可以通过针脚对外输出0V或者3.3V的电压，或者是检测针脚处的电压（电平）。</p>
+<p>stm32的GPIO有多种模式：输入浮空，输入上拉，输入下拉，模拟，具有上拉/下拉功能的开漏输出，具有上拉/下拉功能的推挽输出，具有上拉/下拉功能的复用功能推挽，具有上拉/下拉功能的复用功能开漏。简而言之，就是：</p>
+<ul>
+<li>浮空/上拉/下拉输入</li>
+<li>具有上拉/下拉功能的推挽/开漏输出</li>
+<li>模拟</li>
+<li>复用推挽/开漏输出</li>
+</ul>
+<h2 id="gpio模式"><a href="#gpio模式" class="anchor-link">#</a><a href="#contents:gpio模式" class="headings">GPIO模式</a></h2>
+<h3 id="输入模式"><a href="#输入模式" class="anchor-link">#</a><a href="#contents:输入模式" class="headings">输入模式</a></h3>
+<p>输入模式有浮空输入、上拉输入、下拉输入、模拟输入四种。</p>
+<p>在前三种输入模式下，CPU可通过输入数据寄存器GPIOx_IDR读取I/O状态，数据寄存器每个1个AHB时钟中期更新一次，同时，也可产生相应的中断。
+模拟输入模式CPU不可直接读取I/O状态，引脚电压信号直接导入片上外设ADC中。</p>
+<p>浮空输入模式一般用于通信协议的I2C、USART、SPI的接收端。</p>
+<p>上拉输入模式一般用于检测按键的输入。当按键未按下时，引脚经过上拉电阻保持在高电平状态；当按键按下时，引脚由高电平下降到低电平。</p>
+<p>下拉输入模式默认低电平，也可以应用于按键的输入检测。</p>
+<p>模拟输入一般用于通过ADC测量引脚外部电压。</p>
+<h3 id="输出模式"><a href="#输出模式" class="anchor-link">#</a><a href="#contents:输出模式" class="headings">输出模式</a></h3>
+<p>输出模式有推挽输出、开漏输出、复用推挽/开漏输出、模拟输出四种模式。</p>
+<p>推挽输出模式一般应用于输出电平为0或者3.3V的场合，比如LED的控制等。
+推挽模式可读取引脚电平状态。</p>
+<p>开漏输出模式一般用于高电压的场合，通过外部加一个上拉电阻，电压为5V，当开漏输出为1，即高阻态时，由上拉电阻和电源对外输出5V电平。开漏输出也用于需要“线与”功能的场合。
+使用开漏模式输出时，都需要接外部上拉电阻。
+开漏模式可读取引脚电平状态。</p>
+<p>复用模式一般根据具体功能来配置。
+复用推挽输出一般用于USART、SPI、CAN等场合。
+复用开漏输出一般用于I2C、SMBUS等场合。
+复用模式可读取引脚电平状态。</p>
+<p>模拟输出一般用于DAC模式，对外输出精确的电压值。此时输入功耗变为0，无法读取引脚电压。</p>
+<p>输出模式下，有三种输出速度选择，2MHz、10MHz和50MHz。这个速度是指GPIO口驱动电路的响应速度，而不是输出信号的速度，输出信号的速度与程序有关。通过选择速度来选择不同的输出驱动模块，达到最佳的噪声控制和降低功耗的目的。</p>
+<h2 id="原理"><a href="#原理" class="anchor-link">#</a><a href="#contents:原理" class="headings">原理</a></h2>
+<h3 id="结构框图分析"><a href="#结构框图分析" class="anchor-link">#</a><a href="#contents:结构框图分析" class="headings">结构框图分析</a></h3>
+<p><img src="/images/stm32_gpio/GPIO.jpg" alt="GPIO结构框图"><span class="caption">◎ GPIO结构框图</span></p>
+<p>这个框图分为几个部分，上拉下拉电阻部分，P-MOS/N-MOS管部分，输入/输出部分。</p>
+<h4 id="上拉下拉电阻"><a href="#上拉下拉电阻" class="anchor-link">#</a><a href="#contents:上拉下拉电阻" class="headings">上拉下拉电阻</a></h4>
+<p>这个部分包含上拉电阻，下拉电阻，两个保护二极管。</p>
+<p>两个保护二极管用于防止引脚外部过高或过低的电压输入，当引脚电压高于VDD_FT时，上方的二极管导通，当引脚电压低于VSS时，下方的二极管导通，防止不正常电压引入芯片导致芯片烧毁。</p>
+<p>输入电压的范围是VIL ~ VIH。
+VDD是标准工作电压，范围是2 ~ 3.6V。
+VIL，是输入低电平电压，范围是-0.5~0.8(0.35VDD)，单位：V。
+VIH，是输入高电平电压，范围是2(0.65VDD) ~ VDD+0.5/5.5，单位：V。
+对于标准I/O口来说，输入高电平电压的最大值是VDD+0.5，即2.5 ~ 4.1V。
+对于FT的I/O口来说，输入高电平电压的最大值是5.5V。</p>
+<p>一般来说，默认输入低电平电压为0V，默认输入高电平电压为3.3V或5V，因此，输入电压的范围可以简单理解为0~3.3/5V。</p>
+<p>上拉下拉电阻所起的作用是控制引脚<em class="emphasis-point">默认</em>状态，GPIO的输入输出，均可以设置为上拉、下拉、浮空模式。
+浮空模式是“既不上拉也不下拉”，此时检测的引脚电压不确定，为1点几V。
+上拉模式控制引脚电压为高电平，也就是3.3V/5V。
+下拉模式控制引脚电平为低电平，也就是0V。</p>
+<h4 id="输出驱动器"><a href="#输出驱动器" class="anchor-link">#</a><a href="#contents:输出驱动器" class="headings">输出驱动器</a></h4>
+<p>输出驱动器由P-MOS管和N-MOS管组成，接受输出数据寄存器和复用输出的数据，控制对外输出高低电平。电路的输出方式有推挽输出和开漏输出。</p>
+<p>推挽输出可以输出准确的低电平0V和高电平3.3V。
+要对外输出高电平时，上方的P-MOS导通，下方的N-MOS关闭；要对外输出低电平时，N-MOS管导通，P-MOS关闭。当引脚高低电平切换时，两个管子轮流导通，一个负责灌电流，一个负责拉电流，使其负载能力和开关速度都比普通的方式有很大的提高。</p>
+<p>开漏输出仅能输出低电平0V，<em class="emphasis-point">不能</em>输出高电平。
+输出为0时，对外输出低电平时，P-MOS管关闭，N-MOS管导通，使输出接地；输出为1时，P-MOS管和N-MOS管都关闭，对外为高阻态。用开漏输出时，要输出高电平，必须要加上拉电阻，此时电压为上拉电阻所接电源的电压。开漏输出最主要的功能是“线与”的特性，但同一条线中，一个引脚为低电平，整条线路均为低电平（0V）。</p>
+<h4 id="输入驱动器"><a href="#输入驱动器" class="anchor-link">#</a><a href="#contents:输入驱动器" class="headings">输入驱动器</a></h4>
+<p>输入驱动器部分有一个触发器，在输入模式下，引脚的电压输入到触发器上，触发器将输入的模拟信号转换成数字信号，即转化成高电平或低电平输出到输入数据寄存器中，即得到输出数据1或0。</p>
+<p>模拟模式下，输入的电压并不经过触发器，输入的电压直接进入到片上外设，一般用于ADC这种需要直接读取外部电压的情况。</p>
+<h4 id="输入输出控制部分"><a href="#输入输出控制部分" class="anchor-link">#</a><a href="#contents:输入输出控制部分" class="headings">输入输出控制部分</a></h4>
+<p>输入数据寄存器通过触发器把外部输入的电压信号转换成数字信号，并储存起来以供读取。</p>
+<p>输出数据寄存器根据内部写入到置位/复位寄存器输出的数据，控制输出驱动器输出相应的高低电平。</p>
+<p>片上外设也可不经过输入输出数据寄存器，通过模拟输入、复用功能输入、复用功能输出直接读取输入驱动器的电平或通过输出驱动器进行输出。</p>
+<h3 id="各模式信号流分析"><a href="#各模式信号流分析" class="anchor-link">#</a><a href="#contents:各模式信号流分析" class="headings">各模式信号流分析</a></h3>
+<h4 id="模拟输入"><a href="#模拟输入" class="anchor-link">#</a><a href="#contents:模拟输入" class="headings">模拟输入</a></h4>
+<p><img src="/images/stm32_gpio/Analog_Signal_flow.jpg" alt="模拟输入信号流图"><span class="caption">◎ 模拟输入信号流图</span></p>
+<p>模拟输入模式下，触发器关闭，上拉电阻、下拉电阻断开。
+引脚电压信号直接输入到片上外设ADC内部。
+输入数据寄存器不能正常读取引脚电平状态，CPU不能在输入数据寄存器上读到有效的数据。</p>
+<h4 id="浮空输入"><a href="#浮空输入" class="anchor-link">#</a><a href="#contents:浮空输入" class="headings">浮空输入</a></h4>
+<p><img src="/images/stm32_gpio/Input_floating_Signal_flow.jpg" alt="浮空输入信号流图"><span class="caption">◎ 浮空输入信号流图</span></p>
+<p>浮空输入模式下，上拉、下拉电阻断开，触发器开启。
+引脚电压信号直接输入到触发器，然后到输入数据寄存器。
+CPU可直接从输入数据寄存器读取引脚电平状态，因为缺少上下拉电阻，数据可能不准确。</p>
+<h4 id="上拉下拉输入"><a href="#上拉下拉输入" class="anchor-link">#</a><a href="#contents:上拉下拉输入" class="headings">上拉、下拉输入</a></h4>
+<p><img src="/images/stm32_gpio/Input_pull-up-down_Signal_flow.jpg" alt="上下拉输入信号流图"><span class="caption">◎ 上下拉输入信号流图</span></p>
+<p>上拉下拉输入模式下，上拉、下拉电阻接通，触发器开启。
+引脚电压信号经过上拉、下拉电阻，通过触发器，输入到输入数据寄存器中。
+CPU可直接从输入数据寄存器读取引脚电平状态。</p>
+<h4 id="模拟输出"><a href="#模拟输出" class="anchor-link">#</a><a href="#contents:模拟输出" class="headings">模拟输出</a></h4>
+<p>模拟输入模式下，上拉、下拉电阻断开，触发器开启。
+CPU通过片上外设DAC直接输出对应的电压到引脚，不经过输出驱动器和上下拉电阻。</p>
+<h4 id="推挽输出"><a href="#推挽输出" class="anchor-link">#</a><a href="#contents:推挽输出" class="headings">推挽输出</a></h4>
+<p><img src="/images/stm32_gpio/Output_push-pull_Signal_flow.jpg" alt="推挽输出信号流图"><span class="caption">◎ 推挽输出信号流图</span></p>
+<p>推挽输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS/N-MOS管导通。
+CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，输出控制电路通过P-MOS管对外输出高电平，N-MOS管不工作；当写入数据为0时，输出控制电路通过N-MOS管对外输出低电平，P-MOS管不工作。
+此时，触发器处于开启状态，CPU也可直接从输入数据寄存器读取引脚电平状态。</p>
+<h4 id="开漏输出"><a href="#开漏输出" class="anchor-link">#</a><a href="#contents:开漏输出" class="headings">开漏输出</a></h4>
+<p><img src="/images/stm32_gpio/Output_open-drain_Signal_flow.jpg" alt="开漏输出信号流图"><span class="caption">◎ 开漏输出信号流图</span></p>
+<p>开漏输出模式下，上拉、下拉电阻接通，触发器开启，P-MOS管关闭。
+CPU写入置位/复位寄存器及输出数据寄存器，当写入数据为1时，N-MOS管关闭，引脚电平由外部上拉电阻决定，当写入数据为0时，N-MOS管导通，输出控制电路通过N-MOS管对外输出低电平，P-MOS管一直不工作。
+此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。</p>
+<h4 id="复用推挽开漏输出"><a href="#复用推挽开漏输出" class="anchor-link">#</a><a href="#contents:复用推挽开漏输出" class="headings">复用推挽/开漏输出</a></h4>
+<p><img src="/images/stm32_gpio/Alternate_function_Signal_flow.jpg" alt="复用功能输出信号流图"></p>
+<p>复用推挽/开漏输出模式下，上拉、下拉电阻接通，触发器开启，MOS管按模式进行导通或关闭。
+此时，输出控制来自片上外设模块，CPU不能通过输出数据寄存器控制输出控制电路对外输出高低电平。片上外设直接控制输出控制电路对外输出高低电平。
+此时，触发器处于开启状态，CPU可直接从输入数据寄存器读取引脚电平状态。</p>
+<h2 id="寄存器配置"><a href="#寄存器配置" class="anchor-link">#</a><a href="#contents:寄存器配置" class="headings">寄存器配置</a></h2>
+<p>stm32一共有10个寄存器用于GPIO的配置，分别是：</p>
+<ul>
+<li>GPIO 端口模式寄存器 (GPIOx_MODER)</li>
+<li>GPIO 端口输出类型寄存器 (GPIOx_OTYPER)</li>
+<li>GPIO 端口输出速度寄存器 (GPIOx_OSPEEDR)</li>
+<li>GPIO 端口上拉/下拉寄存器 (GPIOx_PUPDR)</li>
+<li>GPIO 端口输入数据寄存器 (GPIOx_IDR)</li>
+<li>GPIO 端口输出数据寄存器 (GPIOx_ODR)</li>
+<li>GPIO 端口置位/复位寄存器 (GPIOx_BSRR)</li>
+<li>GPIO 端口配置锁定寄存器 (GPIOx_LCKR)</li>
+<li>GPIO 复用功能低位寄存器 (GPIOx_AFRL)</li>
+<li>GPIO 复用功能高位寄存器 (GPIOx_AFRH)</li>
+</ul>
+<p>可以按字(32位)、半字(16位)、字节(8位)模式写入外设寄存器。</p>
+<p>一组寄存器（10个）可以控制一组GPIO的16个引脚（I/O口）。</p>
+<ul>
+<li>GPIO 端口模式寄存器 (GPIOx_MODER) ，只写，用于配置I/O模式：输入模式(00)、通用输出模式(01)、复用功能模式(10)、模拟模式(11)。</li>
+<li>GPIO 端口输出类型寄存器 (GPIOx_OTYPER) ，只写，用于配置I/O输出模式：推挽输出(0)，开漏输出(1)。</li>
+<li>GPIO 端口输出速度寄存器 (GPIOx_OSPEEDR) ，只写，用于配置I/O输出速度：低速(00)、中速(01)、快速(10)、高速(11)。</li>
+<li>GPIO 端口上拉/下拉寄存器 (GPIOx_PUPDR) ，只写，用于配置I/O输出是否需要上下拉：无上下拉(00)、上拉(01)、下拉(10)、保留(11)。</li>
+<li>GPIO 端口输入数据寄存器 (GPIOx_IDR) ，只读，位<a href="IDR0..15">15：0</a>记录引脚输入状态，即端口输入数据(Port input data)，高电平(1)、低电平(0)。</li>
+<li>GPIO 端口输出数据寄存器 (GPIOx_ODR)，读写，位<a href="ODR0..15">15:0</a>记录引脚输出状态，即端口输出数据 (Port output data)，高电平(1)、低电平(0)。</li>
+<li>GPIO 端口置位/复位寄存器 (GPIOx_BSRR)，只写，位<a href="BR0..15">31:16</a>写1复位（0）对应的ODRx位；位<a href="BS0..15">15:0</a>写1置位（1）对应的ODRx位。</li>
+<li>GPIO 端口配置锁定寄存器 (GPIOx_LCKR)，读写，用于锁定GPIO的配置，将 LOCK 序列应用到某个端口位后，在执行下一次 MCU 复位或外设复位之前，将无法对该端口位的值进行修改。
+位16，LCKK，锁定键 (Lock key) ，用于锁定锁定寄存器 (GPIOx_LCKR)，可以用锁定写序列对其修改，此时只允许使用字访问(32位)，且不能更改位[15:0]的值，位16的值如下：写入1-0-1-&gt;读取0-1，一共5步。
+位15:0，端口 x 锁定位 y (Port x lock bit y) (y= 0..15)，0为未锁定，1为已锁定.</li>
+<li>GPIO 复用功能低位寄存器 (GPIOx_AFRL)和GPIO 复用功能高位寄存器 (GPIOx_AFRH)，只写，用于复用功能的选择。</li>
+</ul>
+<p>总结一下，通过10个寄存器，我们可以对控制一组GPIO的16个引脚（I/O口），进行以下操作</p>
+<ul>
+<li>配置模式：输入、输出、复用、模拟</li>
+<li>配置输出类型：推挽、开漏</li>
+<li>配置上下拉模式：无上下拉、上拉、下拉、保留</li>
+<li>读取输入数据：1为高电平，0为低电平</li>
+<li>读写输出数据：1为高电平，0为低电平</li>
+<li>置位/复位输出状态：BRy写1复位，BSy写1置位</li>
+<li>锁定GPIO状态：写1锁定</li>
+<li>选择相应的复用功能</li>
+</ul>
+<h2 id="gpio库的使用"><a href="#gpio库的使用" class="anchor-link">#</a><a href="#contents:gpio库的使用" class="headings">GPIO库的使用</a></h2>
+<h3 id="hal库"><a href="#hal库" class="anchor-link">#</a><a href="#contents:hal库" class="headings">HAL库</a></h3>
+<p>HAL 库中对GPIO相关的操作在stm32fxxx_hal_gpio.c/h，stmfxxx_hal_gpio_ex.c/h 里面，后面两个主要是配置GPIO中断的功能，暂且略过。现在主要分析stmfxxx_hal_gpio.c/h的库函数:</p>
+<ul>
+<li>HAL_GPIO_Init</li>
+<li>HAL_GPIO_DeInit</li>
+<li>HAL_GPIO_ReadPin</li>
+<li>HAL_GPIO_WritePin</li>
+<li>HAL_GPIO_TogglePin</li>
+<li>HAL_GPIO_LockPin</li>
+<li>HAL_GPIO_EXTI_IRQHandler</li>
+<li>HAL_GPIO_EXTI_Callback</li>
+</ul>
+<h4 id="初始化去初始化"><a href="#初始化去初始化" class="anchor-link">#</a><a href="#contents:初始化去初始化" class="headings">初始化/去初始化</a></h4>
+<p>void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init);
+这是用于初始化GPIO的库函数。</p>
+<p>输入参数是两个结构体，
+第一个是GPIOx，用于指定GPIO端口(Port)，值为GPIOA~E不等，具体要看具体芯片型号。</p>
+<p>第二个是GPIO_Init，它是GPIO初始化结构体，用于指定GPIO的引脚，模式，上下拉，速度。</p>
+<p>引脚(Pin)：GPIO_PIN_0 ~ GPIO_PIN_15，或是GPIO_PIN_All。</p>
+<p>模式(Mode)：</p>
+<ul>
+<li>输入 GPIO_MODE_INPUT</li>
+<li>推挽输出 GPIO_MODE_OUTPUT_PP)</li>
+<li>开漏输出 GPIO_MODE_OUTPUT_OD)</li>
+<li>复用推挽输出 GPIO_MODE_AF_PP)</li>
+<li>复用开漏输出 GPIO_MODE_AF_OD)</li>
+<li>复用输入 GPIO_MODE_AF_INPUT</li>
+<li>模拟 GPIO_MODE_ANALOG</li>
+<li>上升沿中断 GPIO_MODE_IT_RISING</li>
+<li>下降沿中断 GPIO_MODE_IT_FALLING</li>
+<li>跳变沿中断 GPIO_MODE_IT_RISING_FALLING</li>
+<li>上升沿事件 GPIO_MODE_EVT_RISING</li>
+<li>下降沿事件 GPIO_MODE_EVT_FALLING</li>
+<li>跳变沿事件 GPIO_MODE_EVT_RISING_FALLING</li>
+</ul>
+<p>上下拉(Pull)：</p>
+<ul>
+<li>无上下拉 GPIO_NOPULL</li>
+<li>上拉 GPIO_PULLUP</li>
+<li>下拉 GPIO_PULLDOWN</li>
+</ul>
+<p>速度(Speed):</p>
+<ul>
+<li>低速 GPIO_SPEED_FREQ_LOW</li>
+<li>中速 GPIO_SPEED_FREQ_MEDIUM</li>
+<li>高速 GPIO_SPEED_FREQ_HIGH</li>
+</ul>
+<p><code>void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin);</code>
+这是去初始化的库函数，需要指定对应的端口和引脚。</p>
+<h4 id="输入输出操作"><a href="#输入输出操作" class="anchor-link">#</a><a href="#contents:输入输出操作" class="headings">输入输出操作</a></h4>
+<p><code>GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);</code>
+函数用于读取指定管脚的状态，返回值为<code>GPIO_PIN_RESET</code>(0)或<code>GPIO_PIN_SET</code>(1)。</p>
+<p><code>void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);</code>
+函数用于控制指定管脚输出，操作的是BSRR(置位/复位)寄存器，需要指定对应的端口、管脚，还有欲写入的状态：<code>GPIO_PIN_RESET</code>(0)或<code>GPIO_PIN_SET</code>(1)。</p>
+<p><code>void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);</code>
+函数用于翻转指定管脚的输出状态，操作的是ODR(输出数据)寄存器。</p>
+<p><code>HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);</code>
+函数用于锁定指定管脚的状态，操作的是LCKR(锁定)寄存器，返回值是<code>HAL_OK</code>或<code>HAL_ERROR</code>。</p>
+<h4 id="中断配置"><a href="#中断配置" class="anchor-link">#</a><a href="#contents:中断配置" class="headings">中断配置</a></h4>
+<p><code>void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);</code>
+这是GPIO中断的处理函数，将会清除中断标志位，并且进入回调函数。</p>
+<p><code>__weak void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);</code>
+这是GPIO中断的回调函数，可以重定义，无需清楚中断标志，直接在里面写相应的用户操作即可。</p>
+<h4 id="hal库总结"><a href="#hal库总结" class="anchor-link">#</a><a href="#contents:hal库总结" class="headings">HAL库总结</a></h4>
+<p>HAL库的GPIO部分，可以实现以下功能：</p>
+<ul>
+<li>初始化/去初始化 HAL_GPIO_Init 或 HAL_GPIO_DeInit</li>
+<li>读取引脚状态 HAL_GPIO_WritePin</li>
+<li>输出引脚状态 HAL_GPIO_ReadPin</li>
+<li>翻转引脚状态 HAL_GPIO_TogglePin</li>
+<li>锁定引脚状态 HAL_GPIO_LockPin</li>
+</ul>
+<h3 id="标准库"><a href="#标准库" class="anchor-link">#</a><a href="#contents:标准库" class="headings">标准库</a></h3>
+<p>标准库中对GPIO的操作在stm32fxxx_gpio.c/h中，包含以下库函数</p>
+<ul>
+<li>GPIO_Init</li>
+<li>GPIO_DeInit</li>
+<li>GPIO_AFIODeInit</li>
+<li>GPIO_StructInit</li>
+<li>GPIO_ReadInputDataBit</li>
+<li>GPIO_ReadInputData</li>
+<li>GPIO_ReadOutputDataBit</li>
+<li>GPIO_ReadOutputData</li>
+<li>GPIO_SetBits</li>
+<li>GPIO_ResetBits</li>
+<li>GPIO_WriteBit</li>
+<li>GPIO_Write</li>
+<li>GPIO_PinLockConfig</li>
+<li>GPIO_EventOutputConfig</li>
+<li>GPIO_EventOutputCmd</li>
+<li>GPIO_PinRemapConfig</li>
+<li>GPIO_EXTILineConfig</li>
+<li>GPIO_ETH_MediaInterfaceConfig</li>
+</ul>
+<h4 id="初始化去初始化-1"><a href="#初始化去初始化-1" class="anchor-link">#</a><a href="#contents:初始化去初始化-1" class="headings">初始化/去初始化</a></h4>
+<p><code>void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct);</code></p>
+<p>这是用于初始化GPIO的库函数，输入参数：</p>
+<ol>
+<li>GPIOx，用于指定GPIO端口(Port)，值为GPIOA~F不等；</li>
+<li>GPIO_InitStruct，这是GPIO初始化结构体，用于指定GPIO的引脚(Pin)，速度(Speed)，模式(Mode)。</li>
+</ol>
+<p>引脚(GPIO_Pin)，值为GPIO_Pin_0~15/ALL，一共16个引脚。</p>
+<p>速度(GPIO_Pin_Speed)，值为<code>GPIO_Speed_10MHz</code>/<code>GPIO_Speed_2MHz</code>/<code>GPIO_Speed_50MHz</code>。</p>
+<p>模式(GPIO_Mode)有以下几种：</p>
+<ul>
+<li>模拟输入 GPIO_Mode_AIN</li>
+<li>浮空输入　GPIO_Mode_IN_FLOATING</li>
+<li>下拉输入　GPIO_Mode_IPD</li>
+<li>上拉输入　GPIO_Mode_IPU</li>
+<li>开漏输出 GPIO_Mode_Out_OD</li>
+<li>推挽输出 GPIO_Mode_Out_PP</li>
+<li>复用开漏输出 GPIO_Mode_AF_OD</li>
+<li>复用推挽输出 GPIO_Mode_AF_PP</li>
+</ul>
+<p><code>void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct);</code>这是初始化<code>GPIO初始化结构体(GPIO_InitTypeDef)</code>的函数，初始化后的结果为 <code>GPIO_Pin_All, GPIO_Speed_2MHz,  GPIO_Mode_IN_FLOATING</code>。</p>
+<p><code>void GPIO_DeInit(GPIO_TypeDef* GPIOx);</code>
+这是去初始化的库函数，去除指定GPIO端口的所有引脚的初始化。</p>
+<p><code>void GPIO_AFIODeInit(void);</code>
+这是去除GPIO复用功能的初始化函数，用于关闭复用功能的时钟，从而禁止复用功能的开启。</p>
+<h4 id="读取"><a href="#读取" class="anchor-link">#</a><a href="#contents:读取" class="headings">读取</a></h4>
+<p><code>uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);</code>
+读取指定 <em class="emphasis-point">引脚(Pin)</em> <strong>1个引脚</strong> 的输入电平数据，返回值为Bit_SET(1)/Bit_RESET(0)。</p>
+<p><code>uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx);</code>
+读取指定 <em class="emphasis-point">端口(Port)</em> 一共<strong>16个引脚</strong> 的输入电平数据，返回值为(uint16_t)GPIOx-&gt;IDR。</p>
+<p><code>uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);</code>
+读取指定 <em class="emphasis-point">引脚(Pin)</em> <strong>1个引脚</strong>的输出电平数据，返回值为Bit_SET(1)/Bit_RESET(0)。</p>
+<p><code>uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx);</code>
+读取指定 <em class="emphasis-point">端口(Port)</em> 一共<strong>16个引脚</strong>的输出电平数据，返回值为(uint16_t)GPIOx-&gt;ODR。</p>
+<h4 id="输出"><a href="#输出" class="anchor-link">#</a><a href="#contents:输出" class="headings">输出</a></h4>
+<p><code>void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);</code>
+置位指定 <strong>引脚(Pin)</strong> 的输出数据，使其输出高电平(1)。</p>
+<p><code>void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);</code>
+复位指定 <strong>引脚(Pin)</strong> 的输出数据，使其输出低电平(0)。</p>
+<p><code>void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal);</code>
+指定 <strong>引脚(Pin)</strong> 的输出数据，使其输出高电平(Bit_SET)或低电平(Bit_RESET)。</p>
+<p><code>void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal);</code>
+指定 <strong>端口(Port)</strong> 的输出数据，使其输出高电平(Bit_SET)或低电平(Bit_RESET)。</p>
+<h4 id="事件管理"><a href="#事件管理" class="anchor-link">#</a><a href="#contents:事件管理" class="headings">事件管理</a></h4>
+<p><code>void GPIO_EventOutputConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);</code>
+GPIO输出EVENTOUT信号配置，参数为端口(GPIO_PortSourceGPIOx)和 引脚(GPIO_PinSourcex)。</p>
+<p><code>void GPIO_EventOutputCmd(FunctionalState NewState);</code>
+GPIO输出EVENTOUT信号使能，参数NewState是使能参数，值为关闭(DISABLE)或开启(ENABLE)。</p>
+<h4 id="中断管理"><a href="#中断管理" class="anchor-link">#</a><a href="#contents:中断管理" class="headings">中断管理</a></h4>
+<p><code>void GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);</code>
+GPIO中断配置，指定端口(GPIO_PortSourcex)和引脚(GPIO_PinSource)开启外部中断功能。</p>
+<h4 id="其他"><a href="#其他" class="anchor-link">#</a><a href="#contents:其他" class="headings">其他</a></h4>
+<p><code>void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);</code>
+锁定**单个引脚(Pin)**的状态</p>
+<p><code>void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState);</code>
+GPIO功能重映射的配置和使能，在开启复用功能的时候需要用到，参数GPIO_Remap为各功能的选择，NewState是使能参数，值为关闭(DISABLE)或开启(ENABLE)</p>
+<p><code>void GPIO_ETH_MediaInterfaceConfig(uint32_t GPIO_ETH_MediaInterface);</code>
+GPIO以太网功能配置，配置内部的以太网MAC使用外部的MII接口还是RMII接口的收发器(PHY)。</p>
+<h4 id="标准库总结"><a href="#标准库总结" class="anchor-link">#</a><a href="#contents:标准库总结" class="headings">标准库总结</a></h4>
+<p>标准库中GPIO库包含以下功能：</p>
+<ul>
+<li>初始化/去初始化</li>
+<li>读取/写入/锁存 单个引脚(Pin)或者端口(Port)的电平数据</li>
+<li>事件/中断功能配置</li>
+<li>以太网功能配置</li>
+</ul>
+<h3 id="hal库与标准库的比较"><a href="#hal库与标准库的比较" class="anchor-link">#</a><a href="#contents:hal库与标准库的比较" class="headings">HAL库与标准库的比较</a></h3>
+<p>HAL库是ST官方目前大力推行的库，能应用于全系列的芯片，并可以用STM32CubeMX软件快速开发。HAL多了很多抽象层，方便开发，集成度高。但由于集成度太高，有时单靠库函数无法完成某些功能的开发，反而需要对寄存器编程。</p>
+<p>标准库是ST比较早期的库，仅能应用于早期的芯片。标准库仅对寄存器进行封装，库函数能实现的操作都比较简单，应用时比较繁琐。由于标准库比较早期，早期芯片寄存器于现在的芯片的寄存器相比也有变化，因此，标准库对新出的芯片不支持，老芯片的操作与HAL库也不大相同。</p>
+<p>GPIO库里面，HAL库和标准库均能完成对<strong>单个引脚</strong>的初始化、输入输出锁存、中断管理的操作，但是标准库比HAL库多了一些功能:</p>
+<ul>
+<li>同时对同一端口(Port)的16个引脚(Pin)的状态进行读取、写入</li>
+<li>事件信号的功能功能配置</li>
+<li>以太网功能配置</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="anchor-link">#</a><a href="#contents:参考文献" class="headings">参考文献</a></h2>
+<ol>
+<li><a href="https://www.st.com/content/ccc/resource/technical/document/reference_manual/c5/cf/ef/52/c0/f1/4b/fa/DM00124865.pdf/files/DM00124865.pdf/jcr:content/translations/zh.DM00124865.pdf" target="_blank" rel="noopener" title="STM32F75xxx用户手册-中文版">RM0385：先进的基于ARM 32位内核的微控制器STM32F75xxx and STM32F74xxx用户手册</a></li>
+<li><a href="https://www.stmcu.com.cn/Designresource/design_resource_download/file_id/488479/file/CD00171190_ENV20.pdf/token/f1d575eae8d9ccb88c200f668c9e6c10" target="_blank" rel="noopener" title="stm32f10xxx参考手册-英文版">RM0008_STM32F101xx,STM32F102xx,STM32F103xx,STM32F105xx和STM32F107xx单片机参考手册</a></li>
+<li><a href="https://www.stmcu.com.cn/Designresource/design_resource_download/file_id/485616/file/CD00191185_ZHV5.pdf/token/43887ffab3aaba77db3a6b01ba36762d" target="_blank" rel="noopener" title="STM32F103x数据手册-中文版">DS5792_STM32F103xC,STM32F103xD,STM32F103xE单片机数据手册</a></li>
+<li><a href="https://github.com/Embdefire/products/wiki/%5B%E9%87%8E%E7%81%AB%5D%E3%80%8ASTM32-HAL%E5%BA%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E7%B3%BB%E5%88%97" target="_blank" rel="noopener" title="《STM32 HAL库开发实战指南》系列">STM32 HAL 库开发实战指南—基于 F7</a></li>
+<li><a href="https://github.com/Embdefire/products/wiki/%5B%E9%87%8E%E7%81%AB%5D%E3%80%8ASTM32%E5%BA%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%E3%80%8B%E7%B3%BB%E5%88%97" target="_blank" rel="noopener" title="《STM32库开发实战指南》系列">零死角玩转STM32—F103霸道</a></li>
+<li><a href="https://blog.csdn.net/qq_29350001/article/details/80681244" target="_blank" rel="noopener" title="STM32开发 -- GPIO详解">STM32开发 – GPIO详解</a></li>
+<li><a href="https://blog.csdn.net/techexchangeischeap/article/details/72569999" target="_blank" rel="noopener" title="GPIO输入输出各种模式（推挽、开漏、准双向端口）详解">GPIO输入输出各种模式（推挽、开漏、准双向端口）详解</a></li>
+</ol>
+
+            </div>
+
+            
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+    <footer class="minimal-footer">
+        
+            <div class="post-tag"><a href="/tags/stm32/" rel="tag" class="post-tag-link">#stm32</a></div>
+        
+        
+            <div class="post-category">
+                <a href="/tech/" class="post-category-link active">tech</a> | 
+            </div>
+        
+        
+    </footer>
+
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/tech/c_usage_summary/" rel="prev">&lt; C语言常见用法总结</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/tech/computer_reinstall_system_guide/" rel="next">电脑安装系统指南 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;LS1030</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:L.S.1030@outlook.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/ls1030" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://t.me/ls1030" target="_blank" rel="external noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon social-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+    </body>
+</html>
