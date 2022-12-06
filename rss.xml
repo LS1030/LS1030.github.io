@@ -23,10 +23,959 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 23 Nov 2022 20:53:29 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 07 Dec 2022 02:20:34 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://ls1030.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Windows Terminal 终端美化</title>
+                <link>https://ls1030.github.io/tech/winterminal_beautification/</link>
+                <guid isPermaLink="true">https://ls1030.github.io/tech/winterminal_beautification/</guid>
+                <pubDate>Tue, 06 Dec 2022 22:30:33 &#43;0800</pubDate>
+                
+                    <author>L.S.1030@outlook.com (LS1030)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;packagemanagement&#34;&gt;PackageManagement&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_packagemanagement?view=powershell-7.3&#34; title=&#34;about_PackageManagement&#34;&gt;PackageManagement&lt;/a&gt;，又名&lt;a href=&#34;https://github.com/OneGet/oneget&#34; title=&#34;OneGet&#34;&gt;OneGet&lt;/a&gt;，是 Windows 的包管理工具，类似 Debain 的 apt，以 PowerShell 为操作界面，可以通过常用的命令 cmdlet 完成诸多操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;管理可在其中搜索、获取和安装软件包的软件存储库列表&lt;/li&gt;
+&lt;li&gt;搜索和过滤您的存储库以找到您需要的包&lt;/li&gt;
+&lt;li&gt;使用单个 PowerShell 命令从一个或多个存储库无缝安装和卸载包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其架构图为：
+&lt;img src=&#34;https://ls1030.github.io/images/winterminal_beautification/OneGetArchitecture.png&#34; alt=&#34;PackageManagement架构图&#34; title=&#34;PackageManagement架构图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如图所示，PackageManagement 是管理&lt;strong&gt;Windows 平台&lt;/strong&gt;的包管理工具，支持使用&lt;strong&gt;Provider&lt;/strong&gt;扩展套件来管理其他工具。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.powershellgallery.com/&#34;&gt;PowerShell Gallery&lt;/a&gt;是一个包含众多 PowerShell 的 Package 网站，可以在里面寻找&lt;code&gt;Package&lt;/code&gt;和&lt;code&gt;Provider&lt;/code&gt;和相关资料。&lt;/p&gt;
+&lt;p&gt;在 Windows 10 和 Windows 11 上，PackageManagement 默认安装，通过&lt;code&gt;Get-Module -Name PackageManagement&lt;/code&gt;可以查询当前 PackageManagement 版本信息，通过&lt;code&gt;Get-Command -Module PackageManagement&lt;/code&gt;可以查询 PackageManagement 的所有命令，总结见下表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;命令名&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;查找包&lt;/td&gt;
+&lt;td&gt;Find-Package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;查找 Provider&lt;/td&gt;
+&lt;td&gt;Find-PackageProvider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取本地包&lt;/td&gt;
+&lt;td&gt;Get-Package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取本地 Provider&lt;/td&gt;
+&lt;td&gt;Get-PackageProvider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取本地源&lt;/td&gt;
+&lt;td&gt;Get-PackageSource&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;导入源&lt;/td&gt;
+&lt;td&gt;Import-PackageProvider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安装包&lt;/td&gt;
+&lt;td&gt;Install-Package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安装 Provider&lt;/td&gt;
+&lt;td&gt;Install-PackageProvider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;注册源（添加第三方源）&lt;/td&gt;
+&lt;td&gt;Register-PackageSource&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;保存包&lt;/td&gt;
+&lt;td&gt;Save-Package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;设置源&lt;/td&gt;
+&lt;td&gt;Set-PackageSource&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;卸载包&lt;/td&gt;
+&lt;td&gt;Uninstall-Package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;卸载源&lt;/td&gt;
+&lt;td&gt;Unregister-PackageSource&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;利用 PackageManagement 安装软件流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;查找包：&lt;code&gt;Find-Package -Name &amp;quot;7zip&amp;quot; [-AllVersions]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装包：&lt;code&gt;Install-Package -Name &amp;quot;7zip&amp;quot; [-Version &amp;lt;version_nember&amp;gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看包：&lt;code&gt;Get-Package -Name &amp;quot;7zip&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果在第一步找不到对应的包，可以使用&lt;code&gt;*&lt;/code&gt;来进行模糊搜索，如果仍然找不到，则考虑是否未添加对应的&lt;code&gt;Provider&lt;/code&gt;或者&lt;code&gt;Source&lt;/code&gt;，使用&lt;code&gt;Find-PackageProvider&lt;/code&gt;和&lt;code&gt;Import-PackageProvider&lt;/code&gt;添加官方&lt;code&gt;Provider&lt;/code&gt;或者使用&lt;code&gt;Register-PackageSource&lt;/code&gt;添加第三方源，然后再找对应的软件包。&lt;/p&gt;
+&lt;h2 id=&#34;powershellget&#34;&gt;PowerShellGet&lt;/h2&gt;
+&lt;p&gt;PowerShellGet 作为一个 Provider 扩展套件被集成在 PackageManagement，专门用于管理&lt;strong&gt;PowerShell&lt;/strong&gt;（ Windows Terminal 的默认终端）。PowerShell 通过许多模块&lt;code&gt;Module&lt;/code&gt;和脚本&lt;code&gt;Script&lt;/code&gt;来实现更多功能，而模块&lt;code&gt;Module&lt;/code&gt;和脚本&lt;code&gt;Script&lt;/code&gt;使用 PowerShellGet 来管理。&lt;/p&gt;
+&lt;p&gt;可以通过&lt;code&gt;Get-Command -Module PowerShellGet&lt;/code&gt;来获取 PowerShellGet 支持的命令，利用&lt;code&gt;Get-Command -Module PowerShellGet | Group-Object -Property Verb&lt;/code&gt;来格式化输出如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Powershell&#34; data-lang=&#34;Powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Count&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Name&lt;/span&gt;                      &lt;span class=&#34;nb&#34;&gt;Group
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;-----&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;----&lt;/span&gt;                      &lt;span class=&#34;p&#34;&gt;-----&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Find&lt;/span&gt;                      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Find-Command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Find-DscResource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Find-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Find-RoleCapability&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Get&lt;/span&gt;                       &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-CredsFromCredentialProvider&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-InstalledModule&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-InstalledScript&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Get-PSRepository&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Install&lt;/span&gt;                   &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Install-Script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;                       &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;New-ScriptFileInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Publish&lt;/span&gt;                   &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Publish-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Publish-Script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Register&lt;/span&gt;                  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Register-PSRepository&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Save&lt;/span&gt;                      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Save-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Save-Script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Set &lt;/span&gt;                      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSRepository&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Test&lt;/span&gt;                      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Test-ScriptFileInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Uninstall&lt;/span&gt;                 &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Uninstall-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Uninstall-Script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Unregister&lt;/span&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Unregister-PSRepository&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Update&lt;/span&gt;                    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Update-Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Update-ModuleManifest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Update-Script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Update-ScriptFileInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有 Find(查找), Get(获取), Install(安装), New(新建), Publish(发布), Register(注册), Save(保存), Set(设置), Test(检查), Uninstall(卸载), Unregister(注销), Update(更新)一共包含了 12 大类的功能管理。&lt;/p&gt;
+&lt;p&gt;常用命令：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;命令名&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;查找模块&lt;/td&gt;
+&lt;td&gt;Find-Module [-Name] [-AllVersions]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;升级模块&lt;/td&gt;
+&lt;td&gt;Update-Module&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;查看已安装模块&lt;/td&gt;
+&lt;td&gt;Get-InstalledModule&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;升级 PowerShellGet 的步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先查看 PowerShellGet 的最新版本:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Find-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PowerShellGet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-AllVersions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;升级 PowerShellGet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Update-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PowerShellGet&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-RequiredVersion&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一次升级会报错，提示&lt;code&gt;Module &#39;PowerShellGet&#39; was not installed by using Install-Module, so it cannot be updated.&lt;/code&gt;，原因是 PowerShellGet 并没有通过 Install-Module 安装，因此使用&lt;code&gt;Install-Module -Name PowerShellGet -RequiredVersion [1.1.2.0]&lt;/code&gt;来安装第一次安装时会提示&lt;code&gt;You are installing the modules from an untrusted repository.&lt;/code&gt;，意思是要安装的模块&lt;code&gt;PowerShellGet&lt;/code&gt;来自不被信任的软件源，可以输入 Y 继续，之后可以使用&lt;code&gt;Set-PSRepository -Name PSGallery -InstallationPolicy Trusted&lt;/code&gt;将&lt;code&gt;PSGallery&lt;/code&gt;设置为信任，方便之后更新。&lt;/p&gt;
+&lt;h2 id=&#34;psreadline&#34;&gt;PSReadLine&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShell/PSReadLine&#34;&gt;PSReadLine&lt;/a&gt;是 PowerShell 的命令行插件，有语法着色、语法错误通知、历史命令自动填充等功能。&lt;/p&gt;
+&lt;p&gt;安装&lt;code&gt;PSReadLine&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PSReadLine&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;经过配置&lt;code&gt;$PROFILE&lt;/code&gt;即&lt;code&gt;Microsoft.PowerShell_profile.ps1&lt;/code&gt;会让 PSReadLine 更好用，使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;notepad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;打开文件，进行配置。&lt;/p&gt;
+&lt;p&gt;参考&lt;a href=&#34;https://github.com/PowerShell/PSReadLine/blob/master/PSReadLine/SamplePSReadLineProfile.ps1&#34;&gt;sample profile file&lt;/a&gt;进行配置如下，有历史命令自动填充（上下方向键）、F7 查看历史命令、Tab 自动补全、[&#39;&amp;quot;(({自动补全并回中等功能：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;109
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;110
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;111
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;112
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;113
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;114
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;115
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;116
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;117
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;118
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;119
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;120
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;121
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;122
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;123
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;124
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;125
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;126
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;127
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;128
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;129
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;130
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;131
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;132
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;133
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;134
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;135
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;136
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;137
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;138
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;139
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;140
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;141
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;142
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;143
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;144
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;145
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;146
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;147
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;148
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;149
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;150
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;151
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;152
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;153
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;154
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;155
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;156
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;157
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;158
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;159
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;160
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;161
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;162
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;163
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;164
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;165
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;166
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;167
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;168
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;169
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;170
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;171
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;172
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;173
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;174
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;175
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;176
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;177
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;178
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;179
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;180
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;181
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;182
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;183
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;184
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;185
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;186
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;187
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;188
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;189
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;190
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;191
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;192
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;193
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;194
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;195
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;196
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;197
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;198
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;199
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;200
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;201
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;202
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;203
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;204
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;205
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;206
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;207
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;208
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;209
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;210
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;211
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;212
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;213
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;214
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;215
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;216
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;217
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;218
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;219
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;220
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;221
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;222
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;223
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;224
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;225
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;226
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;227
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;228
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;229
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;230
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;231
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;232
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;233
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;234
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;235
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;236
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;237
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;238
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;239
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;240
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;241
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;242
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;243
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;244
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;245
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;246
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;247
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;248
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;249
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;250
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;251
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;252
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;253
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;254
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;255
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;256
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;257
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;258
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;259
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;260
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;261
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;262
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;263
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;264
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;265
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;266
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;267
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;268
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;269
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;270
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;271
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;272
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;273
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;274
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;275
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;276
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;277
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;278
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;279
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;280
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;281
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;282
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;283
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;284
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;285
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;286
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;287
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;288
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;289
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;290
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;291
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;292
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;293
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;294
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;295
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;296
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;297
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;298
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;299
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;300
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;301
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;302
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;303
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;304
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Management&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Automation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Management&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Automation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Language&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# This is an example profile for PSReadLine.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Import-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PSReadLine&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-EditMode&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Emacs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Searching for commands with up/down arrow is really handy.  The&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# option &amp;#34;moves to end&amp;#34; is useful if you want the cursor at the end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# of the line while cycling through history like it does w/o searching,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# without that option, the cursor will remain at the position it was&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# when you used up arrow, which can be useful if you forget the exact&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# string you started the search on.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-HistorySearchCursorMovesToEnd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UpArrow&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HistorySearchBackward&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DownArrow&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HistorySearchForward&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# This key handler shows the entire or filtered history using Out-GridView. The&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# typed text is used as the substring pattern for filtering. A selected command&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# is inserted to the command line without invoking. Multiple command selection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# is supported, e.g. selected by Ctrl + Click.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;F7&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;History &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Show command history&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[regex]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Escape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$history&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[System.Collections.ArrayList]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$last&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$lines&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;foreach&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[System.IO.File]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReadLines&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;Get-PSReadLineOption&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;HistorySavePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EndsWith&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Substring&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$lines&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$lines&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;s2&#34;&gt;&amp;#34;$lines&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;`n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;$line&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$lines&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$lines&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;`n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;$line&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$lines&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-cne&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-and&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(!&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-match&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$pattern&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$last&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Reverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$command&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$history&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Out-GridView&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Title&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;History &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-PassThru&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RevertLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$command&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-join&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;`n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# This is an example of a macro that you might use to execute a command.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# This will add the command to history.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BuildCurrentDirectory&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Build the current directory&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RevertLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;msbuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AcceptLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# In Emacs mode - Tab acts like in bash, but the Windows style completion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# is still useful sometimes, so bind some keys so we can do both&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TabCompleteNext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Q&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TabCompletePrevious&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Clipboard interaction is bound by default in Windows mode, but not Emacs mode.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Copy
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Paste&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# CaptureScreen is good for blog posts or email showing a transaction&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# of what you did when asking for help or demonstrating a technique.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Chord&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Ctrl+d,Ctrl+c&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CaptureScreen&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# The built-in word movement uses character delimiters, but token based word&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# movement is also very useful - these are the bindings you&amp;#39;d use if you&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# prefer the token based movements bound to the normal emacs word movement&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# key bindings.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ShellKillWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Backspace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ShellBackwardKillWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ShellBackwardWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ShellForwardWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SelectShellBackwardWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Alt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SelectShellForwardWord&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# The next four key handlers are designed to make entering matched quotes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# parens, and braces a nicer experience.  I&amp;#39;d like to include functions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# in the module that do this, but this implementation still isn&amp;#39;t as smart&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# as ReSharper, so I&amp;#39;m just providing it as a sample.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SmartInsertQuote&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Insert paired quotes if not already on a quote&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$arg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetSelectionState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# If text is selected, just quote it without any smarts&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-ne&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SubString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$ast&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$tokens&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$parseErrors&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ast&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$tokens&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$parseErrors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FindToken&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$tokens&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;foreach&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tokens&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StartOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EndOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-as&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[StringExpandableToken]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;nv&#34;&gt;$nested&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FindToken&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NestedTokens&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$nested&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$nested&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FindToken&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tokens&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# If we&amp;#39;re on or inside a **quoted** string token (so not generic), we need to be smarter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-is&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[StringToken]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-ne&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Generic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c&#34;&gt;# If we&amp;#39;re at the start of the string, assume we&amp;#39;re inserting a new string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StartOffset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;$quote$quote &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c&#34;&gt;# If we&amp;#39;re at the end of the string, move over the closing quote if present.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EndOffset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RParen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RCurly&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RBracket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Where&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Count&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c&#34;&gt;# Odd number of quotes before the cursor, insert a single quote&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c&#34;&gt;# Insert matching quotes, move cursor to be in between the quotes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;$quote$quote&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# If cursor is at the start of a token, enclose it in quotes.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StartOffset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Generic&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Identifier&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Kind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[TokenKind]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Variable&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TokenFlags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hasFlag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[TokenFlags]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Keyword&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$end&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Extent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EndOffset&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nv&#34;&gt;$len&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$end&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SubString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$end&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c&#34;&gt;# We failed to be smart, so just insert a single quote&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$quote&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;{&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;[&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;InsertPairedBraces&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Insert matching braces&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$arg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$closeChar&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;(&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[char]&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;{&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[char]&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;}&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;[&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[char]&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetSelectionState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-ne&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;# Text is selected, wrap it in brackets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SubString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$closeChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$selectionStart&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$selectionLength&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;# No text is selected, insert a pair&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;$closeChar&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;}&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SmartCloseBraces&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Insert closing brace or skip&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$arg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCursorPosition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KeyChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Set-PSReadLineKeyHandler&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Backspace&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-BriefDescription&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SmartBackspace&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-LongDescription&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Delete previous character or matching quotes/parens/braces&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;-ScriptBlock&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$arg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBufferState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;[ref]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-gt&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-lt&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;)&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;]&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;[&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;cm&#34;&gt;&amp;lt;#case#&amp;gt;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;}&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;{&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-ne&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$toMatch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Delete&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$cursor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;no&#34;&gt;[Microsoft.PowerShell.PSConsoleReadLine]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BackwardDeleteChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$arg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;#endregion Smart Insert/Delete&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;posh-git&#34;&gt;posh-git&lt;/h2&gt;
+&lt;p&gt;posh-git 是一个 PowerShell 模块，它通过提供可以在 PowerShell 提示符中显示的 Git 状态摘要信息来集成 Git 和 PowerShell，还为常见的 git 命令、分支名称、路径等提供制表符补全支持。&lt;/p&gt;
+&lt;p&gt;安装命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;posh-git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Scope&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CurrentUser&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Force&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;需要在&lt;code&gt;$PROFILE&lt;/code&gt;里添加&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Import-Module&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;posh-git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;oh-my-posh&#34;&gt;oh-my-posh&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://ohmyposh.dev/&#34;&gt;oh-my-posh&lt;/a&gt;是作用于 PowerShell 的自定义提示引擎，可以添加不同的主题来美化 PowerShell。&lt;/p&gt;
+&lt;h3 id=&#34;安装oh-my-posh&#34;&gt;安装oh-my-posh&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JanDeDobbeleer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OhMyPosh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;安装字体&#34;&gt;安装字体&lt;/h3&gt;
+&lt;p&gt;因为许多主题含有图标，因此使用需要使用包含图标的字体，可以直接通过oh-my-posh安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;oh-my&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;font&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;推荐使用&lt;code&gt;DejaVuSansMono NF&lt;/code&gt;、&lt;code&gt;JetBrainsMono NF&lt;/code&gt;、&lt;code&gt;Meslo LGM NF&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;安装主题p10k&#34;&gt;安装主题（p10k）&lt;/h3&gt;
+&lt;p&gt;可以通过&lt;code&gt;Get-PoshThemes&lt;/code&gt;来展示自带主题，选择喜欢的主题，打开&lt;code&gt;$PROFILE&lt;/code&gt;，添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;oh-my&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pwsh&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-config&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$env:POSH_THEMES_PATH/pwsh10k.omp.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Invoke-Expression&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;主题使用json格式，更改名字即可。&lt;/p&gt;
+&lt;p&gt;但是我喜欢使用powerlevel10k主题，因为此主题只适合&lt;code&gt;zsh&lt;/code&gt;，因此只能使用第三方：&lt;a href=&#34;https://github.com/Kudostoy0u/pwsh10k/raw/master/pwsh10k.omp.json&#34;&gt;pwsh10k.omp.json&lt;/a&gt;，其Github仓库地址为&lt;a href=&#34;https://github.com/udostoy0u/pwsh10k&#34;&gt;Kudostoy0u/pwsh10k&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;先下载&lt;a href=&#34;https://github.com/Kudostoy0u/pwsh10k/raw/master/pwsh10k.omp.json&#34;&gt;pwsh10k.omp.json&lt;/a&gt;，然后&lt;code&gt;explorer env:POSH_THEMES_PATH&lt;/code&gt;打开主题文件夹，然后把&lt;code&gt;pwsh10k.omp.json&lt;/code&gt;复制进去，同时在&lt;code&gt;$PROFILE&lt;/code&gt;更改主题名称。&lt;/p&gt;
+&lt;h2 id=&#34;windows-terminal设置&#34;&gt;Windows Terminal设置&lt;/h2&gt;
+&lt;p&gt;打开Windows Terminal设置，左边栏-配置文件-Windows PowerShell，其他设置-外观，设置字体为&lt;code&gt;JetBrainMono NF&lt;/code&gt;，字号11，透明度80%，如果喜欢可以自行添加背景图片。&lt;/p&gt;
+&lt;p&gt;另外，关闭启动logo的设置为：左边栏-配置文件-Windows PowerShell，命令行，在命令的最后添加&lt;code&gt;-nologo&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;vscode设置可选&#34;&gt;VSCode设置（可选）&lt;/h2&gt;
+&lt;p&gt;经过以上一系列，VSCode内的终端可能显示有问题，打开VSCode设置，搜索&lt;code&gt;Integrated: Font Family&lt;/code&gt;并设置为&lt;code&gt;JetBrainMono NF&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;关闭logo：搜索&lt;code&gt;terminal.integrated.profiles.windows&lt;/code&gt;，打开&lt;code&gt;setting.json&lt;/code&gt;，在&lt;code&gt;PowerShell&lt;/code&gt;内添加&lt;code&gt;&amp;quot;args&amp;quot;: [&amp;quot;-noLogo&amp;quot;]&lt;/code&gt;，即：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;terminal.integrated.profiles.windows&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;PowerShell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PowerShell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;icon&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;terminal-powershell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;-noLogo&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;总结及最终效果&#34;&gt;总结及最终效果&lt;/h2&gt;
+&lt;p&gt;Windows Terminal - PowerShell的美化步骤为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;更新PowerShellGet&lt;/li&gt;
+&lt;li&gt;安装PSReadLine&lt;/li&gt;
+&lt;li&gt;安装posh-git&lt;/li&gt;
+&lt;li&gt;安装oh-my-posh及p10k主题&lt;/li&gt;
+&lt;li&gt;安装字体&lt;/li&gt;
+&lt;li&gt;配置$PROFILE&lt;/li&gt;
+&lt;li&gt;设置Terminal字体及背景&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最终的&lt;code&gt;$PROFILE&lt;/code&gt;点击&lt;a href=&#34;https://ls1030.github.io/images/winterminal_beautification/Microsoft.PowerShell_profile.ps1&#34;&gt;下载&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;最终效果为：
+&lt;img src=&#34;https://ls1030.github.io/images/winterminal_beautification/WindowsTerminal-PowerShell.png&#34; alt=&#34;WindowsTerminal-PowerShell&#34; title=&#34;WindowsTerminal-PowerShell 美化效果&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.cn/post/7119141141152268301#heading-13&#34;&gt;Windows 11和vscode终端美化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://anders.wang/wei-ruan-de-xin-yi-dai-windowstao-jian-bao-guan-li-qi-oneget/&#34;&gt;微软的新一代Windows套件包管理器(OneGet)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://anders.wang/powershellgetxi-lie-yi-powershellde-zui-jia-guan-li-neng-shou/&#34;&gt;PowerShellGet系列(一)：PowerShell的最佳管理能手&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://anders.wang/powershellgetxi-lie-er-yong-powershellgetguan-li-ni-de-mo-kuai-bao/&#34;&gt;PowerShellGet系列(二)：用PowerShellGet管理你的模块包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/sigmarising/article/details/107287275&#34;&gt;PSReadLine - Powershell 的强化工具&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://ls1030.github.io/tech/">tech\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>OpenCV安装不完全指北</title>
@@ -704,7 +1653,7 @@
                                 
                                 
                                 
-                                    <category domain="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</category>
+                                    <category domain="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</category>
                                 
                             
                         
@@ -1803,7 +2752,7 @@ PE可以选择&lt;a href=&#34;http://www.wepe.com.cn/download.html&#34;&gt;微PE
                                 
                                 
                                 
-                                    <category domain="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</category>
+                                    <category domain="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</category>
                                 
                             
                         
