@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">LS1030的自留地</title>
     <subtitle type="html">LS1030的生活随笔及技术札记</subtitle>
-    <updated>2022-12-07T02:20:34&#43;08:00</updated>
+    <updated>2022-12-08T00:39:35&#43;08:00</updated>
     <id>https://ls1030.github.io/</id>
     <link rel="alternate" type="text/html" href="https://ls1030.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://ls1030.github.io/atom.xml" />
@@ -17,10 +17,247 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.101.0">Hugo</generator>
         <entry>
+            <title type="text">Ubuntu终端美化</title>
+            <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/ubuntu_terminal_beautification/" />
+            <id>https://ls1030.github.io/tech/ubuntu_terminal_beautification/</id>
+            <updated>2022-12-08T00:39:24&#43;08:00</updated>
+            <published>2022-12-07T23:02:43&#43;08:00</published>
+            <author>
+                    <name>LS1030</name>
+                    <uri>https://ls1030.github.io/</uri>
+                    <email>L.S.1030@outlook.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">zsh Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Li……</summary>
+            
+                <content type="html">&lt;h2 id=&#34;zsh&#34;&gt;zsh&lt;/h2&gt;
+&lt;p&gt;Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Linux系统可以有多种Shell，可以通过命令查看系统内的Shell:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /etc/shells
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;常用的 Linux 系统和 OS X 系统的默认 Shell 都是bash，Ubuntu也是。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zsh.org/&#34;&gt;zsh&lt;/a&gt;一个功能非常强大的Shell，兼容bash并且有bash之外更多的功能。&lt;/p&gt;
+&lt;p&gt;在Ubuntu里一般没有带zsh，可以通过命令安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装完毕之后，需要把bash切换成zsh：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chsh -s /bin/zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后关闭当前shell，重新打开新的shell，就可以使用zsh了。&lt;/p&gt;
+&lt;h2 id=&#34;oh-my-zsh&#34;&gt;oh-my-zsh&lt;/h2&gt;
+&lt;p&gt;第一次使用zsh需要进行配置，但是这个配置非常麻烦，我们使用oh-my-zsh进行配置，因此第一次进入时选择1，即仅生成zsh的配置文件:&lt;code&gt;~/.zshrc&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ohmyz.sh/&#34;&gt;oh-my-zsh&lt;/a&gt;是开源的用于管理zsh配置的框架，可以使用不同主题，添加各种插件来增添更多功能，其Github仓库为&lt;a href=&#34;https://github.com/ohmyzsh/ohmyzsh&#34;&gt;ohmyzsh/ohmyzsh&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;oh-my-zsh使用命令安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;更新oh-my-zsh可以使用以下命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;upgrade_oh_my_zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;omz update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;zsh、oh-my-zsh安装完毕后，切换主题和安装一些插件会让zsh更好用。&lt;/p&gt;
+&lt;p&gt;安装主题或插件后，更新zsh配置文件，即可应用最新的更改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;powerlevel10k主题&#34;&gt;powerlevel10k主题&lt;/h3&gt;
+&lt;p&gt;oh-my-zsh有许多主题，其中一个比较好用美观的是powerlevel10k，强调速度、灵活性和开箱即用的体验，Github仓库是&lt;a href=&#34;https://github.com/romkatv/powerlevel10k&#34;&gt;romkatv/powerlevel10k&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;在oh-my-zsh下安装powerlevel10k可以直接通过命令完成：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone --depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; https://github.com/romkatv/powerlevel10k.git &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/themes/powerlevel10k
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;中国大陆用户可以使用 gitee.com 上的官方镜像加速下载:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone --depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; https://gitee.com/romkatv/powerlevel10k.git &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/themes/powerlevel10k
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在&lt;code&gt;~/.zshrc&lt;/code&gt;中设置&lt;code&gt;ZSH_THEME=&amp;quot;powerlevel10k/powerlevel10k&amp;quot;&lt;/code&gt;，然后&lt;code&gt;source ~/.zshrc&lt;/code&gt;，根据提示进行设置，设置完成就可以使用了。&lt;/p&gt;
+&lt;p&gt;如果需要重新配置，则使用命令重新配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p10k configure
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;另外，因为主题内含有图标，所以需要改终端字体为包含图标的字体，推荐&lt;code&gt;DejaVuSansMono NF&lt;/code&gt;、&lt;code&gt;JetBrainsMono NF&lt;/code&gt;、&lt;code&gt;Meslo LGM NF&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;插件&#34;&gt;插件&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;~/.zshrc&lt;/code&gt;里的&lt;code&gt;plugins&lt;/code&gt;内添加字段可以使用各种插件，有一些插件时zsh默认安装，也有一些是需要另外手动安装的，我的插件配置为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;plugins&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=(&lt;/span&gt;git extract z sudo safe-paste zsh-syntax-highlighting zsh-autosuggestions&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;git&#34;&gt;git&lt;/h4&gt;
+&lt;p&gt;git是默认安装并开启的..git插件..，可以使用各种&lt;code&gt;alias别名&lt;/code&gt;来完成git操作，并且在终端上显示git信息，查看alias可以使用命令:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;extract&#34;&gt;extract&lt;/h4&gt;
+&lt;p&gt;extract是默认安装的..自动解压插件..，可以根据压缩文件后缀来自动调用对用的解压软件来解压文件，其使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*.zip/tar.gz/tar.xz&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;z&#34;&gt;z&lt;/h4&gt;
+&lt;p&gt;z是默认安装的..目录自动跳转插件..，可以自动记忆曾经进入过的目录，并且通过&lt;code&gt;z&lt;/code&gt;命令模糊匹配并直接跳转，使用方法与&lt;code&gt;cd&lt;/code&gt;类似，但输入目录地址时可以通过&lt;code&gt;tab&lt;/code&gt;快速调整。&lt;/p&gt;
+&lt;h4 id=&#34;sudo&#34;&gt;sudo&lt;/h4&gt;
+&lt;p&gt;sudo是默认安装的，其作用是..连按两次..&lt;code&gt;Esc&lt;/code&gt;即可在当前命令前自动添加&lt;code&gt;sudo&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;safe-paste&#34;&gt;safe-paste&lt;/h4&gt;
+&lt;p&gt;safe-paste是默认安装的，顾名思义，安全粘贴，其作用是使粘贴的命令到终端后需要..手动运行..，防止复制命令时自带换行导致自动运行不正确的命令带来不可预料的后果。&lt;/p&gt;
+&lt;h4 id=&#34;zsh-syntax-highlighting&#34;&gt;zsh-syntax-highlighting&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/zsh-users/zsh-syntax-highlighting&#34;&gt;zsh-syntax-highlighting&lt;/a&gt;是一个命令自动语法高亮插件，需要手动安装，安装命令为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;~/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/plugins/zsh-syntax-highlighting
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;zsh-autosuggestions&#34;&gt;zsh-autosuggestions&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/zsh-users/zsh-autosuggestions&#34;&gt;zsh-autosuggestions&lt;/a&gt;是一个自动补全插件，根据历史记录自动提示并可以使用&lt;code&gt;tab&lt;/code&gt;自动补全，需要手动安装，安装命令为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/zsh-users/zsh-autosuggestions &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;~/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/plugins/zsh-autosuggestions
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;windows-terminal设置可选&#34;&gt;Windows Terminal设置（可选）&lt;/h2&gt;
+&lt;p&gt;我使用wsl2+Ubuntu22.04，因此可以进一步设置：&lt;/p&gt;
+&lt;p&gt;打开Windows Terminal设置，左边栏-配置文件-Windows PowerShell，其他设置-外观，设置字体为&lt;code&gt;JetBrainMono NF&lt;/code&gt;，字号11，透明度80%，如果喜欢可以自行添加背景图片。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开Windows Terminal设置，左边栏-配置文件-Ubuntu 22.04.1 LTS，其他设置-外观&lt;/li&gt;
+&lt;li&gt;配色方案：Campbell&lt;/li&gt;
+&lt;li&gt;字体：JetbrainMono NF&lt;/li&gt;
+&lt;li&gt;字号：11&lt;/li&gt;
+&lt;li&gt;光标：条形&lt;/li&gt;
+&lt;li&gt;透明度：背景透明度80%&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;总结及最终效果&#34;&gt;总结及最终效果&lt;/h2&gt;
+&lt;p&gt;Windows Terminal - Ubuntu终端的美化步骤为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装zsh，并把shell切换为zsh&lt;/li&gt;
+&lt;li&gt;安装oh-my-zsh&lt;/li&gt;
+&lt;li&gt;安装powerlevel10k主题&lt;/li&gt;
+&lt;li&gt;安装并配置对应插件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最终效果为：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ls1030.github.io/images/ubuntu_terminal_beautification/WindowsTerminal-Ubuntu-zsh.png&#34; alt=&#34;WindowsTerminal-Ubuntu&#34; title=&#34;WindowsTerminal-Ubuntu&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/61447507&#34;&gt;常用的oh-my-zsh插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://asmcn.icopy.site/awesome/awesome-zsh-plugins/&#34;&gt;ZSH 插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.aloxaf.com/2019/11/zplugin_tutorial/&#34;&gt;加速你的 zsh —— 最强 zsh 插件管理器 zplugin/zinit 教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://ls1030.github.io/tech/" term="tech\" label="tech\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" term="环境配置" label="环境配置" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://ls1030.github.io/tags/linux/" term="Linux" label="Linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">Windows Terminal 终端美化</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/winterminal_beautification/" />
             <id>https://ls1030.github.io/tech/winterminal_beautification/</id>
-            <updated>2022-12-07T02:20:01&#43;08:00</updated>
+            <updated>2022-12-07T02:21:36&#43;08:00</updated>
             <published>2022-12-06T22:30:33&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -972,7 +1209,7 @@
             <title type="text">OpenCV安装不完全指北</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/opencv_install_guild/" />
             <id>https://ls1030.github.io/tech/opencv_install_guild/</id>
-            <updated>2022-07-25T15:37:17&#43;08:00</updated>
+            <updated>2022-12-07T02:21:36&#43;08:00</updated>
             <published>2022-07-15T17:16:45&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -1585,8 +1822,7 @@
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/375566593&#34;&gt;在Ubuntu平台编译OpenCV的正确姿势&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31112205/article/details/105161419&#34;&gt;Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本
-&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31112205/article/details/105161419&#34;&gt;Ubuntu16.04安装cmake以及编译opencv带上contrib的gpu版本&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html&#34;&gt;OpenCV configuration options reference&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/sheqianweilong/article/details/102646929&#34;&gt;opencv编译安装--踩坑&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -2049,7 +2285,7 @@ C语言的名称区分大小写。
             <title type="text">串行通信</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/serial_communication/" />
             <id>https://ls1030.github.io/tech/serial_communication/</id>
-            <updated>2022-11-23T20:19:27&#43;08:00</updated>
+            <updated>2022-12-07T02:21:36&#43;08:00</updated>
             <published>2019-10-21T19:18:46&#43;08:00</published>
             <author>
                     <name>LS1030</name>
@@ -2635,7 +2871,7 @@ GPIO以太网功能配置，配置内部的以太网MAC使用外部的MII接口�
             <title type="text">电脑安装系统指南</title>
             <link rel="alternate" type="text/html" href="https://ls1030.github.io/tech/computer_reinstall_system_guide/" />
             <id>https://ls1030.github.io/tech/computer_reinstall_system_guide/</id>
-            <updated>2022-07-25T18:43:05&#43;08:00</updated>
+            <updated>2022-12-07T02:21:36&#43;08:00</updated>
             <published>2019-08-12T08:45:58&#43;08:00</published>
             <author>
                     <name>LS1030</name>

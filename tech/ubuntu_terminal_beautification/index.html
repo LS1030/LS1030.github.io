@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.101.0" /><meta name="theme-color" content="#16171d" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>Ubuntu终端美化 | LS1030的自留地</title>
+
+    <link rel="stylesheet" href="/css/meme.min.70596e7bcf53638cb8a91ae965a7c9d0b1ce87a0da4de1904f4ddcdb3cbc8528.css"/>
+
+    
+    
+        <script src="/js/meme.min.e46abe484398824efc70edec3126437916974df592d7c395b44f8f60e0f57e9d.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="LS1030" /><meta name="description" content="zsh Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Li……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="LS1030的自留地" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="LS1030的自留地" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://ls1030.github.io/tech/ubuntu_terminal_beautification/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2022-12-07T23:02:43+08:00",
+        "dateModified": "2022-12-08T00:39:24+08:00",
+        "url": "https://ls1030.github.io/tech/ubuntu_terminal_beautification/",
+        "headline": "Ubuntu终端美化",
+        "description": "zsh Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Li……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "tech",
+        "wordCount":  1816 ,
+        "image": ["https://ls1030.github.io/images/ubuntu_terminal_beautification/WindowsTerminal-Ubuntu-zsh.png"],
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "L.S.1030@outlook.com",
+            "image": "https://ls1030.github.io/icons/apple-touch-icon.png",
+            "url": "https://ls1030.github.io/",
+            "name": "LS1030"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LS1030的自留地",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://ls1030.github.io/icons/apple-touch-icon.png"
+            },
+            "url": "https://ls1030.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://ls1030.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+
+    
+
+
+
+<meta property="og:title" content="Ubuntu终端美化" />
+<meta property="og:description" content="zsh Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Li……" />
+<meta property="og:url" content="https://ls1030.github.io/tech/ubuntu_terminal_beautification/" />
+<meta property="og:site_name" content="LS1030的自留地" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://ls1030.github.io/images/ubuntu_terminal_beautification/WindowsTerminal-Ubuntu-zsh.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-12-07T23:02:43&#43;08:00" />
+    <meta property="article:modified_time" content="2022-12-08T00:39:24&#43;08:00" />
+    
+    <meta property="article:section" content="tech" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">LS1030的自留地</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href=""><span class="menu-item-name">随笔</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item active"><a href="/tech/"><span class="menu-item-name">技术</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href=""><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="tech">
+
+            <h1 class="post-title p-name">Ubuntu终端美化</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2022-12-07T23:02:43&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.12.7</time>
+    
+    
+        
+        <time datetime="2022-12-08T00:39:24&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.12.8</time>
+    
+    
+    
+        
+        
+            
+            
+                
+                
+                
+                
+                    
+                    
+                    
+                        
+                            
+                            
+                        
+                    
+                
+            
+            
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/tech/" class="category-link p-category">Tech</a></span>
+            
+        
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;1816</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;4&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:zsh" href="#zsh">zsh</a></li>
+    <li><a id="contents:oh-my-zsh" href="#oh-my-zsh">oh-my-zsh</a></li>
+    <li><a id="contents:配置" href="#配置">配置</a>
+      <ol>
+        <li><a id="contents:powerlevel10k主题" href="#powerlevel10k主题">powerlevel10k主题</a></li>
+        <li><a id="contents:插件" href="#插件">插件</a>
+          <ol>
+            <li><a id="contents:git" href="#git">git</a></li>
+            <li><a id="contents:extract" href="#extract">extract</a></li>
+            <li><a id="contents:z" href="#z">z</a></li>
+            <li><a id="contents:sudo" href="#sudo">sudo</a></li>
+            <li><a id="contents:safe-paste" href="#safe-paste">safe-paste</a></li>
+            <li><a id="contents:zsh-syntax-highlighting" href="#zsh-syntax-highlighting">zsh-syntax-highlighting</a></li>
+            <li><a id="contents:zsh-autosuggestions" href="#zsh-autosuggestions">zsh-autosuggestions</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a id="contents:windows-terminal设置可选" href="#windows-terminal设置可选">Windows Terminal设置（可选）</a></li>
+    <li><a id="contents:总结及最终效果" href="#总结及最终效果">总结及最终效果</a></li>
+    <li><a id="contents:参考资料" href="#参考资料">参考资料</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+                <h2 id="zsh"><a href="#zsh" class="anchor-link">#</a><a href="#contents:zsh" class="headings">zsh</a></h2>
+<p>Shell是Linux/Unix的一个界面程序，负责用户与系统内核的交互。一个Linux系统可以有多种Shell，可以通过命令查看系统内的Shell:</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat /etc/shells
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>常用的 Linux 系统和 OS X 系统的默认 Shell 都是bash，Ubuntu也是。</p>
+<p><a href="https://www.zsh.org/" target="_blank" rel="noopener">zsh</a>一个功能非常强大的Shell，兼容bash并且有bash之外更多的功能。</p>
+<p>在Ubuntu里一般没有带zsh，可以通过命令安装：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install zsh
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>安装完毕之后，需要把bash切换成zsh：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chsh -s /bin/zsh
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>然后关闭当前shell，重新打开新的shell，就可以使用zsh了。</p>
+<h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="anchor-link">#</a><a href="#contents:oh-my-zsh" class="headings">oh-my-zsh</a></h2>
+<p>第一次使用zsh需要进行配置，但是这个配置非常麻烦，我们使用oh-my-zsh进行配置，因此第一次进入时选择1，即仅生成zsh的配置文件:<code>~/.zshrc</code>。</p>
+<p><a href="https://ohmyz.sh/" target="_blank" rel="noopener">oh-my-zsh</a>是开源的用于管理zsh配置的框架，可以使用不同主题，添加各种插件来增添更多功能，其Github仓库为<a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noopener">ohmyzsh/ohmyzsh</a>。</p>
+<p>oh-my-zsh使用命令安装：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>更新oh-my-zsh可以使用以下命令：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">upgrade_oh_my_zsh
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">omz update
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="配置"><a href="#配置" class="anchor-link">#</a><a href="#contents:配置" class="headings">配置</a></h2>
+<p>zsh、oh-my-zsh安装完毕后，切换主题和安装一些插件会让zsh更好用。</p>
+<p>安装主题或插件后，更新zsh配置文件，即可应用最新的更改：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 id="powerlevel10k主题"><a href="#powerlevel10k主题" class="anchor-link">#</a><a href="#contents:powerlevel10k主题" class="headings">powerlevel10k主题</a></h3>
+<p>oh-my-zsh有许多主题，其中一个比较好用美观的是powerlevel10k，强调速度、灵活性和开箱即用的体验，Github仓库是<a href="https://github.com/romkatv/powerlevel10k" target="_blank" rel="noopener">romkatv/powerlevel10k</a>。</p>
+<p>在oh-my-zsh下安装powerlevel10k可以直接通过命令完成：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone --depth<span class="o">=</span><span class="m">1</span> https://github.com/romkatv/powerlevel10k.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.oh-my-zsh/custom</span><span class="si">}</span>/themes/powerlevel10k
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>中国大陆用户可以使用 gitee.com 上的官方镜像加速下载:</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone --depth<span class="o">=</span><span class="m">1</span> https://gitee.com/romkatv/powerlevel10k.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.oh-my-zsh/custom</span><span class="si">}</span>/themes/powerlevel10k
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>然后在<code>~/.zshrc</code>中设置<code>ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</code>，然后<code>source ~/.zshrc</code>，根据提示进行设置，设置完成就可以使用了。</p>
+<p>如果需要重新配置，则使用命令重新配置：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">p10k configure
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>另外，因为主题内含有图标，所以需要改终端字体为包含图标的字体，推荐<code>DejaVuSansMono NF</code>、<code>JetBrainsMono NF</code>、<code>Meslo LGM NF</code>。</p>
+<h3 id="插件"><a href="#插件" class="anchor-link">#</a><a href="#contents:插件" class="headings">插件</a></h3>
+<p>在<code>~/.zshrc</code>里的<code>plugins</code>内添加字段可以使用各种插件，有一些插件时zsh默认安装，也有一些是需要另外手动安装的，我的插件配置为：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">plugins</span><span class="o">=(</span>git extract z sudo safe-paste zsh-syntax-highlighting zsh-autosuggestions<span class="o">)</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="git"><a href="#git" class="anchor-link">#</a><a href="#contents:git" class="headings">git</a></h4>
+<p>git是默认安装并开启的<em class="emphasis-point">git插件</em>，可以使用各种<code>alias别名</code>来完成git操作，并且在终端上显示git信息，查看alias可以使用命令:</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="extract"><a href="#extract" class="anchor-link">#</a><a href="#contents:extract" class="headings">extract</a></h4>
+<p>extract是默认安装的<em class="emphasis-point">自动解压插件</em>，可以根据压缩文件后缀来自动调用对用的解压软件来解压文件，其使用方法为：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">x <span class="o">[</span>*.zip/tar.gz/tar.xz<span class="o">]</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="z"><a href="#z" class="anchor-link">#</a><a href="#contents:z" class="headings">z</a></h4>
+<p>z是默认安装的<em class="emphasis-point">目录自动跳转插件</em>，可以自动记忆曾经进入过的目录，并且通过<code>z</code>命令模糊匹配并直接跳转，使用方法与<code>cd</code>类似，但输入目录地址时可以通过<code>tab</code>快速调整。</p>
+<h4 id="sudo"><a href="#sudo" class="anchor-link">#</a><a href="#contents:sudo" class="headings">sudo</a></h4>
+<p>sudo是默认安装的，其作用是<em class="emphasis-point">连按两次</em><code>Esc</code>即可在当前命令前自动添加<code>sudo</code></p>
+<h4 id="safe-paste"><a href="#safe-paste" class="anchor-link">#</a><a href="#contents:safe-paste" class="headings">safe-paste</a></h4>
+<p>safe-paste是默认安装的，顾名思义，安全粘贴，其作用是使粘贴的命令到终端后需要<em class="emphasis-point">手动运行</em>，防止复制命令时自带换行导致自动运行不正确的命令带来不可预料的后果。</p>
+<h4 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="anchor-link">#</a><a href="#contents:zsh-syntax-highlighting" class="headings">zsh-syntax-highlighting</a></h4>
+<p><a href="https://github.com/zsh-users/zsh-syntax-highlighting" target="_blank" rel="noopener">zsh-syntax-highlighting</a>是一个命令自动语法高亮插件，需要手动安装，安装命令为：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h4 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="anchor-link">#</a><a href="#contents:zsh-autosuggestions" class="headings">zsh-autosuggestions</a></h4>
+<p><a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank" rel="noopener">zsh-autosuggestions</a>是一个自动补全插件，根据历史记录自动提示并可以使用<code>tab</code>自动补全，需要手动安装，安装命令为：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-autosuggestions
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="windows-terminal设置可选"><a href="#windows-terminal设置可选" class="anchor-link">#</a><a href="#contents:windows-terminal设置可选" class="headings">Windows Terminal设置（可选）</a></h2>
+<p>我使用wsl2+Ubuntu22.04，因此可以进一步设置：</p>
+<p>打开Windows Terminal设置，左边栏-配置文件-Windows PowerShell，其他设置-外观，设置字体为<code>JetBrainMono NF</code>，字号11，透明度80%，如果喜欢可以自行添加背景图片。</p>
+<ol>
+<li>打开Windows Terminal设置，左边栏-配置文件-Ubuntu 22.04.1 LTS，其他设置-外观</li>
+<li>配色方案：Campbell</li>
+<li>字体：JetbrainMono NF</li>
+<li>字号：11</li>
+<li>光标：条形</li>
+<li>透明度：背景透明度80%</li>
+</ol>
+<h2 id="总结及最终效果"><a href="#总结及最终效果" class="anchor-link">#</a><a href="#contents:总结及最终效果" class="headings">总结及最终效果</a></h2>
+<p>Windows Terminal - Ubuntu终端的美化步骤为：</p>
+<ol>
+<li>安装zsh，并把shell切换为zsh</li>
+<li>安装oh-my-zsh</li>
+<li>安装powerlevel10k主题</li>
+<li>安装并配置对应插件</li>
+</ol>
+<p>最终效果为：</p>
+<p><img src="/images/ubuntu_terminal_beautification/WindowsTerminal-Ubuntu-zsh.png" alt="WindowsTerminal-Ubuntu"><span class="caption">◎ WindowsTerminal-Ubuntu</span></p>
+<h2 id="参考资料"><a href="#参考资料" class="anchor-link">#</a><a href="#contents:参考资料" class="headings">参考资料</a></h2>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/61447507" target="_blank" rel="noopener">常用的oh-my-zsh插件</a></li>
+<li><a href="https://asmcn.icopy.site/awesome/awesome-zsh-plugins/" target="_blank" rel="noopener">ZSH 插件</a></li>
+<li><a href="https://www.aloxaf.com/2019/11/zplugin_tutorial/" target="_blank" rel="noopener">加速你的 zsh —— 最强 zsh 插件管理器 zplugin/zinit 教程</a></li>
+</ol>
+
+            </div>
+
+            
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+    <footer class="minimal-footer">
+        
+            <div class="post-tag"><a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag" class="post-tag-link">#环境配置</a> <a href="/tags/linux/" rel="tag" class="post-tag-link">#linux</a></div>
+        
+        
+            <div class="post-category">
+                <a href="/tech/" class="post-category-link active">tech</a> | 
+            </div>
+        
+        
+    </footer>
+
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+            
+                <li class="post-nav-next">
+                    <a href="/tech/winterminal_beautification/" rel="next">Windows Terminal 终端美化 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;LS1030</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:L.S.1030@outlook.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/ls1030" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://t.me/ls1030" target="_blank" rel="external noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon social-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+    </body>
+</html>
